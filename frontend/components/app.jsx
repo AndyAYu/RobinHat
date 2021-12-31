@@ -10,7 +10,7 @@ import {
 
 import LogInFormContainer from './session_form/login_form_container';
 import SignUpFormContainer from './session_form/signup_form_container';
-
+import { AuthRoute } from '../util/route_util';
 const App = () => (
     <div>
         <header>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { render } from 'react-dom';
+
 
 class SessionForm extends React.Component {
     constructor(props) {
@@ -17,6 +17,10 @@ class SessionForm extends React.Component {
         this.props.processForm(user);
     }
     
+    update(field){
+        return e => this.setState({[field]: e.currentTarget.value})
+    };
+
     renderErrors() {
         return(
             <ul>
