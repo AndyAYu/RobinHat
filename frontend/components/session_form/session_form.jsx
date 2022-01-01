@@ -5,7 +5,7 @@ class SessionForm extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            username: '',
+            Email: '',
             password: ''
         };
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -39,14 +39,14 @@ render() {
             <form onSubmit={this.handleSubmit} className="login-form-box">
             Robinhat
             <br />
-            {this.props.formType} or {this.props.navLink}
+            {this.props.prefix} {this.props.navLink}
             {this.renderErrors()}
             <div className="login-form">
             <br />
-            <label>Username:
+            <label>Email:
                 <input type="text"
-                value={this.state.username}
-                onChange={this.update('username')}
+                value={this.state.Email}
+                onChange={this.update('Email')}
                 className="login-input"
                 />
             </label>
