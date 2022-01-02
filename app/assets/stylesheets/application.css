@@ -19,3 +19,12 @@
     justify-content: center;
     margin-top: 100px;
  }
+
+ .header-links {
+    display: flex;
+    justify-content: space-between;
+ }
+
+ .login-signup {
+    display: flex;
+ }
