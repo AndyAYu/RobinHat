@@ -4,9 +4,13 @@ import { Link } from 'react-router-dom';
 const Header = ({ currentUser, logout }) => {
     const sessionLinks = () => (
         <nav className="login-signup">
-            <Link to="/login">Login </Link>
+            <Link className="login-header"to="/login">
+                <h3>Login</h3>
+            </Link>
             <br />
-            <Link to="/signup">Sign up!</Link>
+            <Link className="signup-header"to="/signup">
+                <h3>Sign up</h3>
+            </Link>
         </nav>
     );
     const loggedInHeader = () => (

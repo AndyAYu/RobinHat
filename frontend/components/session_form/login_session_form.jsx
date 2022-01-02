@@ -1,7 +1,8 @@
 import React from 'react';
+import loginpicture from '../images/login-page-img.jpeg';
 
 
-class SessionForm extends React.Component {
+class LoginSessionForm extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -35,7 +36,9 @@ class SessionForm extends React.Component {
 
 render() {
     return (
+        <body>
         <div className="login-form-container">
+                <img src={loginpicture}/>
             <form onSubmit={this.handleSubmit} className="login-form-box">
             Robinhat
             <br />
@@ -63,8 +66,12 @@ render() {
             </div>
             </form>
         </div>
+        <div className="login-picture">
+        </div>
+        </body>
+        
     );
     }
 }
 
-export default SessionForm;
+export default LoginSessionForm;
