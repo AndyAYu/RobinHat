@@ -45,14 +45,14 @@ render() {
             <br />
             <label>Email:
                 <input type="text"
-                value={this.state.Email}
-                onChange={this.update('Email')}
+                value={this.state.email}
+                onChange={this.update('email')}
                 className="login-input"
                 />
             </label>
                 <br />
             <label>Password:
-                <input type="text"
+                <input type="password"
                 value={this.state.password}
                 onChange={this.update('password')}
                 className="login-input"
