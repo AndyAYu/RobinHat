@@ -13,3 +13,9 @@
  *= require_tree .
  *= require_self
  */
+
+ .login-form-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 100px;
+ }
