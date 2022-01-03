@@ -6,7 +6,7 @@ const Header = ({ currentUser, logout }) => {
         <nav className="login-signup">
             <Link to="/">
                 <h2>Robinhat</h2>
-                <img className="robinHat" src={window.logoURL}/>
+                {/*<img className="robinHat" src={window.logoURL}/>*/}
             </Link>
             <Link className="login-header"to="/login">
                 <h3>Login</h3>
