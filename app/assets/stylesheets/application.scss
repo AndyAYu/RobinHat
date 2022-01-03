@@ -13,6 +13,17 @@
  *= require_tree .
  *= require_self
  */
+ .firstBody {
+    padding-top: 10px;
+    padding-left: 200px;
+    height: 100%;
+    width: 100%;
+    background-color:rgb(191, 236, 68);
+   }
+   
+.firstBodyInvesting {
+   font-size: 55px;
+}
 
 .firstBodySignUp {
    color: white;
@@ -24,28 +35,31 @@
    display: inline-block;
    border-radius: 30%;
 }
+.firstBody-text {
+   font-size: 20px;
+}
 
 .hatlogo {
    width: 100px;
    height: 100px;
 }
 
- .login-form-container {
-    display: flex;
-    padding: 200px;
-    justify-content: space-evenly;
-    margin-top: 100px;
- }
-
  .header-links {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
     font-family: 'Courier New', Courier, monospace;
+ }
+
+ .login-form-container {
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 100px;
  }
 
  .login-signup {
     display: flex;
     justify-content: space-between;
+    font-family: 'Courier New', Courier, monospace;
     
  }
 
@@ -54,6 +68,10 @@
     color: black;
     padding: 5px;
     font-family: 'Courier New', Courier, monospace;
+ }
+
+ .login-picture{
+    width: 50%;
  }
 
  .signup-header{
@@ -72,25 +90,11 @@
     color: white
  }
 
- .firstBody {
-   padding-top: 10px;
-   padding-left: 200px;
-   height: 100%;
-   width: 100%;
-   background-color:rgb(191, 236, 68);
- }
-
- .firstBodyInvesting {
-    font-size: 55px;
- }
-
 .signup-body {
    background-color: black;
 }
-.firstBody-text {
-   font-size: 20px;
-}
 
 .robinHat {
-   text-decoration: none;
+   width: 50px;
+   height: 50px;
 }

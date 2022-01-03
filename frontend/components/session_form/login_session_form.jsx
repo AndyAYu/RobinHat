@@ -38,15 +38,15 @@ render() {
     return (
         <body>
             <div className="login-form-container">
-                <img src={loginpicture}/>
+                <img className="login-picture" src={loginpicture}/>
             <form onSubmit={this.handleSubmit} className="login-form-box">
-            Robinhat
+            Log in to Robinhat
             <br />
-            {this.props.prefix} {this.props.navLink}
             {this.renderErrors()}
             <div className="login-form">
             <br />
-            <label>Email:
+            <label>Email
+                <br />
                 <input type="text"
                 value={this.state.email}
                 onChange={this.update('email')}
@@ -54,7 +54,8 @@ render() {
                 />
             </label>
                 <br />
-            <label>Password:
+            <label>Password
+                <br />
                 <input type="password"
                 value={this.state.password}
                 onChange={this.update('password')}
@@ -63,10 +64,10 @@ render() {
             </label>
             <br />
                 <input className="login-session-submit" type="submit" value={this.props.formType}/>
+                <br />
+                {this.props.prefix} {this.props.navLink}
             </div>
             </form>
-            </div>
-            <div className="login-picture">
             </div>
         </body>
         

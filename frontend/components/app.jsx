@@ -18,9 +18,6 @@ import { logout } from '../util/session_api_util';
 const App = () => (
     <div>
     <header className="header-links">
-            <Link className="robinHat" to="/">
-            <h2>Robinhat</h2>
-            </Link>
             <HeaderContainer />
         </header>
             <Route exact path="/" component={FirstbodyContainer} />
