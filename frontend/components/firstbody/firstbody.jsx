@@ -11,15 +11,20 @@ class firstBody extends React.Component {
                     <br />
                     Everyone
                 </p>
-                <br />
+                <div className="firstBody-text">
+                <p>
                 Commission-free investing, plus the tools 
-                <br />
+                </p>
+                <p>
                 you need to put your money in motion. Sign 
-                <br />
+                </p>
+                <p> 
                 up and get your first stock for free. Certain
-                <br />
+                </p>
+                <p>
                 limitations and fees apply.
-                <br />
+                </p>
+                </div>
                 <Link className="signup-body" to="/signup">
                     <h3>Sign up</h3>
                 </Link>

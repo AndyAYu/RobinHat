@@ -14,6 +14,11 @@
  *= require_self
  */
 
+.hatlogo {
+   width: 100px;
+   height: 100px;
+}
+
  .login-form-container {
     display: flex;
     padding: 200px;
@@ -30,6 +35,7 @@
  .login-signup {
     display: flex;
     justify-content: space-between;
+    
  }
 
  .login-header {
@@ -40,8 +46,9 @@
 
  .signup-header{
     background-color: rgb(37, 202, 4);
-    border-radius: 20%;
-    padding: 5px;
+    border-radius: 30%;
+    height: 80%;
+    padding: 2px;
     color: black;
     font-family: 'Courier New', Courier, monospace;
  }
@@ -53,16 +60,20 @@
  }
 
  .firstBody {
+   padding-top: 10px;
    padding-left: 200px;
    height: 100%;
    width: 100%;
-   background-color:lightgreen;
+   background-color:rgb(191, 236, 68);
  }
 
  .firstBodyInvesting {
-    font-size: 30px;
+    font-size: 55px;
  }
 
 .signup-body {
    background-color: black;
+}
+.firstBody-text {
+   font-size: 20px;
 }

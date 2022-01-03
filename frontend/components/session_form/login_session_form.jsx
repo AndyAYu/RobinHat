@@ -37,7 +37,7 @@ class LoginSessionForm extends React.Component {
 render() {
     return (
         <body>
-        <div className="login-form-container">
+            <div className="login-form-container">
                 <img src={loginpicture}/>
             <form onSubmit={this.handleSubmit} className="login-form-box">
             Robinhat
@@ -62,12 +62,12 @@ render() {
                 />
             </label>
             <br />
-                <input className="session-submit" type="submit" value={this.props.formType}/>
+                <input className="login-session-submit" type="submit" value={this.props.formType}/>
             </div>
             </form>
-        </div>
-        <div className="login-picture">
-        </div>
+            </div>
+            <div className="login-picture">
+            </div>
         </body>
         
     );
