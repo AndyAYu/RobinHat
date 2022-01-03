@@ -6,8 +6,4 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-Logo.delete_all
-
-l1 = Logo.create!(
-    picture_url: 'https://www.svgrepo.com/show/186850/hat-german.svg'
-)
+User.delete_all

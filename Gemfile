@@ -18,6 +18,7 @@ gem 'jbuilder', '~> 2.7'
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
 gem 'bcrypt', '~> 3.1.7'
+gem 'jquery-rails'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
@@ -43,7 +44,6 @@ group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'annotate'
-  gem 'jquery-rails'
 
 end
 
