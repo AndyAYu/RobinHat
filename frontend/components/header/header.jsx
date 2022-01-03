@@ -17,7 +17,7 @@ const Header = ({ currentUser, logout }) => {
         <hgroup>
             <h2 className="logged-header">Welcome, {currentUser.email}!</h2>
             <button className="header-button" onClick={logout}>Log Out</button>
-        </hgroup>
+        </hgroup> 
     );
 
     return currentUser ? loggedInHeader() : sessionLinks()

@@ -11,21 +11,19 @@ import {
 import LogInFormContainer from './session_form/login_form_container';
 import SignUpFormContainer from './session_form/signup_form_container';
 import HeaderContainer from './header/header_container';
-import Firstbody_container from './firstbody/firstbody_container';
+import FirstbodyContainer from './firstbody/firstbody_container';
 import { AuthRoute } from '../util/route_util';
 import { logout } from '../util/session_api_util';
 
 const App = () => (
     <div>
     <header className="header-links">
-            <Link to="/">
+            <Link className="robinHat" to="/">
             <h2>Robinhat</h2>
             </Link>
             <HeaderContainer />
         </header>
-            <div className="firstBody">
-                <Firstbody_container />
-            </div>
+            <Route exact path="/" component={FirstbodyContainer} />
         <Switch>
             <AuthRoute exact path="/login" component={LogInFormContainer} />
             <AuthRoute exact path="/signup" component={SignUpFormContainer} />

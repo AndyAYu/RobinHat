@@ -14,6 +14,17 @@
  *= require_self
  */
 
+.firstBodySignUp {
+   color: white;
+   background-color: black;
+   font-size: 18px;
+   padding: 5px;
+   text-align: center;
+   text-decoration: none;
+   display: inline-block;
+   border-radius: 30%;
+}
+
 .hatlogo {
    width: 100px;
    height: 100px;
@@ -39,12 +50,14 @@
  }
 
  .login-header {
+    text-decoration: none;
     color: black;
     padding: 5px;
     font-family: 'Courier New', Courier, monospace;
  }
 
  .signup-header{
+    text-decoration: none;
     background-color: rgb(37, 202, 4);
     border-radius: 30%;
     height: 80%;
@@ -76,4 +89,8 @@
 }
 .firstBody-text {
    font-size: 20px;
+}
+
+.robinHat {
+   text-decoration: none;
 }
