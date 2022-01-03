@@ -51,3 +51,18 @@
     background-color: green;
     color: white
  }
+
+ .firstBody {
+   padding-left: 200px;
+   height: 100%;
+   width: 100%;
+   background-color:lightgreen;
+ }
+
+ .firstBodyInvesting {
+    font-size: 30px;
+ }
+
+.signup-body {
+   background-color: black;
+}
