@@ -50,7 +50,7 @@ const FirstBody = ({ currentUser }) => {
                     </button> */}
                 </div>
             </div>
-            <img src={phoneScroll} className="phoneScroll"/>
+            <img className="phoneScroll" src={window.phoneScrollPhotoURL}/>
             <br />
         </div>
         );
