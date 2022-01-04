@@ -20,7 +20,7 @@ import { logout } from '../util/session_api_util';
 const App = () => (
     <div>
     <header>
-        <HeaderContainer />
+        <Route exact path="/" component={HeaderContainer} />
     </header>
         <Route exact path="/" component={FirstBodyContainer} />
         <Route exact path="/" component={SecondBody}/>

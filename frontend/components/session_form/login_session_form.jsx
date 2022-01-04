@@ -1,5 +1,4 @@
 import React from 'react';
-import loginpicture from '../../../app/assets/images/login-page-img.jpeg';
 import { Link } from 'react-router-dom'
 
 
@@ -12,6 +11,10 @@ class LoginSessionForm extends React.Component {
         };
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleDemoLogin = this.handleDemoLogin.bind(this);
+    }
+    
+    componentWillUnmount() {
+        this.props.removeErrors();
     }
     
     handleSubmit(e) {
@@ -27,9 +30,6 @@ class LoginSessionForm extends React.Component {
             password: "password"
         };
             this.props.processForm(demoUser);
-        // else {
-        //     this.props.demoLogin(demoUser);
-        // }
     }
 
     update(field){
@@ -40,7 +40,7 @@ class LoginSessionForm extends React.Component {
         return(
             <ul>
             {this.props.errors.map((error, i) => (
-                <li key={`error-${i}`}>
+                <li key={i}>
                     {error}
                 </li>
             ))}
@@ -55,7 +55,7 @@ render() {
             <div className="login-form-container">
                 
                 <div>
-                    <img className="login-picture" src={loginpicture}/>
+                    <img className="login-picture" src={window.loginPhotoURL} />
                 </div>
             
                 <div className="login-form">

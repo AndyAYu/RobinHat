@@ -1,0 +1,58 @@
+.navHeader {
+    line-height: 30px;
+   margin-top: 10px;
+   margin-left: 10px;
+   height: 50px;
+   display: flex;
+   justify-content: space-between;
+}
+
+.robinHat{
+   text-decoration: none;
+   color: black;
+   font-size: 25px;
+   font-family: $sans-serif;
+}
+
+.robinHatLogo {
+width: 30px;
+height: 20px;
+}
+
+.signup-header{
+   border-radius: 20px;
+   text-align: center;
+   text-decoration: none;
+   background-color: rgb(37, 202, 4);
+   padding: 5px;
+   width: 125px;
+   height:30px;
+   color: black;
+   font-weight: bold;
+   font-family: $sans-serif;
+}
+
+.signup-header:hover {
+   text-decoration: none;
+   background-color: green;
+   color: white
+}
+
+.login-header {
+   text-decoration: none;
+   color: black;
+   width: 80px;
+   height: 40px;
+   padding: 5px;
+   font-weight: bold;
+   font-family: $sans-serif;
+}
+
+.login-header:hover {
+   color: rgb(37, 202, 4);
+}
+
+.login-signup {
+   display: flex;
+   margin-right: 20px;
+}
