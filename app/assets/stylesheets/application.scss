@@ -13,67 +13,133 @@
  *= require_tree .
  *= require_self
  */
+//CSS Reset
+ @import "base/reset.scss";
+
+ // Core Imports
+ @import "base/fonts.scss";
+
+ // Components
+@import "components/*";
+
+
+
+.firstBody {
+   padding-left: 50px;
+   height: 650px;
+   width: 100%;
+   background-color:rgb(194, 246, 61);
+   display: flex;
+   flex-direction: row;
+   justify-content: center;
+   
+}
+   
+
+
+.firstBodySignUp {
+   color: white;
+   background-color: black;
+   font-size: 20px;
+   font-weight: bold;
+   width: 100px;
+   border-radius: 20px;
+   text-align: center;
+   text-decoration: none;
+   display: inline-block;
+}
+
+.firstBodySignUp:hover {
+   background-color: rgb(46, 45, 45);
+}
+
+.firstBody-text {
+   font-size: 28px;
+}
 
 .hatlogo {
    width: 100px;
    height: 100px;
 }
 
- .login-form-container {
-    display: flex;
-    padding: 200px;
-    justify-content: space-evenly;
-    margin-top: 100px;
- }
+.leftFirstBody {
+   display: flex;
+   flex-direction: column;
+   justify-content: space-evenly;
+}
 
- .header-links {
-    display: flex;
-    justify-content: space-between;
-    font-family: 'Courier New', Courier, monospace;
- }
+.login-form-container {
+   display: flex;
+   justify-content: space-evenly;
+   margin-top: 100px;
+}
 
- .login-signup {
-    display: flex;
-    justify-content: space-between;
-    
- }
+.navHeader {
+   line-height: 0px;
+   margin-left: 10px;
+   height: 50px;
+   display: flex;
+   justify-content: space-between;
+}
 
- .login-header {
-    color: black;
-    padding: 5px;
-    font-family: 'Courier New', Courier, monospace;
- }
+.login-signup {
+   display: flex;
+   margin-right: 20px;
+}
 
- .signup-header{
-    background-color: rgb(37, 202, 4);
-    border-radius: 30%;
-    height: 80%;
-    padding: 2px;
-    color: black;
-    font-family: 'Courier New', Courier, monospace;
- }
+.login-header {
+   text-decoration: none;
+   color: black;
+   line-height: 0px;
+   width: 80px;
+   height: 40px;
+   padding: 5px;
+   font-weight: bold;
+   font-family: 'Courier New', Courier, monospace;
+}
 
- .signup-header:hover {
-    text-decoration: none;
-    background-color: green;
-    color: white
- }
+.login-header:hover {
+   color: rgb(37, 202, 4);
+}
 
- .firstBody {
-   padding-top: 10px;
-   padding-left: 200px;
-   height: 100%;
-   width: 100%;
-   background-color:rgb(191, 236, 68);
- }
+.login-picture{
+   width: 50%;
+}
 
- .firstBodyInvesting {
-    font-size: 55px;
- }
+.phoneScroll{
+   margin-bottom: 5px;
+}
+
+.robinHat{
+   text-decoration: none;
+   color: black;
+}
+
+.robinHatLogo {
+width: 30px;
+height: 20px;
+}
+
+.signup-header{
+   line-height: 0px;
+   border-radius: 20px;
+   text-align: center;
+   text-decoration: none;
+   background-color: rgb(37, 202, 4);
+   padding: 5px;
+   width: 150px;
+   height:30px;
+   color: black;
+   font-weight: bold;
+   font-family: 'Courier New', Courier, monospace;
+}
+
+.signup-header:hover {
+   text-decoration: none;
+   background-color: green;
+   color: white
+}
 
 .signup-body {
-   background-color: black;
-}
-.firstBody-text {
-   font-size: 20px;
+background-color: black;
 }

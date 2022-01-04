@@ -1,5 +1,6 @@
 import React from 'react';
-import loginpicture from '../images/login-page-img.jpeg';
+import loginpicture from '../../../app/assets/images/login-page-img.jpeg';
+import { Link } from 'react-router-dom'
 
 
 class LoginSessionForm extends React.Component {
@@ -10,6 +11,7 @@ class LoginSessionForm extends React.Component {
             password: ''
         };
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleDemoLogin = this.handleDemoLogin.bind(this);
     }
     
     handleSubmit(e) {
@@ -18,6 +20,18 @@ class LoginSessionForm extends React.Component {
         this.props.processForm(user);
     }
     
+    handleDemoLogin(event) {
+        event.preventDefault();
+        const demoUser = {
+            email: "demo@gmail.com",
+            password: "password"
+        };
+            this.props.processForm(demoUser);
+        // else {
+        //     this.props.demoLogin(demoUser);
+        // }
+    }
+
     update(field){
         return e => this.setState({[field]: e.currentTarget.value})
     };
@@ -34,42 +48,50 @@ class LoginSessionForm extends React.Component {
     )
     }
 
+    
+
 render() {
     return (
-        <body>
             <div className="login-form-container">
-                <img src={loginpicture}/>
-            <form onSubmit={this.handleSubmit} className="login-form-box">
-            Robinhat
-            <br />
-            {this.props.prefix} {this.props.navLink}
-            {this.renderErrors()}
-            <div className="login-form">
-            <br />
-            <label>Email:
-                <input type="text"
-                value={this.state.email}
-                onChange={this.update('email')}
-                className="login-input"
-                />
-            </label>
+                
+                <div>
+                    <img className="login-picture" src={loginpicture}/>
+                </div>
+            
+                <div className="login-form">
+                <form onSubmit={this.handleSubmit} className="login-form-box">
+                Log in to Robinhat
                 <br />
-            <label>Password:
-                <input type="password"
-                value={this.state.password}
-                onChange={this.update('password')}
-                className="login-input"
-                />
-            </label>
-            <br />
-                <input className="login-session-submit" type="submit" value={this.props.formType}/>
+                {this.renderErrors()}
+                <Link to="/"
+                    onClick={this.handleDemoLogin}
+                    className="demo-button"
+                >Demo User</Link>
+                <br />
+                <label>Email
+                    <br />
+                    <input type="text"
+                    value={this.state.email}
+                    onChange={this.update('email')}
+                    className="login-input"
+                    />
+                </label>
+                    <br />
+                <label>Password
+                    <br />
+                    <input type="password"
+                    value={this.state.password}
+                    onChange={this.update('password')}
+                    className="login-input"
+                    />
+                </label>
+                <br />
+                    <input className="login-session-submit" type="submit" value={this.props.formType}/>
+                    <br />
+                    {this.props.prefix} {this.props.navLink}
+                </form>
+                </div>
             </div>
-            </form>
-            </div>
-            <div className="login-picture">
-            </div>
-        </body>
-        
     );
     }
 }
