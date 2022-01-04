@@ -24,7 +24,7 @@ const FirstBody = ({ currentUser }) => {
                 </div>
                 <div >
                     <Link className="firstBodySignUp"to="/signup">
-                    <h3>Sign up</h3>
+                    <p>Sign up</p>
                     </Link>
                     <br />
                     {/* <button> 

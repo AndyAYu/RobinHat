@@ -13,10 +13,14 @@ const Header = ({ currentUser, logout }) => {
             </div>
             <div className="login-signup">
                 <Link className="login-header"to="/login">
-                    <h3>Login</h3>
+                    <p>
+                    Log In
+                    </p>
                 </Link>
                 <Link className="signup-header"to="/signup">
-                    <h3>Sign up</h3>
+                    <p>
+                    Sign Up
+                    </p>
                 </Link>
             </div>
         </nav>

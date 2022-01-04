@@ -8,6 +8,8 @@ import {
     HashRouter
 } from 'react-router';
 
+import SecondBody from './secondbody/secondbody';
+
 import LogInFormContainer from './session_form/login_form_container';
 import SignUpFormContainer from './session_form/signup_form_container';
 import HeaderContainer from './header/header_container';
@@ -21,6 +23,7 @@ const App = () => (
         <HeaderContainer />
     </header>
         <Route exact path="/" component={FirstBodyContainer} />
+        <Route exact path="/" component={SecondBody}/>
         <Switch>
         <AuthRoute exact path="/login" component={LogInFormContainer} />
         <AuthRoute exact path="/signup" component={SignUpFormContainer} />
