@@ -3,18 +3,22 @@ import { Link } from 'react-router-dom';
 
 const Header = ({ currentUser, logout }) => {
     const sessionLinks = () => (
-        <nav className="login-signup">
-            <Link to="/">
-                <h2>Robinhat</h2>
-                {/*<img className="robinHat" src={window.logoURL}/>*/}
+        <nav className="navHeader">
+            <div>
+            <Link className="robinHat"to="/">
+                <h2>Robinhat
+                <img className="robinHatLogo" src={window.logoURL}/>
+                </h2>
             </Link>
-            <Link className="login-header"to="/login">
-                <h3>Login</h3>
-            </Link>
-            <br />
-            <Link className="signup-header"to="/signup">
-                <h3>Sign up</h3>
-            </Link>
+            </div>
+            <div className="login-signup">
+                <Link className="login-header"to="/login">
+                    <h3>Login</h3>
+                </Link>
+                <Link className="signup-header"to="/signup">
+                    <h3>Sign up</h3>
+                </Link>
+            </div>
         </nav>
     );
     const loggedInHeader = () => (

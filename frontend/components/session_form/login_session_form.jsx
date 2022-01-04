@@ -1,5 +1,5 @@
 import React from 'react';
-import loginpicture from '../images/login-page-img.jpeg';
+import loginpicture from '../../../app/assets/images/login-page-img.jpeg';
 
 
 class LoginSessionForm extends React.Component {
