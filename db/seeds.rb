@@ -8,7 +8,7 @@
 
 User.delete_all
 
-u1 = User.create!(
+demo = User.create!(
     email: 'demo@gmail.com',
     password: 'password'
 )

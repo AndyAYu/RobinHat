@@ -1,4 +1,5 @@
 import React from 'react';
+import { SIGN_UP } from '../../actions/session_actions'
 
 
 class SignUpSessionForm extends React.Component {

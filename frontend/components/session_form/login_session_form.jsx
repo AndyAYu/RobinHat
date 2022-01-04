@@ -1,5 +1,6 @@
 import React from 'react';
 import loginpicture from '../../../app/assets/images/login-page-img.jpeg';
+import { Link } from 'react-router-dom'
 
 
 class LoginSessionForm extends React.Component {
@@ -10,6 +11,7 @@ class LoginSessionForm extends React.Component {
             password: ''
         };
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleDemoLogin = this.handleDemoLogin.bind(this);
     }
     
     handleSubmit(e) {
@@ -18,6 +20,18 @@ class LoginSessionForm extends React.Component {
         this.props.processForm(user);
     }
     
+    handleDemoLogin(event) {
+        event.preventDefault();
+        const demoUser = {
+            email: "demo@gmail.com",
+            password: "password"
+        };
+            this.props.processForm(demoUser);
+        // else {
+        //     this.props.demoLogin(demoUser);
+        // }
+    }
+
     update(field){
         return e => this.setState({[field]: e.currentTarget.value})
     };
@@ -34,9 +48,10 @@ class LoginSessionForm extends React.Component {
     )
     }
 
+    
+
 render() {
     return (
-        <body>
             <div className="login-form-container">
                 <img className="login-picture" src={loginpicture}/>
             <form onSubmit={this.handleSubmit} className="login-form-box">
@@ -44,6 +59,10 @@ render() {
             <br />
             {this.renderErrors()}
             <div className="login-form">
+            <Link to="/"
+                onClick={this.handleDemoLogin}
+                className="demo-button"
+            >Demo User</Link>
             <br />
             <label>Email
                 <br />
@@ -69,8 +88,6 @@ render() {
             </div>
             </form>
             </div>
-        </body>
-        
     );
     }
 }

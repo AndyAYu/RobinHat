@@ -1,13 +1,13 @@
 import { connect } from 'react-redux';
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { login } from '../../actions/session_actions';
+import { login, LOG_IN } from '../../actions/session_actions';
 import LoginSessionForm from './login_session_form';
 
 const mapStateToProps = state => {
     return {
         errors: state.errors.session,
-        formType: 'login',
+        formType: LOG_IN,
         prefix: 'Not on Robinhat?',
         navLink: <Link to="/signup">Sign up!</Link>,
     };
