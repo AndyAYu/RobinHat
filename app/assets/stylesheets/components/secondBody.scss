@@ -1,6 +1,15 @@
+.secondBody{
+    width: 100%;
+}
+
 .first-section {
     border: 1px solid black;
     text-align: center;
     padding: 40px 480px;
-    width: 49%;
+}
+
+.second-section {
+    border-bottom: 1px solid black;
+    display: flex;
+    flex-direction: row;
 }
