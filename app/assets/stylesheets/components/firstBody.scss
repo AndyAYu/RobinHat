@@ -1,7 +1,7 @@
 .firstBody {
+   padding-top: 100px;
    padding-left: 50px;
    height: 650px;
-   width: 100%;
    background-color:rgb(194, 246, 61);
    display: flex;
    flex-direction: row;
@@ -24,8 +24,9 @@
    background-color: rgb(46, 45, 45);
 }
 
-.firstBody-text {
-   font-size: 28px;
+.firstBody-text > span {
+   font-size: 24px;
+   font-family: 'Roboto', sans-serif;
 }
 
 .leftFirstBody {

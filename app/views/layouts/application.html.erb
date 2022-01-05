@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html>
   <head>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300&display=swap" rel="stylesheet">
     <title>Robinhat</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
@@ -16,6 +19,9 @@
     </script>
     <script type="text/javascript">
     window.phoneScrollPhotoURL = "<%= image_url('phone-scrolling.png') %>";
+    </script>
+    <script type="text/javascript">
+    window.coolShapesPhotoURL = "<%= image_url('cool-shapes.png') %>";
     </script>
     <%= javascript_include_tag 'application' %>
     <%= stylesheet_link_tag 'application', media: 'all' %>

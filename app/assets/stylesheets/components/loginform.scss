@@ -14,9 +14,13 @@
 }
 
 .login-form {
-   margin-top: 200px;
-   display: flex;
-   flex-direction: column;
+  width: 40%;
+  height: 50%;
+  margin-top: 200px;
+  display: flex;
+  flex-direction: column;
 }
 
-
+.login-input {
+  border: 1px solid black;
+}

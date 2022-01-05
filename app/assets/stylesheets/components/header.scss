@@ -8,13 +8,15 @@
    background-color: white;
    padding-top: 10px;
    padding-left: 10px;
+   border: 1px outset rgb(184, 184, 184);
 }
+
+
 
 .robinHat{
    text-decoration: none;
    color: black;
    font-size: 25px;
-   font-family: $sans-serif;
 }
 
 .robinHatLogo {
@@ -32,7 +34,6 @@ height: 20px;
    height:30px;
    color: black;
    font-weight: bold;
-   font-family: $sans-serif;
 }
 
 .signup-header:hover {
@@ -48,7 +49,6 @@ height: 20px;
    height: 40px;
    padding: 5px;
    font-weight: bold;
-   font-family: $sans-serif;
 }
 
 .login-header:hover {

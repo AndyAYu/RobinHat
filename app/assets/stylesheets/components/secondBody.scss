@@ -1,6 +1,3 @@
-.secondBody{
-    width: 100%;
-}
 
 .first-section {
     border: 1px solid black;
@@ -14,12 +11,42 @@
     flex-direction: row;
 }
 
+.second-section-text {
+    padding-right: 100px;
+}
+
 .second-section-text > h2 {
     font-size: 32px;
     padding-top: 50px;
 }
 
 .second-section-text > p {
-    padding: 5px;
     font-size: 20px;
+}
+
+.second-section-text-one{
+    font-size: 18px;
+    padding-top: 20px;
+    padding-bottom: 5px;
+}
+
+.second-section-text-two{
+    font-size: 18px;
+    padding-top: 20px;
+    padding-bottom: 5px;
+}
+
+.second-section-text-three{
+    font-size: 18px;
+    padding-top: 20px;
+    padding-bottom: 5px;
+}
+
+.sst {
+    font-weight: bold;
+    word-spacing: 5%;
+}
+
+.intro-frac {
+    background-color: #F0EBE6;
 }
