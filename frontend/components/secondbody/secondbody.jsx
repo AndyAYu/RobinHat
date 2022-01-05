@@ -47,7 +47,42 @@ const SecondBody = () => (
             </div>
         </div>
         <div className="intro-frac"> 
-                <img src={window.coolShapesPhotoURL}/>
+            <div className="intro-frac-left">
+                <div className="intro-frac-left-1">
+                    <p className="ifl11">Introducing Fractional Shares</p>
+                    <br />
+                    <p className="ifl12">Invest in thousands of stocks with as little as $1.</p>
+                </div>
+                <div className="intro-frac-left-2">
+                    <section className="ifls1">Invest Any Amount
+                        <p className="iflsp1">
+                            Choose how much you want to <br />
+                            invest, and we'll convert from <br />
+                            dollars to parts of a whole <br />
+                            share.
+                        </p>
+                    </section>
+                    <section className="ifls2">Build a Balanced Portfolio
+                        <p className="iflsp2">
+                            Customize your portfolio with <br />
+                            pieces of different companies <br />
+                            and funds to help reduce risk. <br />
+                        </p>
+                    </section>
+                    <section className="ifls3">Trade in Real Time
+                        <p className="iflsp3">
+                            Trades placed during market <br />
+                            hours are executed at that <br />
+                            time, so you'll always know <br />
+                            the share price. 
+                        </p>
+                    </section>
+                </div>
+                <div className="intro-frac-left-3">
+                    <p>Fractional Shares Disclosure</p>
+                </div>
+            </div>
+            <img className="intro-frac-right"src={window.coolShapesPhotoURL}/>
         </div>
     </div>
 

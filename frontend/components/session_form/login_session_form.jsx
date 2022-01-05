@@ -60,7 +60,9 @@ render() {
             
                 <div className="login-form">
                 <form onSubmit={this.handleSubmit} className="login-form-box">
+                <h4>
                 Log in to Robinhat
+                </h4>
                 <br />
                 {this.renderErrors()}
                 <Link to="/"

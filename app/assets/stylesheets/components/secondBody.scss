@@ -1,4 +1,5 @@
 
+
 .first-section {
     border: 1px solid black;
     text-align: center;
@@ -49,4 +50,67 @@
 
 .intro-frac {
     background-color: #F0EBE6;
+    border-bottom: 1px solid black;
+    display: flex;
+}
+
+.intro-frac-left {
+    padding-top: 70px;
+    padding-left: 200px;
+    display:flex;
+    flex-direction: column;
+}
+
+.intro-frac-left-2 {
+    display: flex;
+    flex-direction: row;
+    padding-top: 75px;
+}
+
+.intro-frac-left-2 > section{
+    font-weight: bold;
+    display: flex;
+    width: 280px;
+}
+
+.ifl11 {
+    font-size: 30px;
+    font-weight: bolder;
+    font-family: 'Roboto', sans-serif;
+    padding-bottom: 15px;
+}
+
+.ifl12 {
+    color: gray;
+    font-size: 18px;
+}
+
+.ifls1{
+    display: flex;
+    flex-direction: column;
+}
+
+.ifls2{
+    display: flex;
+    flex-direction: column;
+}
+
+.ifls3{
+    display: flex;
+    flex-direction: column;
+}
+
+.iflsp1{
+    font-weight: normal;
+    padding-top: 25px;
+}
+
+.iflsp2{
+    font-weight: normal;
+    padding-top: 25px;
+}
+
+.iflsp3{
+    padding-top: 25px;
+    font-weight: normal;
 }
