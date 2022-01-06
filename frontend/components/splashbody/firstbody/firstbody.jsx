@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import SplashBody from '../splashbody';
+import myChart from '../chartbody/chartbody'
 
 const stockChart = () => (
     <h2 className="chart">CHART</h2>
@@ -12,7 +13,7 @@ class FirstBody extends React.Component {
     }
         
         render () {
-            return this.props.currentUser ? stockChart() : <SplashBody/>
+            return this.props.currentUser ? <myChart/> : <SplashBody/>
         }
     }
 
