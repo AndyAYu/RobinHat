@@ -26,8 +26,8 @@ const Header = ({ currentUser, logout }) => {
         </nav>
     );
     const loggedInHeader = () => (
-        <hgroup>
-            <h2 className="logged-header">Welcome, {currentUser.email}!</h2>
+        <hgroup className="logged-header">
+            <h2>Welcome, {currentUser.email}!</h2>
             <button className="header-button" onClick={logout}>Log Out</button>
         </hgroup> 
 

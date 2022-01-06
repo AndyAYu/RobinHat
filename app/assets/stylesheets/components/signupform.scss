@@ -1,0 +1,69 @@
+.signup-form > label {
+    padding: 10px 20px;
+}
+
+.signup-form-container {
+    display: flex;
+    justify-content: center;
+}
+
+.signup-form-box {
+    display: flex;
+    flex-direction: column;
+    width: 60%
+}
+
+.signup-form-box > div > h2 {
+    font-size: 23px;
+    padding: 10px 20px;
+}
+.signup-form-box > div > p {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.signup-form-box > div > span {
+    padding-top: 20px;
+    font-weight: bold;
+}
+
+.signup-form-right {
+    background-color: rgb(245,248,250);
+    height: 100%;
+    width: 40%;
+    padding-top: 150px ;
+    padding-left: 5%;
+}
+
+.signup-form-right > section > h4 {
+    font-weight: bold;
+    font-family: 'Roboto', sans-serif;
+}
+
+.signup-form-right > section > span {
+    font-family: 'Roboto', sans-serif;
+}
+
+.signup-input {
+  width: 250px;
+  padding: 4px;
+  border: 1px hidden;
+  background: rgb(228, 244, 250);
+}
+
+.signup-session-submit {
+   color: white;
+   background-color: rgb(2,200,7);
+   font-size: 14px;
+   font-weight: bold;
+   padding: 10px 30px;
+   border-radius: 5px;
+   text-align: center;
+   text-decoration: none;
+   display: inline-block;
+}
+
+.robinHatPlusLogo{
+    width: 140px;
+    height: 50px;
+}

@@ -11,6 +11,18 @@
    border: 1px outset rgb(184, 184, 184);
 }
 
+.logged-header { 
+   line-height: 30px;
+   width: 100%;
+   height: 50px;
+   display: flex;
+   justify-content: space-between;
+   position: fixed;
+   background-color: white;
+   padding-top: 10px;
+   padding-left: 10px;
+   border: 1px outset rgb(184, 184, 184);
+}
 
 
 .robinHat{
@@ -23,6 +35,19 @@
 .robinHatLogo {
 width: 30px;
 height: 20px;
+}
+
+.header-button {
+   border-radius: 20px;
+   text-align: center;
+   text-decoration: none;
+   margin-right: 50px;
+   background-color: rgb(37, 202, 4);
+   padding: 5px;
+   width: 80px;
+   height:30px;
+   color: black;
+   font-weight: bold;
 }
 
 .signup-header{

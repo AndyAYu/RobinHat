@@ -9,7 +9,7 @@ const mapStateToProps = state => {
         errors: state.errors.session,
         formType: LOG_IN,
         prefix: 'Not on Robinhat?',
-        navLink: <Link to="/signup">Sign up!</Link>,
+        navLink: <Link className="create-an-account-link"to="/signup">Create an account</Link>,
     };
 };
 

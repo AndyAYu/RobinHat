@@ -1,6 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom'
-
+import { Link } from 'react-router-dom';
 
 class LoginSessionForm extends React.Component {
     constructor(props) {
@@ -11,17 +10,17 @@ class LoginSessionForm extends React.Component {
         };
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleDemoLogin = this.handleDemoLogin.bind(this);
-    }
+    };
     
     componentWillUnmount() {
         this.props.removeErrors();
-    }
+    };
     
     handleSubmit(e) {
         e.preventDefault();
         const user = Object.assign({}, this.state);
         this.props.processForm(user);
-    }
+    };
     
     handleDemoLogin(event) {
         event.preventDefault();
@@ -30,7 +29,7 @@ class LoginSessionForm extends React.Component {
             password: "password"
         };
             this.props.processForm(demoUser);
-    }
+    };
 
     update(field){
         return e => this.setState({[field]: e.currentTarget.value})
@@ -46,9 +45,7 @@ class LoginSessionForm extends React.Component {
             ))}
         </ul>
     )
-    }
-
-    
+    };
 
 render() {
     return (
@@ -95,6 +92,8 @@ render() {
                 </div>
             </div>
     );
+
+    
     }
 }
 
