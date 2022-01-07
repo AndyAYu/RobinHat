@@ -19,16 +19,41 @@ ChartJS.register(
     Tooltip,
     Legend
 );
-import faker from 'faker';
+import { Link } from 'react-router-dom';
 
-const labels = [1/1/2021]
+
+const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
+const closeV = [1,2,3,4,5,6,7];
+const options = {
+    responsive: true,
+    plugins: {
+        legend: {
+            position: 'top'
+        },
+        title: {
+            display: false,
+        },
+    },
+    scales: {
+        xAxes: [{
+            gridLines: {
+                display:false
+            }
+        }],
+        yAxes: [{
+            gridLines: {
+                display:false
+            }
+        }]
+    },
+};
 
 export const data = { 
     labels,
     datasets: [
         {
             label: 'AMD',
-            data: labels.map(() => faker.datatype.number({ min: 0, max: 200})),
+            data: closeV.reverse(),
             borderColor: 'rgb(255, 99, 132)',
             backgroundColor: 'rgba(255, 99, 132, 0.5)',
         },
@@ -36,19 +61,27 @@ export const data = {
 };
 
 const LineChart = () => {
-    return <div>
+    return (
+    <div className="stockpage">
         <div className="chart-box">
-        <Line
-        data={data}
-        height={400}
-        width={600}
-        />
+            <Line
+            data={data}
+            options={options}
+            height={400}
+            width={600}
+            />
         </div>
         <div className="watchlist">
-            Watchlist
+            <div className="watchlist-box">
+            <p>Watchlist</p>
+            <div className="watchlist-stocks">
+                <Link to="/">Amd</Link>
+            </div>
+            </div>
         </div>
         
     </div>
+    )
 }
 
 export default LineChart;

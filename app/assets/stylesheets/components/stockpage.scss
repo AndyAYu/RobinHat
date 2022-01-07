@@ -1,4 +1,20 @@
 .chart-box {
     width: 60%;
+
+}
+
+.stockpage {
     padding-top: 70px;
+    display: flex;
+}
+
+.watchlist {
+    width: 40%;
+    display: flex;
+    justify-content: center;
+}
+
+.watchlist-box {
+    width: 300px;
+    border: 1px solid gray;
 }
