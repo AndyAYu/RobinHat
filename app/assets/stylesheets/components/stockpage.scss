@@ -16,5 +16,9 @@
 
 .watchlist-box {
     width: 300px;
-    border: 1px solid gray;
+    border: 3px outset gray;
 }
+// can css references be dyanamic
+// .watchlist-stocks > div:hover {
+//     background-color: cadetblue;
+// }

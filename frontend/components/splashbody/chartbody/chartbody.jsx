@@ -21,7 +21,8 @@ ChartJS.register(
 );
 import { Link } from 'react-router-dom';
 
-
+// want to use date function to make labels more dynamic for the future
+// date buttons.
 const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
 const closeV1 = [1,2,3,4,5,6,7];
 const closeV2 = [7,6,5,4,3,2,1]
@@ -35,7 +36,7 @@ const options = {
             display: false
         },
         tooltip: {
-            mode: 'nearest',
+            mode: 'index',
             intersect: false,
         },
     },
@@ -60,7 +61,10 @@ export const data = {
         },
     ],
 };
+// in LineChart-want to make path endpoint and Link.name more dynamic.
+// ${data.dataset.label} < wrong reference???
 
+// for stocks on the right side >> button onclick invoke defined function??
 const LineChart = () => {
     return (
     <div className="stockpage">
@@ -76,7 +80,12 @@ const LineChart = () => {
             <div className="watchlist-box">
             <p>Watchlist</p>
             <div className="watchlist-stocks">
-                <Link to={`/stock/AMD`}>AMD</Link>
+                <div>
+                {/* <Link to={`/stock/AMD`}>AMD</Link> */}
+                <br />
+                {/* <Link to={`/stock/DMA`}>DMA</Link>  */}
+                </div>
+                <br /> 
             </div>
             </div>
         </div>
