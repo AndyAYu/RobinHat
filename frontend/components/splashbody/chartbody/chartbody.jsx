@@ -19,22 +19,35 @@ ChartJS.register(
     Tooltip,
     Legend
 );
+import faker from 'faker';
+
+const labels = [1/1/2021]
+
+export const data = { 
+    labels,
+    datasets: [
+        {
+            label: 'AMD',
+            data: labels.map(() => faker.datatype.number({ min: 0, max: 200})),
+            borderColor: 'rgb(255, 99, 132)',
+            backgroundColor: 'rgba(255, 99, 132, 0.5)',
+        },
+    ],
+};
 
 const LineChart = () => {
     return <div>
+        <div className="chart-box">
         <Line
-        data={{
-            labels: ['Red','Yellow','Pink','Green'],     
-            datasets: [{
-                id: 1,
-                label: '',
-                data:[5,6,7]
-            }]  
-        }}
+        data={data}
         height={400}
         width={600}
         />
-        ;
+        </div>
+        <div className="watchlist">
+            Watchlist
+        </div>
+        
     </div>
 }
 
