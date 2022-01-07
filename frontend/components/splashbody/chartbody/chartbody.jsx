@@ -1,9 +1,28 @@
 import React from 'react';
-import { Bar } from "react-chartjs-2";
+import { Line } from "react-chartjs-2";
+import {
+    Chart as ChartJS,
+    CategoryScale,
+    LinearScale,
+    PointElement,
+    LineElement,
+    Title,
+    Tooltip,
+    Legend,
+} from 'chart.js';
+ChartJS.register(
+    CategoryScale,
+    LinearScale,
+    PointElement,
+    LineElement,
+    Title,
+    Tooltip,
+    Legend
+);
 
-const BarChart = () => {
+const LineChart = () => {
     return <div>
-        <Bar
+        <Line
         data={{
             labels: ['Red','Yellow','Pink','Green'],     
             datasets: [{
@@ -19,4 +38,4 @@ const BarChart = () => {
     </div>
 }
 
-export default BarChart;
+export default LineChart;
