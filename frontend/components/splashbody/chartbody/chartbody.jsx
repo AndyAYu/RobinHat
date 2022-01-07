@@ -81,7 +81,7 @@ const LineChart = () => {
             <p>Watchlist</p>
             <div className="watchlist-stocks">
                 <div>
-                {/* <Link to={`/stock/AMD`}>AMD</Link> */}
+                <Link to={`/stock/${data.datasets}`}>AMD</Link>
                 <br />
                 {/* <Link to={`/stock/DMA`}>DMA</Link>  */}
                 </div>
