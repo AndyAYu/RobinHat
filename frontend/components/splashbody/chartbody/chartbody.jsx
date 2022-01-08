@@ -24,7 +24,7 @@ import { Link } from 'react-router-dom';
 // want to use date function to make labels more dynamic for the future
 // date buttons.
 const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
-const closeV1 = [1,2,3,4,5,6,7];
+let closeV1 = [1,2,3,4,5,6,7];
 const closeV2 = [7,6,5,4,3,2,1]
 const options = {
     responsive: true,
@@ -42,35 +42,57 @@ const options = {
     },
 };
 
-export const data = { 
-    labels,
-    datasets: [
-        {
-            id: 1,
-            label: 'AMD',
-            data: closeV1.reverse(),
-            borderColor: 'rgb(255, 99, 132)',
-            backgroundColor: 'rgba(255, 99, 132, 0.5)',
-        },
-        {
-            id: 2,
-            label: 'DMA',
-            data:closeV2.reverse(),
-            borderColor: 'rgb(1,1,1)',
-            backgroundColor: 'rgba(1,1,1, 0.5)'
-        },
-    ],
-};
+// export const data = { 
+//     labels,
+//     datasets: [
+//         {
+//             id: 1,
+//             label: 'AMD',
+//             data: closeV1.reverse(),
+//             borderColor: 'rgb(255, 99, 132)',
+//             backgroundColor: 'rgba(255, 99, 132, 0.5)',
+//         },
+//         {
+//             id: 2,
+//             label: 'DMA',
+//             data:closeV2.reverse(),
+//             borderColor: 'rgb(1,1,1)',
+//             backgroundColor: 'rgba(1,1,1, 0.5)'
+//         },
+//     ],
+// };
 // in LineChart-want to make path endpoint and Link.name more dynamic.
 // ${data.dataset.label} < wrong reference???
+let obj;
+const amdFetch = function () {
+    fetch(`https://cloud.iexapis.com/stable/stock/AMD/chart/20220106?token=pk_3e9931bb69894a0695a654b8e9715d4c`)
+    .then(response => response.json())
+    .then(data => obj = data)
+    .then(() => console.log(obj))
+}   
+
 
 // for stocks on the right side >> button onclick invoke defined function??
 const LineChart = () => {
+    let closeValues = obj.map((p) => p.close)
+    let closeDates = obj.map((d) => d.date)
+    let ticker = "AMD"
+    let obj = {
+        labels: closeDates,
+        datasets: [
+            {
+                label: ticker,
+                data: closeValues,
+                borderColor: 'rgb(190, 220, 211)',
+                backgroundColor: 'rgba(190,220,211, 0.5)'
+            }
+        ],
+    }
     return (
-    <div className="stockpage">
+        <div className="stockpage">
         <div className="chart-box">
             <Line
-            data={data}
+            data={obj}
             options={options}
             height={400}
             width={600}
@@ -81,7 +103,12 @@ const LineChart = () => {
             <p>Watchlist</p>
             <div className="watchlist-stocks">
                 <div>
-                <Link to={`/stock/${data.datasets}`}>AMD</Link>
+                    <button id="amdstock">
+                        <p>
+                        AMD
+                        </p>
+                    </button>
+                {/* <Link to={`/stock/${data.datasets}`}>AMD</Link> */}
                 <br />
                 {/* <Link to={`/stock/DMA`}>DMA</Link>  */}
                 </div>
