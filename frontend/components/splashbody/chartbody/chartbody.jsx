@@ -40,18 +40,30 @@ const options = {
             intersect: false,
         },
     },
+    scales: {
+        y: {
+            grid: {
+                display: false
+            }
+        },
+        x: {
+            grid: {
+                display: false
+            }
+        }
+    }
 };
 
-// export const data = { 
-//     labels,
-//     datasets: [
-//         {
-//             id: 1,
-//             label: 'AMD',
-//             data: closeV1.reverse(),
-//             borderColor: 'rgb(255, 99, 132)',
-//             backgroundColor: 'rgba(255, 99, 132, 0.5)',
-//         },
+export const data = { 
+    labels,
+    datasets: [
+        {
+            id: 1,
+            label: 'AMD',
+            data: closeV1.reverse(),
+            borderColor: 'rgb(255, 99, 132)',
+            backgroundColor: 'rgba(255, 99, 132, 0.5)',
+        },
 //         {
 //             id: 2,
 //             label: 'DMA',
@@ -59,8 +71,8 @@ const options = {
 //             borderColor: 'rgb(1,1,1)',
 //             backgroundColor: 'rgba(1,1,1, 0.5)'
 //         },
-//     ],
-// };
+    ],
+};
 // in LineChart-want to make path endpoint and Link.name more dynamic.
 // ${data.dataset.label} < wrong reference???
 let obj;
@@ -71,28 +83,28 @@ const amdFetch = function () {
     .then(() => console.log(obj))
 }   
 
-
 // for stocks on the right side >> button onclick invoke defined function??
+// let closeValues = obj.map((p) => p.close)
+// let closeDates = obj.map((d) => d.date)
+// let ticker = "AMD"
+// let newobj = {
+//     labels: closeDates,
+//     datasets: [
+//         {
+//             label: ticker,
+//             data: closeValues,
+//             borderColor: 'rgb(190, 220, 211)',
+//             backgroundColor: 'rgba(190,220,211, 0.5)'
+//         }
+//     ],
+// }
+
 const LineChart = () => {
-    let closeValues = obj.map((p) => p.close)
-    let closeDates = obj.map((d) => d.date)
-    let ticker = "AMD"
-    let obj = {
-        labels: closeDates,
-        datasets: [
-            {
-                label: ticker,
-                data: closeValues,
-                borderColor: 'rgb(190, 220, 211)',
-                backgroundColor: 'rgba(190,220,211, 0.5)'
-            }
-        ],
-    }
     return (
         <div className="stockpage">
         <div className="chart-box">
             <Line
-            data={obj}
+            data={data}
             options={options}
             height={400}
             width={600}
@@ -103,7 +115,7 @@ const LineChart = () => {
             <p>Watchlist</p>
             <div className="watchlist-stocks">
                 <div>
-                    <button id="amdstock">
+                    <button onClick={amdFetch} id="amdstock">
                         <p>
                         AMD
                         </p>
