@@ -88,7 +88,7 @@ class LineChart extends React.Component{
                 datasets: []
             },
         };
-        this.amdFetch = this.amdFetch.bind(this)
+        this.amdFetch = this.amdFetch.bind(this);
     };
 
     amdFetch(){
@@ -119,7 +119,7 @@ class LineChart extends React.Component{
     return (
         <div className="stockpage">
         <div className="chart-box">
-            <h2>{this.state.newobj}</h2>
+            <h2>Current Price</h2>
             <Line
             data={this.state.newobj}
             options={options}
