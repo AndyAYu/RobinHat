@@ -54,16 +54,19 @@ const options = {
     }
 };
 
-export const data = { 
-    labels,
-    datasets: [
-        {
-            id: 1,
-            label: 'AMD',
-            data: closeV1.reverse(),
-            borderColor: 'rgb(255, 99, 132)',
-            backgroundColor: 'rgba(255, 99, 132, 0.5)',
-        },
+// in LineChart-want to make path endpoint and Link.name more dynamic.
+// ${data.dataset.label} < wrong reference???
+
+// export const data = { 
+//     labels,
+//     datasets: [
+//         {
+//             id: 1,
+//             label: 'AMD',
+//             data: closeV1.reverse(),
+//             borderColor: 'rgb(255, 99, 132)',
+//             backgroundColor: 'rgba(255, 99, 132, 0.5)',
+//         },
 //         {
 //             id: 2,
 //             label: 'DMA',
@@ -71,40 +74,57 @@ export const data = {
 //             borderColor: 'rgb(1,1,1)',
 //             backgroundColor: 'rgba(1,1,1, 0.5)'
 //         },
-    ],
-};
-// in LineChart-want to make path endpoint and Link.name more dynamic.
-// ${data.dataset.label} < wrong reference???
-let obj;
-const amdFetch = function () {
-    fetch(`https://cloud.iexapis.com/stable/stock/AMD/chart/20220106?token=pk_3e9931bb69894a0695a654b8e9715d4c`)
-    .then(response => response.json())
-    .then(data => obj = data)
-    .then(() => console.log(obj))
-}   
+//     ],
+// };
 
 // for stocks on the right side >> button onclick invoke defined function??
-// let closeValues = obj.map((p) => p.close)
-// let closeDates = obj.map((d) => d.date)
-// let ticker = "AMD"
-// let newobj = {
-//     labels: closeDates,
-//     datasets: [
-//         {
-//             label: ticker,
-//             data: closeValues,
-//             borderColor: 'rgb(190, 220, 211)',
-//             backgroundColor: 'rgba(190,220,211, 0.5)'
-//         }
-//     ],
-// }
 
-const LineChart = () => {
+class LineChart extends React.Component{
+    constructor(props){
+        super(props);
+        this.state = {
+            newobj: {
+                labels: [],
+                datasets: []
+            },
+        };
+        this.amdFetch = this.amdFetch.bind(this)
+    };
+
+    update(field){
+        
+    };
+    amdFetch(){
+    fetch(`https://cloud.iexapis.com/stable/stock/amd/chart/ytd?token=pk_3e9931bb69894a0695a654b8e9715d4c`)
+        .then(response => response.json())
+        .then(data => {
+            let obj = data;
+            let closeValues = obj.map((p) => p.close);
+            let closeDates = obj.map((d) => d.date);
+            let ticker = "AMD";
+            let newobj = {
+                labels: closeDates,
+                datasets: [
+                    {
+                        label: ticker,
+                        data: closeValues,
+                        borderColor: 'rgb(190, 220, 211)',
+                        backgroundColor: 'rgba(190,220,211, 0.5)'
+                    }
+                ],
+            };
+            // debugger
+            // this.setState({newobj})
+            .then(() => console.log(newobj))
+        })
+}   
+
+    render(){
     return (
         <div className="stockpage">
         <div className="chart-box">
             <Line
-            data={data}
+            data={this.state.newobj}
             options={options}
             height={400}
             width={600}
@@ -115,12 +135,12 @@ const LineChart = () => {
             <p>Watchlist</p>
             <div className="watchlist-stocks">
                 <div>
-                    <button onClick={amdFetch} id="amdstock">
+                    {/* <button onClick={this.amdFetch} id="amdstock">
                         <p>
                         AMD
                         </p>
-                    </button>
-                {/* <Link to={`/stock/${data.datasets}`}>AMD</Link> */}
+                    </button> */}
+                <Link to={`/stock/AMD`} onClick={this.amdFetch}>AMD</Link>
                 <br />
                 {/* <Link to={`/stock/DMA`}>DMA</Link>  */}
                 </div>
@@ -131,6 +151,7 @@ const LineChart = () => {
         
     </div>
     )
+}
 }
 
 export default LineChart;
