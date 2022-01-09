@@ -23,9 +23,9 @@ import { Link } from 'react-router-dom';
 
 // want to use date function to make labels more dynamic for the future
 // date buttons.
-const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
-let closeV1 = [1,2,3,4,5,6,7];
-const closeV2 = [7,6,5,4,3,2,1]
+// const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
+// let closeV1 = [1,2,3,4,5,6,7];
+// const closeV2 = [7,6,5,4,3,2,1]
 const options = {
     responsive: true,
     plugins: {
@@ -91,11 +91,8 @@ class LineChart extends React.Component{
         this.amdFetch = this.amdFetch.bind(this)
     };
 
-    update(field){
-        
-    };
     amdFetch(){
-    fetch(`https://cloud.iexapis.com/stable/stock/amd/chart/ytd?token=pk_3e9931bb69894a0695a654b8e9715d4c`)
+        fetch(`https://cloud.iexapis.com/stable/stock/amd/chart/1y?token=pk_3e9931bb69894a0695a654b8e9715d4c`)
         .then(response => response.json())
         .then(data => {
             let obj = data;
@@ -113,9 +110,8 @@ class LineChart extends React.Component{
                     }
                 ],
             };
-            // debugger
-            // this.setState({newobj})
-            .then(() => console.log(newobj))
+            this.setState({newobj})
+            // .then(() => console.log(newobj))
         })
 }   
 
@@ -123,6 +119,7 @@ class LineChart extends React.Component{
     return (
         <div className="stockpage">
         <div className="chart-box">
+            <h2>{this.state.newobj}</h2>
             <Line
             data={this.state.newobj}
             options={options}
