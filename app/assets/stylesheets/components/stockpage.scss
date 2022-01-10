@@ -15,11 +15,23 @@
 }
 
 .watchlist-box {
+    padding-left: 20px;
     width: 300px;
     border: 3px outset gray;
 }
 
-// can css references be dyanamic
-// .watchlist-stocks > div:hover {
-//     background-color: cadetblue;
-// }
+.watchlist-stocks {
+    display: flex;
+    flex-direction: column;
+}
+
+.stockpage {
+    border-bottom: 1px solid black;
+    padding-bottom: 10px;
+}
+.watchlist-stocks > div {
+    padding-top: 20px;
+}
+.watchlist-stocks > div:hover {
+    background-color: rgb(233, 236, 236);
+}
