@@ -21,38 +21,6 @@ ChartJS.register(
 );
 import { Link } from 'react-router-dom';
 
-// want to use date function to make labels more dynamic for the future
-// date buttons.
-// const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
-// let closeV1 = [1,2,3,4,5,6,7];
-// const closeV2 = [7,6,5,4,3,2,1]
-const options = {
-    responsive: true,
-    plugins: {
-        legend: {
-            position: 'top'
-        },
-        title: {
-            display: false
-        },
-        tooltip: {
-            mode: 'index',
-            intersect: false,
-        },
-    },
-    scales: {
-        y: {
-            grid: {
-                display: false
-            }
-        },
-        x: {
-            grid: {
-                display: false
-            }
-        }
-    }
-};
 
 // in LineChart-want to make path endpoint and Link.name more dynamic.
 // ${data.dataset.label} < wrong reference???
@@ -67,7 +35,7 @@ class LineChart extends React.Component{
                 labels: [],
                 datasets: []
             },
-            stonks: ['AMD', 'AAPL', 'GOOGL', 'FB', 'NFLX'],
+            stonks: ['AMD', 'AAPL', 'GOOGL', 'FB', 'NFLX', 'TWTR', 'TSLA', 'MSFT', 'SBUX', 'GE', 'SUN'],
         }
         this.stockFetch = this.stockFetch.bind(this);
     };
@@ -81,15 +49,20 @@ class LineChart extends React.Component{
                 let obj = data;
                 let closeValues = obj.map((p) => p.close);
                 let closeDates = obj.map((d) => d.date);
-                let ticker = `${stock}`;
+                let ticker = stock;
+                let color = (closeValues[(closeValues.length-1)] > closeValues[0]) ? 'rgb(37, 202, 4)' : 'rgb(255, 80, 1)';
+
                 let newobj = {
                     labels: closeDates,
                     datasets: [
                         {
                             label: ticker,
                             data: closeValues,
-                            borderColor: 'rgb(190, 220, 211)',
-                            backgroundColor: 'rgba(190,220,211, 0.5)'
+                            
+                            borderColor: color,
+                            backgroundColor: color,
+                            pointRadius: 1,
+                            pointHoverRadius: 1,
                         }
                     ],
                 };
@@ -100,32 +73,100 @@ class LineChart extends React.Component{
 }   
 
     render(){
+        let options =
+        {
+            responsive: true,
+            plugins: {
+                legend: {
+                    display: true,
+                    position: 'top',
+                    align: 'start',
+                    labels: {
+                        boxWidth: 0,
+                        boxHeight: 0,
+                        padding: 10,
+                        font: {
+                            size: 18,
+                        }
+                    }
+                },
+                title: {
+                    display: false,
+                },
+                tooltip: {
+                    mode: 'index',
+                    intersect: false,
+                },
+            },
+            scales: {
+                y: {
+                    grid: {
+                        display: false
+                    }
+                },
+                x: {
+                    grid: {
+                        display: false
+                    }
+                }
+            },
+        };
     return (
         <div className="stockpage">
-            <div className="chart-box">
-                <h2>Current Price</h2>
-                <Line
-                data={this.state.newobj}
-                options={options}
-                height={400}
-                width={600}
-                />
-            </div>
+            <div className="stockpageleft">
+                <div className="chart-box">
+                    <Line
+                    data={this.state.newobj}
+                    options={options}
+                    height={350}
+                    width={500}
+                    />
+                </div>
+                <div>
+                    <button> 1D </button>
+                    <button> 1W </button>
+                    <button> 1M </button>
+                    <button> 3M </button>
+                    <button> 1Y </button>
+                    <button> ALL </button>
+                </div>
+                </div>
             <div className="watchlist">
                 <div className="watchlist-box">
                     <p>Watchlist</p>
                     <div className="watchlist-stocks">
                         <div>
-                            <Link to={`/stock/amd`} onClick={this.stockFetch} id="amd-stock-button" >{this.state.stonks[0]}</Link>
+                            <Link to={`/stock/amd`} onClick={() => this.stockFetch('amd')} id="amd-stock-button" >{this.state.stonks[0]}</Link>
                         </div>
                         <div>
-                            <Link to={`/stock/aapl`} onClick={this.stockFetch}>{this.state.stonks[1]}</Link>
+                            <Link to={`/stock/aapl`} onClick={() => this.stockFetch('aapl')}>{this.state.stonks[1]}</Link>
                         </div>
                         <div>
-                            <Link to={`/stock/googl`} onClick={this.stockFetch}>{this.state.stonks[2]}</Link>
+                            <Link to={`/stock/googl`} onClick={() => this.stockFetch('googl')}>{this.state.stonks[2]}</Link>
                         </div>
                         <div>
-                            <Link to={`/stock/fb`} onClick={this.stockFetch}>{this.state.stonks[3]}</Link>
+                            <Link to={`/stock/fb`} onClick={() => this.stockFetch('fb')}>{this.state.stonks[3]}</Link>
+                        </div>
+                        <div>
+                            <Link to={`/stock/nflx`} onClick={() => this.stockFetch('nflx')}>{this.state.stonks[4]}</Link>
+                        </div>
+                        <div>
+                            <Link to={`/stock/twtr`} onClick={() => this.stockFetch('twtr')}>{this.state.stonks[5]}</Link>
+                        </div>
+                        <div>
+                            <Link to={`/stock/tsla`} onClick={() => this.stockFetch('tsla')}>{this.state.stonks[6]}</Link>
+                        </div>
+                        <div>
+                            <Link to={`/stock/msft`} onClick={() => this.stockFetch('msft')}>{this.state.stonks[7]}</Link>
+                        </div>
+                        <div>
+                            <Link to={`/stock/sbux`} onClick={() => this.stockFetch('sbux')}>{this.state.stonks[8]}</Link>
+                        </div>
+                        <div>
+                            <Link to={`/stock/ge`} onClick={() => this.stockFetch('ge')}>{this.state.stonks[9]}</Link>
+                        </div>
+                        <div>
+                            <Link to={`/stock/sun`} onClick={() => this.stockFetch('sun')}>{this.state.stonks[10]}</Link>
                         </div>
                         <br />
                     </div>

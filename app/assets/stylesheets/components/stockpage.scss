@@ -1,11 +1,22 @@
-.chart-box {
-    width: 60%;
-
-}
 
 .stockpage {
     padding-top: 70px;
     display: flex;
+    justify-content: center;
+}
+
+.stockpage > div {
+    display: flex;
+}
+
+.stockpageleft {
+    display: flex;
+    flex-direction: column;
+    border-bottom: 1px solid lightgray;
+}
+
+.stockpageleft > div > button {
+    padding: 10px;
 }
 
 .watchlist {
@@ -15,22 +26,27 @@
 }
 
 .watchlist-box {
-    padding-left: 20px;
     width: 300px;
-    border: 3px outset gray;
+    border: 2px outset gray;
+    position: fixed;
+
 }
 
 .watchlist-stocks {
     display: flex;
     flex-direction: column;
+    height: 60%;
+    width:300px;
+    position: fixed;
+    border: 2px outset gray;
+    overflow-y: auto;
 }
 
-.stockpage {
-    border-bottom: 1px solid black;
-    padding-bottom: 10px;
-}
 .watchlist-stocks > div {
+    padding-left: 20px;
+    padding-right: 20px;
     padding-top: 20px;
+    padding-bottom: 20px;
 }
 .watchlist-stocks > div:hover {
     background-color: rgb(233, 236, 236);

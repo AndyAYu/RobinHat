@@ -52,12 +52,13 @@
     background-color: #F0EBE6;
     border-bottom: 1px solid black;
     display: flex;
+    justify-content: right;
 }
 
 .intro-frac-left {
     padding-top: 70px;
-    padding-left: 200px;
     display:flex;
+    position: right;
     flex-direction: column;
 }
 
