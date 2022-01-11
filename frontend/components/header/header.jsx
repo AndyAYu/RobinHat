@@ -27,7 +27,9 @@ const Header = ({ currentUser, logout }) => {
     );
     const loggedInHeader = () => (
         <hgroup className="logged-header">
-            <h2>Welcome, {currentUser.email}!</h2>
+            <Link className="logged-in-robinhat-logo"to="/">
+                <img className="robinHatLogo" src={window.logoURL} />
+            </Link>
             <button className="header-button" onClick={logout}>Log Out</button>
         </hgroup> 
 

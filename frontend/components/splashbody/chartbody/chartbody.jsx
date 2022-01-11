@@ -40,8 +40,11 @@ class LineChart extends React.Component{
         this.stockFetch = this.stockFetch.bind(this);
     };
 
+    componentWillUnmount(){
+        this.stockFetch
+    }
 
-    stockFetch(stock) {
+    stockFetch(stock, time= "1y") {
         // document.getElementById("amd-stock-button").addEventListener("click", function(){
             fetch(`https://cloud.iexapis.com/stable/stock/${stock}/chart/1y?token=pk_3e9931bb69894a0695a654b8e9715d4c`)
             .then(response => response.json())
@@ -96,15 +99,18 @@ class LineChart extends React.Component{
                 tooltip: {
                     mode: 'index',
                     intersect: false,
+                    yAlign: 'bottom',
                 },
             },
             scales: {
                 y: {
+                    display: false,
                     grid: {
                         display: false
                     }
                 },
                 x: {
+                    display:false,
                     grid: {
                         display: false
                     }
