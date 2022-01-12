@@ -32,6 +32,7 @@ class LineChart extends React.Component{
     constructor(props){
         super(props);
         this.state = {
+            currentprices: '',
             newobj: {
                 labels: [],
                 datasets: []
@@ -42,12 +43,14 @@ class LineChart extends React.Component{
         this.currentStockPriceFetch = this.currentStockPriceFetch.bind(this);
     };
 
-    componentWillUnmount(){
-        this.stockFetch
+    componentDidMount(){
+        this.currentStockPriceFetch(this.state.stonks)
     }
 
-    stockFetch(stock) {
-        fetch(`https://cloud.iexapis.com/stable/stock/${stock}/chart/1y?token=pk_3e9931bb69894a0695a654b8e9715d4c`)
+    //handleclick-make fetch for stock and also setstate./
+
+    stockFetch(stock, time="1y") {
+        fetch(`https://cloud.iexapis.com/stable/stock/${stock}/chart/${time}?token=pk_3e9931bb69894a0695a654b8e9715d4c`)
             .then(response => response.json())
             .then(data => {
                 let obj = data;
@@ -75,16 +78,18 @@ class LineChart extends React.Component{
         // })
     }
 
-    currentStockPriceFetch(stock) {
-        fetch(`https://cloud.iexapis.com/stable/stock/${stock}/chart/intraday-prices?token=pk_3e9931bb69894a0695a654b8e9715d4c`)
+    currentStockPriceFetch(stocks) {
+        let joinedStocks = stocks.join(',')
+        fetch(`https://cloud.iexapis.com/v1/stock/market/batch?&types=price&symbols=${joinedStocks}&token=pk_3e9931bb69894a0695a654b8e9715d4c`)
         .then(response => response.json())
         .then(data => {
-            let obj = data;
-            return obj[(obj.length - 1)].close
+            debugger
+            this.setState((state) => ({currentprices: data}) )
         })
     }
 
     render(){
+        if (Object.values(this.state.currentprices).length < 1) {return null}
         let options =
         {
             annotations: {
@@ -135,6 +140,7 @@ class LineChart extends React.Component{
                 },
             },
         };
+        debugger
     return (
         <div className="stockpage">
             <div className="stockpageleft">
@@ -163,38 +169,47 @@ class LineChart extends React.Component{
                     <div className="watchlist-stocks">
                         <div>
                             <Link to={`/stock/amd`} onClick={() => this.stockFetch('AMD')} id="amd-stock-button" >{this.state.stonks[0]}</Link>
-                            <div className="current-stock-price" ></div>
+                            <div className="current-stock-price" >{this.state.currentprices.AMD.price}</div>
                         </div>
                         <div>
                             <Link to={`/stock/aapl`} onClick={() => this.stockFetch('AAPL')}>{this.state.stonks[1]}</Link>
-                            <div className="-current-stock-price" >Current Stock Price</div>
+                            <div className="-current-stock-price" >{this.state.currentprices.AAPL.price}</div>
                         </div>
                         <div>
                             <Link to={`/stock/googl`} onClick={() => this.stockFetch('GOOGL')}>{this.state.stonks[2]}</Link>
+                            <div className="-current-stock-price" >{this.state.currentprices.GOOGL.price}</div>
                         </div>
                         <div>
                             <Link to={`/stock/fb`} onClick={() => this.stockFetch('FB')}>{this.state.stonks[3]}</Link>
+                            <div className="-current-stock-price" >{this.state.currentprices.FB.price}</div>
                         </div>
                         <div>
                             <Link to={`/stock/nflx`} onClick={() => this.stockFetch('NFLX')}>{this.state.stonks[4]}</Link>
+                            <div className="-current-stock-price" >{this.state.currentprices.NFLX.price}</div>
                         </div>
                         <div>
                             <Link to={`/stock/twtr`} onClick={() => this.stockFetch('TWTR')}>{this.state.stonks[5]}</Link>
+                            <div className="-current-stock-price" >{this.state.currentprices.TWTR.price}</div>
                         </div>
                         <div>
                             <Link to={`/stock/tsla`} onClick={() => this.stockFetch('TSLA')}>{this.state.stonks[6]}</Link>
+                            <div className="-current-stock-price" >{this.state.currentprices.TSLA.price}</div>
                         </div>
                         <div>
                             <Link to={`/stock/msft`} onClick={() => this.stockFetch('MSFT')}>{this.state.stonks[7]}</Link>
+                            <div className="-current-stock-price" >{this.state.currentprices.MSFT.price}</div>
                         </div>
                         <div>
                             <Link to={`/stock/sbux`} onClick={() => this.stockFetch('SBUX')}>{this.state.stonks[8]}</Link>
+                            <div className="-current-stock-price" >{this.state.currentprices.SBUX.price}</div>
                         </div>
                         <div>
                             <Link to={`/stock/ge`} onClick={() => this.stockFetch('GE')}>{this.state.stonks[9]}</Link>
+                            <div className="-current-stock-price" >{this.state.currentprices.GE.price}</div>
                         </div>
                         <div>
                             <Link to={`/stock/sun`} onClick={() => this.stockFetch('SUN')}>{this.state.stonks[10]}</Link>
+                            <div className="-current-stock-price" >{this.state.currentprices.SUN.price}</div>
                         </div>
                         <br />
                     </div>
