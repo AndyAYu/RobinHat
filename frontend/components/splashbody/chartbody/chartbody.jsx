@@ -47,9 +47,11 @@ class LineChart extends React.Component{
         this.currentStockPriceFetch(this.state.stonks)
     }
 
+
+
     //handleclick-make fetch for stock and also setstate./
 
-    stockFetch(stock, time="1y") {
+    stockFetch(stock, time="1d") {
         fetch(`https://cloud.iexapis.com/stable/stock/${stock}/chart/${time}?token=pk_3e9931bb69894a0695a654b8e9715d4c`)
             .then(response => response.json())
             .then(data => {
@@ -84,7 +86,7 @@ class LineChart extends React.Component{
         .then(response => response.json())
         .then(data => {
             debugger
-            this.setState((state) => ({currentprices: data}) )
+            this.setState(() => ({currentprices: data}) )
         })
     }
 
@@ -170,10 +172,16 @@ class LineChart extends React.Component{
                         <div>
                             <Link to={`/stock/amd`} onClick={() => this.stockFetch('AMD')} id="amd-stock-button" >{this.state.stonks[0]}</Link>
                             <div className="current-stock-price" >{this.state.currentprices.AMD.price}</div>
+                            <div>
+                            {this.state.pricechangepercentage}
+                            </div>
                         </div>
                         <div>
                             <Link to={`/stock/aapl`} onClick={() => this.stockFetch('AAPL')}>{this.state.stonks[1]}</Link>
+                            <div>
                             <div className="-current-stock-price" >{this.state.currentprices.AAPL.price}</div>
+                            Percentage Change
+                            </div>
                         </div>
                         <div>
                             <Link to={`/stock/googl`} onClick={() => this.stockFetch('GOOGL')}>{this.state.stonks[2]}</Link>
