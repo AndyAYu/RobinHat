@@ -9,4 +9,14 @@ class Watchliststocks extends React.Component {
             fixedchange: '',
         }
     }
+
+    currentPriceFetch(){
+        
+    }
+
+    render(){
+        return null;
+    }
 } 
+
+export default Watchliststocks;
