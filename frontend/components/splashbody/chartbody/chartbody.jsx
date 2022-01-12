@@ -42,8 +42,12 @@ class LineChart extends React.Component{
         this.currentStockPriceFetch = this.currentStockPriceFetch.bind(this);
     };
 
+    componentWillUnmount(){
+        this.stockFetch
+    }
+
     stockFetch(stock) {
-        fetch(`https://cloud.iexapis.com/stable/stock/AMD/chart/1y?token=pk_3e9931bb69894a0695a654b8e9715d4c`)
+        fetch(`https://cloud.iexapis.com/stable/stock/${stock}/chart/1y?token=pk_3e9931bb69894a0695a654b8e9715d4c`)
             .then(response => response.json())
             .then(data => {
                 let obj = data;
