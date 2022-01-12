@@ -43,14 +43,13 @@ class LineChart extends React.Component{
     };
 
     stockFetch(stock) {
-        fetch(`https://cloud.iexapis.com/stable/stock/${stock}/chart/1y?token=pk_3e9931bb69894a0695a654b8e9715d4c`)
+        fetch(`https://cloud.iexapis.com/stable/stock/AMD/chart/1y?token=pk_3e9931bb69894a0695a654b8e9715d4c`)
             .then(response => response.json())
             .then(data => {
                 let obj = data;
-                let symbol = obj[0].symbol
                 let closeValues = obj.map((p) => p.close);
                 let closeDates = obj.map((d) => d.date);
-                let stockName = stockNames[symbol];
+                let stockName = stockNames[stock];
                 let color = (closeValues[(closeValues.length - 1)] > closeValues[0]) ? 'rgb(37, 202, 4)' : 'rgb(255, 80, 1)';
                 let newobj = {
                     labels: closeDates,
@@ -135,6 +134,8 @@ class LineChart extends React.Component{
     return (
         <div className="stockpage">
             <div className="stockpageleft">
+                Portfolio Value
+                Portfolio Performance
                 <div className="chart-box">
                     <Line
                     data={this.state.newobj}
