@@ -13,7 +13,7 @@ import SignUpFormContainer from './session_form/signup_form_container';
 import HeaderContainer from './header/header_container';
 import FirstBodyContainer from './splashbody/firstbody/firstbody_container';
 import StockShowContainer from './stock_show/stock_show_container'
-import { AuthRoute } from '../util/route_util';
+import { AuthRoute, ProtectedRoute } from '../util/route_util';
 import { logout } from '../util/session_api_util';
 
 const App = () => (

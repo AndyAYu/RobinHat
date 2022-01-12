@@ -20,6 +20,7 @@ ChartJS.register(
     Legend
 );
 import { Link } from 'react-router-dom';
+import stockNames from '../../../util/all_stock_ticker_and_name';
 
 
 // in LineChart-want to make path endpoint and Link.name more dynamic.
@@ -38,30 +39,28 @@ class LineChart extends React.Component{
             stonks: ['AMD', 'AAPL', 'GOOGL', 'FB', 'NFLX', 'TWTR', 'TSLA', 'MSFT', 'SBUX', 'GE', 'SUN'],
         }
         this.stockFetch = this.stockFetch.bind(this);
+        this.currentStockPriceFetch();
     };
 
-    componentWillUnmount(){
-        this.stockFetch
-    }
-
-    stockFetch(stock, time= "1y") {
+    stockFetch(stock) {
         // document.getElementById("amd-stock-button").addEventListener("click", function(){
-            fetch(`https://cloud.iexapis.com/stable/stock/${stock}/chart/1y?token=pk_3e9931bb69894a0695a654b8e9715d4c`)
+        fetch(`https://cloud.iexapis.com/stable/stock/${stock}/chart/1y?token=pk_3e9931bb69894a0695a654b8e9715d4c`)
             .then(response => response.json())
             .then(data => {
                 let obj = data;
+                let symbol = obj[0].symbol
                 let closeValues = obj.map((p) => p.close);
                 let closeDates = obj.map((d) => d.date);
-                let ticker = stock;
-                let color = (closeValues[(closeValues.length-1)] > closeValues[0]) ? 'rgb(37, 202, 4)' : 'rgb(255, 80, 1)';
-
+                let stockName = stockNames[symbol];
+                // debugger
+                let color = (closeValues[(closeValues.length - 1)] > closeValues[0]) ? 'rgb(37, 202, 4)' : 'rgb(255, 80, 1)';
                 let newobj = {
                     labels: closeDates,
                     datasets: [
                         {
-                            label: ticker,
+                            label: stockName,
                             data: closeValues,
-                            
+
                             borderColor: color,
                             backgroundColor: color,
                             pointRadius: 1,
@@ -69,15 +68,34 @@ class LineChart extends React.Component{
                         }
                     ],
                 };
-                this.setState({newobj})
+                this.setState({ newobj })
                 // .then(() => console.log(newobj))
             })
         // })
-}   
+    }
+
+    currentStockPriceFetch(stock) {
+        fetch(`https://cloud.iexapis.com/stable/stock/${stock}/chart/intraday-prices?token=pk_3e9931bb69894a0695a654b8e9715d4c`)
+        .then(response => response.json())
+        .then(data => {
+            let obj = data;
+            debugger
+            return obj[(obj.length - 1)].close
+        })
+    }
 
     render(){
         let options =
         {
+            annotations: {
+                annotations: [{
+                    type: 'line',
+                    mode: 'vertical',
+                    scaleID: 'x-axis',
+                    borderColor: '#b6fcd5',
+                    borderWidth: 2
+                }]
+            },
             responsive: true,
             plugins: {
                 legend: {
@@ -114,7 +132,7 @@ class LineChart extends React.Component{
                     grid: {
                         display: false
                     }
-                }
+                },
             },
         };
     return (
@@ -142,10 +160,12 @@ class LineChart extends React.Component{
                     <p>Watchlist</p>
                     <div className="watchlist-stocks">
                         <div>
-                            <Link to={`/stock/amd`} onClick={() => this.stockFetch('amd')} id="amd-stock-button" >{this.state.stonks[0]}</Link>
+                            <Link to={`/stock/amd`} onClick={() => this.stockFetch('AMD')} id="amd-stock-button" >{this.state.stonks[0]}</Link>
+                            <div className="-current-stock-price" >{this.currentStockPriceFetch('AMD')}</div>
                         </div>
                         <div>
                             <Link to={`/stock/aapl`} onClick={() => this.stockFetch('aapl')}>{this.state.stonks[1]}</Link>
+                            <div className="-current-stock-price" >Current Stock Price</div>
                         </div>
                         <div>
                             <Link to={`/stock/googl`} onClick={() => this.stockFetch('googl')}>{this.state.stonks[2]}</Link>
