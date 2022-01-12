@@ -179,53 +179,80 @@ class LineChart extends React.Component{
                     <div className="watchlist-stocks">
                         <div>
                             <Link to={`/stock/amd`} onClick={() => this.stockFetch('AMD')} id="amd-stock-button" >{this.state.stonks[0]}</Link>
-                            <div className="current-stock-price" >{this.state.currentprices.AMD.chart[0].close}</div>
                             <div>
+                                <div className="current-stock-price" >{this.state.currentprices.AMD.chart[0].close}</div>
                                 {this.percentChange((this.state.currentprices.AMD.chart[0].open),(this.state.currentprices.AMD.chart[0].close))}%
                             </div>
                         </div>
                         <div>
                             <Link to={`/stock/aapl`} onClick={() => this.stockFetch('AAPL')}>{this.state.stonks[1]}</Link>
                             <div>
-                            <div className="-current-stock-price" >{this.state.currentprices.AAPL.chart[0].close}</div>
-                            Percentage Change
+                                <div className="-current-stock-price" >{this.state.currentprices.AAPL.chart[0].close}</div>
+                                {this.percentChange((this.state.currentprices.AAPL.chart[0].open), (this.state.currentprices.AAPL.chart[0].close))}%
                             </div>
                         </div>
                         <div>
                             <Link to={`/stock/googl`} onClick={() => this.stockFetch('GOOGL')}>{this.state.stonks[2]}</Link>
+                            <div>
                             <div className="-current-stock-price" >{this.state.currentprices.GOOGL.chart[0].close}</div>
+                            {this.percentChange((this.state.currentprices.GOOGL.chart[0].open), (this.state.currentprices.GOOGL.chart[0].close))}%
+                            </div>
                         </div>
                         <div>
                             <Link to={`/stock/fb`} onClick={() => this.stockFetch('FB')}>{this.state.stonks[3]}</Link>
+                            <div>
                             <div className="-current-stock-price" >{this.state.currentprices.FB.chart[0].close}</div>
+                            {this.percentChange((this.state.currentprices.FB.chart[0].open), (this.state.currentprices.FB.chart[0].close))}%
+                            </div>
                         </div>
                         <div>
                             <Link to={`/stock/nflx`} onClick={() => this.stockFetch('NFLX')}>{this.state.stonks[4]}</Link>
+                            <div>
                             <div className="-current-stock-price" >{this.state.currentprices.NFLX.chart[0].close}</div>
+                            {this.percentChange((this.state.currentprices.NFLX.chart[0].open), (this.state.currentprices.NFLX.chart[0].close))}%
+                            </div>
                         </div>
                         <div>
                             <Link to={`/stock/twtr`} onClick={() => this.stockFetch('TWTR')}>{this.state.stonks[5]}</Link>
+                            <div>
                             <div className="-current-stock-price" >{this.state.currentprices.TWTR.chart[0].close}</div>
+                            {this.percentChange((this.state.currentprices.TWTR.chart[0].open), (this.state.currentprices.TWTR.chart[0].close))}%
+                            </div>
                         </div>
                         <div>
                             <Link to={`/stock/tsla`} onClick={() => this.stockFetch('TSLA')}>{this.state.stonks[6]}</Link>
+                            <div>
                             <div className="-current-stock-price" >{this.state.currentprices.TSLA.chart[0].close}</div>
+                                {this.percentChange((this.state.currentprices.TSLA.chart[0].open), (this.state.currentprices.TSLA.chart[0].close))}%
+                            </div>
                         </div>
                         <div>
                             <Link to={`/stock/msft`} onClick={() => this.stockFetch('MSFT')}>{this.state.stonks[7]}</Link>
+                            <div>
                             <div className="-current-stock-price" >{this.state.currentprices.MSFT.chart[0].close}</div>
+                            {this.percentChange((this.state.currentprices.MSFT.chart[0].open), (this.state.currentprices.MSFT.chart[0].close))}%
+                            </div>
                         </div>
                         <div>
                             <Link to={`/stock/sbux`} onClick={() => this.stockFetch('SBUX')}>{this.state.stonks[8]}</Link>
+                            <div>
                             <div className="-current-stock-price" >{this.state.currentprices.SBUX.chart[0].close}</div>
+                            {this.percentChange((this.state.currentprices.SBUX.chart[0].open), (this.state.currentprices.SBUX.chart[0].close))}%
+                            </div>
                         </div>
                         <div>
                             <Link to={`/stock/ge`} onClick={() => this.stockFetch('GE')}>{this.state.stonks[9]}</Link>
+                            <div>
                             <div className="-current-stock-price" >{this.state.currentprices.GE.chart[0].close}</div>
+                            {this.percentChange((this.state.currentprices.GE.chart[0].open), (this.state.currentprices.GE.chart[0].close))}%
+                            </div>
                         </div>
                         <div>
                             <Link to={`/stock/sun`} onClick={() => this.stockFetch('SUN')}>{this.state.stonks[10]}</Link>
+                            <div>
                             <div className="-current-stock-price" >{this.state.currentprices.SUN.chart[0].close}</div>
+                            {this.percentChange((this.state.currentprices.SUN.chart[0].open), (this.state.currentprices.SUN.chart[0].close))}%
+                            </div>
                         </div>
                         <br />
                     </div>
