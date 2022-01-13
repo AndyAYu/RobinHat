@@ -208,7 +208,7 @@ class LineChart extends React.Component{
                     <button onClick={() => this.stockFetch((this.state.currentstock), "5y")}> 5Y </button>
                 </div>
                 <div className="stock-page-news">
-                    <div>NEWS</div>
+                    <div className="news" >NEWS</div>
                     <div className="appleNews">
                         <p>
                         "Is It Time To Sell Apple After Stock Pulls Back From All-Time Highs?"
