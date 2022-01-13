@@ -1,21 +1,23 @@
 .signup-form > label {
-    padding: 10px 20px;
+    padding-bottom: 20px;
 }
 
 .signup-form-container {
     display: flex;
-    justify-content: center;
 }
 
 .signup-form-box {
     display: flex;
     flex-direction: column;
-    width: 60%
+    justify-content: center;
+    width: 60%;
+    margin-left: 50px;
+    
 }
 
 .signup-form-box > div > h2 {
     font-size: 23px;
-    padding: 10px 20px;
+    padding: 10px 0px;
 }
 .signup-form-box > div > p {
     padding-top: 20px;
@@ -29,19 +31,21 @@
 
 .signup-form-right {
     background-color: rgb(245,248,250);
-    height: 100%;
+    height: 800px;
     width: 40%;
     padding-top: 150px ;
     padding-left: 5%;
 }
 
-.signup-form-right > section > h4 {
+.signup-form-right > section > div > h4 {
     font-weight: bold;
     font-family: 'Roboto', sans-serif;
+    font-size: larger;
 }
 
-.signup-form-right > section > span {
+.signup-form-right > section > div > p {
     font-family: 'Roboto', sans-serif;
+    line-height: 1.5;
 }
 
 .signup-input {

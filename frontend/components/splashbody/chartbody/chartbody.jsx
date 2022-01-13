@@ -210,6 +210,9 @@ class LineChart extends React.Component{
                 <div className="stock-page-news">
                     <div>NEWS</div>
                     <div className="appleNews">
+                        <p>
+                        "Is It Time To Sell Apple After Stock Pulls Back From All-Time Highs?"
+                        </p>
                     <a href="https://cloud.iexapis.com/v1/news/article/3so4uJVfpeUnLQ5izkVmPhSTv2xY1a6F50TEmxdn0yt4">
                         <img src=" https://cloud.iexapis.com/v1/news/image/3so4uJVfpeUnLQ5izkVmPhSTv2xY1a6F50TEmxdn0yt4" alt="applenews" width="150"  height="100"/>
                     </a>

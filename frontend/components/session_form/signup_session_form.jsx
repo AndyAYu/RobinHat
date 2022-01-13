@@ -47,10 +47,9 @@ class SignUpSessionForm extends React.Component {
                     <br />
                     <div>
                         <h2>Make Your Money Move</h2>
-                        <p>Robinhat lets you invest in companies, you love, <br />
-                            commission-free.
+                        <p>Robinhat lets you invest in companies, you love, commission-free.
                         </p>
-                        <span>Please enter your full legal name. Your legal name should <br />
+                        <span>Please enter your full legal name. Your legal name should
                         match any form of government ID.
                         </span>
                     </div>
@@ -79,8 +78,9 @@ class SignUpSessionForm extends React.Component {
                 </form>
                 <div className="signup-form-right">
                     <section>
+                        <div>
                         <h4>Commission-free trading</h4>
-                        <span>Break free from commission-fees and <br />
+                        <p>Break free from commission-fees and <br />
                         make unlimited commission-free <br />
                         trades in stocks, funds, and options <br />
                         with Robinhood Financial. Other fees <br />
@@ -92,28 +92,33 @@ class SignUpSessionForm extends React.Component {
                         </div>
                         to <br />
                         learn more.
-                        </span>
+                        </p>
+                        </div>
                     </section>
 
                     <section>
+                        <div>
                         <h4>Account Protection</h4>
-                        <span>Robinhood Financial is a member of<br />
+                        <p>Robinhood Financial is a member of<br />
                         SIPC. Securities in your account <br />
                         protected up to $500,000. For details, <br />
                         please see 
                         <Link>www.sipc.org</Link>
-                        </span>
+                        </p>
+                        </div>
                     </section>
 
                     <section>
+                        <div>
                         <h4>Stay on top of your portfolio</h4>
-                        <span>
+                        <p>
                             Set up customized news and <br />
                             notifications to stay on top of your <br />
                             assets as casually or as relentlessly <br />
                             as you like. Controlling the flow of info <br />
                             is up to you.
-                        </span>
+                        </p>
+                        </div>
                     </section>
                 </div>
             </div>
