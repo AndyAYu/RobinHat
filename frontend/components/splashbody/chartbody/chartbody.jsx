@@ -59,6 +59,7 @@ class LineChart extends React.Component{
             .then(response => response.json())
             .then(data => {
                 let obj = data;
+                // debugger
                 let closeValues = obj.map((p) => p.close);
                 let closeDates = obj.map((d) => d.date);
                 let stockName = stockNames[stock];
@@ -92,7 +93,29 @@ class LineChart extends React.Component{
             // debugger
             this.setState(() => ({currentprices: data}) )
         });
-        fetch('')
+        // fetch(`https://cloud.iexapis.com/v1/stock/market/batch?types=chart&symbols=${joinedStocks}&range=1d%20&token=pk_3e9931bb69894a0695a654b8e9715d4c`)
+        // .then(response => response.json())
+        // .then(data => {
+            // debugger
+        //     let obj = data;
+        //     let closeValues = stocks.map((s) => obj.s.close)
+        //     debugger
+        //     let color = (closeValues[(closeValues.length - 1)] > closeValues[0]) ? 'rgb(37, 202, 4)' : 'rgb(255, 80, 1)';
+        //     let smallobj = {
+        //         labels: closeTime,
+        //         datasets: [
+        //             {
+        //                 data: closeValues,
+
+        //                 borderColor: color,
+        //                 backgroundColor: color,
+        //                 pointRadius: .5,
+        //                 pointHoverRadius: .5,
+        //             }
+        //         ],
+        //     };
+        //     this.setState({ smallobj })
+        // });
     }
     //open 100 close 90
     percentChange(open,close) {
@@ -161,28 +184,36 @@ class LineChart extends React.Component{
         <div className="stockpage">
             <div className="stockpageleft">
                 <div>
-                <h2>
-                    Portfolio Value
-                </h2>
-                <h2>
+                    <h2>
+                        Portfolio Value
+                    </h2>
+                    <h2>
                     Portfolio Performance
                 </h2>
                 </div>
                 <div className="chart-box">
-                    <Line
-                    data={this.state.newobj}
-                    options={options}
-                    height={350}
-                    width={500}
-                    />
+                        <Line
+                        data={this.state.newobj}
+                        options={options}
+                        height={350}
+                        width={500}
+                        />
                 </div>
-                <div>
+                <div className="chart-box-buttons">
                     <button onClick={() => this.stockFetch((this.state.currentstock), "1d")}> 1D </button>
                     <button onClick={() => this.stockFetch((this.state.currentstock), "5d")}> 1W </button>
                     <button onClick={() => this.stockFetch((this.state.currentstock), "1m")}> 1M </button>
                     <button onClick={() => this.stockFetch((this.state.currentstock), "3m")}> 3M </button>
                     <button onClick={() => this.stockFetch((this.state.currentstock), "1y")}> 1Y </button>
                     <button> ALL </button>
+                </div>
+                <div className="stock-page-news">
+                    <div>NEWS</div>
+                    <div className="appleNews">
+                    <a href="https://cloud.iexapis.com/v1/news/article/3so4uJVfpeUnLQ5izkVmPhSTv2xY1a6F50TEmxdn0yt4">
+                        <img src=" https://cloud.iexapis.com/v1/news/image/3so4uJVfpeUnLQ5izkVmPhSTv2xY1a6F50TEmxdn0yt4" alt="applenews" width="150"  height="100"/>
+                    </a>
+                    </div>
                 </div>
                 </div>
             <div className="watchlist">
@@ -191,12 +222,12 @@ class LineChart extends React.Component{
                     <div className="watchlist-stocks">
                         <div>
                             <Link to={`/stock/amd`} onClick={() => this.stockFetch('AMD')} id="amd-stock-button" >{this.state.stonks[0]}</Link>
-                            <section><Line
-                            data={this.state.newobj}
+                            {/* <section><Line
+                            data={this.state.smallobj}
                             options={options}
                             height={30}
                             width={60}
-                            /></section>
+                            /></section> */}
                             <div>
                                 <div className="current-stock-price" >{this.state.currentprices.AMD.chart[0].close}</div>
                                 <div className="percentageChange1">
