@@ -24,6 +24,19 @@
    border: 1px outset rgb(184, 184, 184);
 }
 
+.loggedInHeaderRight{
+   display: flex;
+   justify-content: space-evenly;
+}
+
+.loggedInHeaderRight > a {
+   padding-right: 20px;
+   font-weight: bold;
+}
+
+.loggedInHeaderLeft {
+   display: flex;
+}
 
 .robinHat{
    text-decoration: none;

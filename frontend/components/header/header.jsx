@@ -27,10 +27,20 @@ const Header = ({ currentUser, logout }) => {
     );
     const loggedInHeader = () => (
         <hgroup className="logged-header">
+            <div className="loggedInHeaderLeft">
             <Link className="logged-in-robinhat-logo"to="/">
                 <img className="robinHatLogo" src={window.logoURL} />
             </Link>
+            <div>
+                <input type="text" id="header-search" placeholder="Search"/>
+            </div>
+            </div>
+            <div className="loggedInHeaderRight">
+                <a href="https://www.google.com">LinkedIn</a>
+                <a href="https://www.google.com">GitHub</a>
+                <a href="https://www.google.com">Other</a>
             <button className="header-button" onClick={logout}>Log Out</button>
+            </div>
         </hgroup> 
 
         

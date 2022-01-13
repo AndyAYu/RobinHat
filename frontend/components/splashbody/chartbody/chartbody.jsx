@@ -150,12 +150,18 @@ class LineChart extends React.Component{
                 },
             },
         };
-        debugger
+        // debugger
     return (
         <div className="stockpage">
             <div className="stockpageleft">
-                Portfolio Value
-                Portfolio Performance
+                <div>
+                <h2>
+                    Portfolio Value
+                </h2>
+                <h2>
+                    Portfolio Performance
+                </h2>
+                </div>
                 <div className="chart-box">
                     <Line
                     data={this.state.newobj}
@@ -165,7 +171,7 @@ class LineChart extends React.Component{
                     />
                 </div>
                 <div>
-                    <button> 1D </button>
+                    <button onClick={() => {debugger}}> 1D </button>
                     <button> 1W </button>
                     <button> 1M </button>
                     <button> 3M </button>
@@ -175,13 +181,15 @@ class LineChart extends React.Component{
                 </div>
             <div className="watchlist">
                 <div className="watchlist-box">
-                    <p>Watchlist</p>
+                    <div>Watchlist</div>
                     <div className="watchlist-stocks">
                         <div>
                             <Link to={`/stock/amd`} onClick={() => this.stockFetch('AMD')} id="amd-stock-button" >{this.state.stonks[0]}</Link>
                             <div>
                                 <div className="current-stock-price" >{this.state.currentprices.AMD.chart[0].close}</div>
+                                <div className="percentageChange1">
                                 {this.percentChange((this.state.currentprices.AMD.chart[0].open),(this.state.currentprices.AMD.chart[0].close))}%
+                                </div>
                             </div>
                         </div>
                         <div>
