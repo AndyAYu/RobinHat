@@ -32,10 +32,14 @@ class LineChart extends React.Component{
     constructor(props){
         super(props);
         this.state = {
+            currentstock: '',
             currentprices: '',
             newobj: {
                 labels: [],
                 datasets: []
+            },
+            smallobj: {
+                datasets:[]
             },
             stonks: ['AMD', 'AAPL', 'GOOGL', 'FB', 'NFLX', 'TWTR', 'TSLA', 'MSFT', 'SBUX', 'GE', 'SUN'],
         }
@@ -50,7 +54,7 @@ class LineChart extends React.Component{
 
     //handleclick-make fetch for stock and also setstate./
 
-    stockFetch(stock, time="1d") {
+    stockFetch(stock, time="1y") {
         fetch(`https://cloud.iexapis.com/stable/stock/${stock}/chart/${time}?token=pk_3e9931bb69894a0695a654b8e9715d4c`)
             .then(response => response.json())
             .then(data => {
@@ -74,6 +78,7 @@ class LineChart extends React.Component{
                     ],
                 };
                 this.setState({ newobj })
+                this.setState(() => ({ currentstock: stock}))
                 // .then(() => console.log(newobj))
             })
         // })
@@ -87,6 +92,7 @@ class LineChart extends React.Component{
             // debugger
             this.setState(() => ({currentprices: data}) )
         });
+        fetch('')
     }
     //open 100 close 90
     percentChange(open,close) {
@@ -171,11 +177,11 @@ class LineChart extends React.Component{
                     />
                 </div>
                 <div>
-                    <button onClick={() => {debugger}}> 1D </button>
-                    <button> 1W </button>
-                    <button> 1M </button>
-                    <button> 3M </button>
-                    <button> 1Y </button>
+                    <button onClick={() => this.stockFetch((this.state.currentstock), "1d")}> 1D </button>
+                    <button onClick={() => this.stockFetch((this.state.currentstock), "5d")}> 1W </button>
+                    <button onClick={() => this.stockFetch((this.state.currentstock), "1m")}> 1M </button>
+                    <button onClick={() => this.stockFetch((this.state.currentstock), "3m")}> 3M </button>
+                    <button onClick={() => this.stockFetch((this.state.currentstock), "1y")}> 1Y </button>
                     <button> ALL </button>
                 </div>
                 </div>
@@ -185,10 +191,16 @@ class LineChart extends React.Component{
                     <div className="watchlist-stocks">
                         <div>
                             <Link to={`/stock/amd`} onClick={() => this.stockFetch('AMD')} id="amd-stock-button" >{this.state.stonks[0]}</Link>
+                            <section><Line
+                            data={this.state.newobj}
+                            options={options}
+                            height={30}
+                            width={60}
+                            /></section>
                             <div>
                                 <div className="current-stock-price" >{this.state.currentprices.AMD.chart[0].close}</div>
                                 <div className="percentageChange1">
-                                {this.percentChange((this.state.currentprices.AMD.chart[0].open),(this.state.currentprices.AMD.chart[0].close))}%
+                                {this.percentChange((this.state.currentprices.AMD.chart[0].open),(this.state.currentprices.AMD.chart[0].close))}%    
                                 </div>
                             </div>
                         </div>

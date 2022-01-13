@@ -37,7 +37,7 @@ const Header = ({ currentUser, logout }) => {
             </div>
             <div className="loggedInHeaderRight">
                 <a href="https://www.google.com">LinkedIn</a>
-                <a href="https://www.google.com">GitHub</a>
+                <a href="https://github.com/AndyAYu">GitHub</a>
                 <a href="https://www.google.com">Other</a>
             <button className="header-button" onClick={logout}>Log Out</button>
             </div>
