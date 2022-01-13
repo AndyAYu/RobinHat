@@ -195,8 +195,8 @@ class LineChart extends React.Component{
                         <Line
                         data={this.state.newobj}
                         options={options}
-                        height={350}
-                        width={500}
+                        height={550}
+                        width={800}
                         />
                 </div>
                 <div className="chart-box-buttons">
@@ -205,7 +205,7 @@ class LineChart extends React.Component{
                     <button onClick={() => this.stockFetch((this.state.currentstock), "1m")}> 1M </button>
                     <button onClick={() => this.stockFetch((this.state.currentstock), "3m")}> 3M </button>
                     <button onClick={() => this.stockFetch((this.state.currentstock), "1y")}> 1Y </button>
-                    <button> ALL </button>
+                    <button onClick={() => this.stockFetch((this.state.currentstock), "5y")}> 5Y </button>
                 </div>
                 <div className="stock-page-news">
                     <div>NEWS</div>
