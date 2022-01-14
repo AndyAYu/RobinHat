@@ -6,11 +6,15 @@ Robinhat is a clone of Robinhoot, a stock/cryptocurrency trading platform that g
 It promises a simple and efficient trading experience to it's users allowing searching, buying and selling.
 
 
----
 [Live Link](https://robinhat.herokuapp.com/#/)
 ---
 
-#Features
+<img src="./app/assets/images/RobinHat.gif" width="1000" height="800" />
+
+
+# Features
+
+---
 
 1.Signup/Login
 2.Live Charts for Stocks/can filter by range
