@@ -1,24 +1,49 @@
-# README
+# Robinhat
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Introduction
+---
+Robinhat is a clone of Robinhoot, a stock/cryptocurrency trading platform that gained popularity with commission-free trading.
+It promises a simple and efficient trading experience to it's users allowing searching, buying and selling.
 
-Things you may want to cover:
 
-* Ruby version
+---
+[Live Link](https://robinhat.herokuapp.com/#/)
+---
 
-* System dependencies
+#Features
 
-* Configuration
+1.Signup/Login
+2.Live Charts for Stocks/can filter by range
+3.See News, specific to stocks that are saved
+4.Search for stocks
 
-* Database creation
 
-* Database initialization
+## Technologies 
+---
+1. Ruby on Rails
 
-* How to run the test suite
+  -  Ruby on Rails is a server-side model–view–controller framework that provides default structures for databases, webservices, and web-apps.
 
-* Services (job queues, cache servers, search engines, etc.)
+2. PostgreSQL
 
-* Deployment instructions
+  -  PostgreSQL is a relational database management system emphasizing extensibility and SQL compliance.
 
-* ...
+3.Ajax
+
+  -  Ajax is an asynchronous tool that sends and receives data from a server.
+
+## Frontend
+---
+
+1.Node
+2.React
+3.Redux
+4.Babel
+5.Webpack
+
+## Hosting
+---
+
+1.Heroku 
+
+  - Heroku is a platform as a service that enables developers to build, run, and operate applications entirely in the cloud.
