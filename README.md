@@ -10,7 +10,12 @@ It promises a simple and efficient trading experience to it's users allowing sea
 [Live Link](https://robinhat.herokuapp.com/#/)
 ---
 
-Things you may want to cover:
+#Features
+
+1.Signup/Login
+2.Live Charts for Stocks/can filter by range
+3.See News, specific to stocks that are saved
+4.Search for stocks
 
 * Ruby version
 
