@@ -32,7 +32,7 @@ It promises a simple and efficient trading experience to it's users allowing sea
 
   -  Ajax is an asynchronous tool that sends and receives data from a server.
 
-#Frontend
+## Frontend
 ---
 
 1.Node
@@ -41,7 +41,7 @@ It promises a simple and efficient trading experience to it's users allowing sea
 4.Babel
 5.Webpack
 
-#Hosting
+## Hosting
 ---
 
 1.Heroku 
