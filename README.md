@@ -17,20 +17,31 @@ It promises a simple and efficient trading experience to it's users allowing sea
 3.See News, specific to stocks that are saved
 4.Search for stocks
 
-* Ruby version
 
-* System dependencies
+## Technologies 
+---
+1. Ruby on Rails
 
-* Configuration
+  -  Ruby on Rails is a server-side model–view–controller framework that provides default structures for databases, webservices, and web-apps.
 
-* Database creation
+2. PostgreSQL
 
-* Database initialization
+  -  PostgreSQL is a relational database management system emphasizing extensibility and SQL compliance.
 
-* How to run the test suite
+3.Ajax
 
-* Services (job queues, cache servers, search engines, etc.)
+  -  Ajax is an asynchronous tool that sends and receives data from a server.
 
-* Deployment instructions
+##Frontend
 
-* ...
+1.Node
+2.React
+3.Redux
+4.Babel
+5.Webpack
+
+##Hosting
+
+1.Heroku 
+
+  - Heroku is a platform as a service that enables developers to build, run, and operate applications entirely in the cloud.
