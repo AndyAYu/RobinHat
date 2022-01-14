@@ -1,9 +1,9 @@
 # Robinhat
 
-Test
+Introduction
 ---
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Robinhat is a clone of Robinhoot, a stock/cryptocurrency trading platform that gained popularity with commission-free trading.
+
 
 Things you may want to cover:
 
