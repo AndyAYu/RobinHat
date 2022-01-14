@@ -27,13 +27,44 @@
 }
 
 .news {
-    width: 167%;
+    width: 125.5%;
     font-size: 20px;
     display: flex;
     padding-top: 20px;
     border-top: 1px solid lightgray;
     border-bottom: 1px solid lightgray;
     padding-bottom: 20px;
+    font-family: 'Roboto', sans-serif;
+}
+
+.news-articles > div {
+    display: flex;
+    flex-direction: column;
+}
+
+.news-articles > div > p {
+    font-family:'Roboto', sans-serif;
+    font-weight: bold;
+    font-size: 15px;
+    width: 400px;
+    padding-bottom: 20px;
+}
+
+.news-articles > div > span {
+    font-size: 12px;
+    font-family: 'Roboto', sans-serif;
+    width: 200px
+}
+
+
+.stock-page-news > .news-articles {
+    border-bottom: 1px solid lightgrey;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    width: 125.5%;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
 }
 
 .watchlist {
@@ -45,17 +76,22 @@
 .watchlist-box {
     display: flex;
     flex-direction: column;
-    height: 60%;
+    height: 80%;
     width:300px;
     position: fixed;
     border: 2px outset rgb(211, 211, 211);
     box-shadow: 0px 8px 24px #adadad;
 }
 
+.watchlist-header {
+    display: flex;
+    justify-content: center;
+}
+
 .watchlist-stocks {
     display: flex;
     flex-direction: column;
-    height: 60%;
+    height: 80%;
     width:300px;
     position: fixed;
     box-shadow: 0px 1px 1px #adadad;
@@ -67,14 +103,25 @@
     justify-content: space-between;
     padding-left: 20px;
     padding-right: 20px;
-    padding-top: 20px;
+    padding-top: 10px;
     padding-bottom: 20px;
+    font-family: 'Roboto', sans-serif;
 }
 .watchlist-stocks > div:hover {
     background-color: rgb(233, 236, 236);
 }
 
 .stock-page-news {
-    width: 60%;
+    width: 80%;
     height: 100px;
+}
+
+.-current-stock-price {
+    font-size: 13px;
+}
+
+.percentageChange1 {
+    font-size: 13px;
+    display: flex;
+    justify-content: right;
 }

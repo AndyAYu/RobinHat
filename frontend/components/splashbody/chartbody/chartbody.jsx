@@ -208,21 +208,51 @@ class LineChart extends React.Component{
                     <button onClick={() => this.stockFetch((this.state.currentstock), "5y")}> 5Y </button>
                 </div>
                 <div className="stock-page-news">
-                    <div className="news" >NEWS</div>
-                    <div className="appleNews">
-                        <p>
-                        "Is It Time To Sell Apple After Stock Pulls Back From All-Time Highs?"
-                        </p>
-                    <a href="https://cloud.iexapis.com/v1/news/article/3so4uJVfpeUnLQ5izkVmPhSTv2xY1a6F50TEmxdn0yt4">
-                        <img src=" https://cloud.iexapis.com/v1/news/image/3so4uJVfpeUnLQ5izkVmPhSTv2xY1a6F50TEmxdn0yt4" alt="applenews" width="150"  height="100"/>
-                    </a>
+                    <div className="news" >NEWS
                     </div>
-                </div>
+                        <div className="news-articles">
+                            <div>
+                            <p>"Is It Time To Sell Apple After Stock Pulls Back From All-Time Highs?"</p>
+                            <span>
+                                "Apple Inc (NASDAQ: AAPL ) briefly traded at all-time highs to start the year before pulling back with the overall markets. Having bounced off the lows over the past two days, is it time to head for the exits? A lot of growth and technology stocks are still trading \"at valuations that don''t make sense for their growth prospects,\" Gilman Hill Asset Management''s Jenny Harrington said Wednesday on CNBC''s \"Fast Money Halftime Report.\" Apple''s earnings  Full story available on Benzinga.com",
+                            </span>
+                            </div>
+                        <a href="https://cloud.iexapis.com/v1/news/article/3so4uJVfpeUnLQ5izkVmPhSTv2xY1a6F50TEmxdn0yt4">
+                            <img src=" https://cloud.iexapis.com/v1/news/image/3so4uJVfpeUnLQ5izkVmPhSTv2xY1a6F50TEmxdn0yt4" alt="applenews" width="200"  height="150"/>
+                        </a>
+                        </div>
+
+                        <div className="news-articles">
+                            <div>
+                            <p>"The Best Drone Stocks For Today  And The Future"</p>
+                            <span>
+                                Drone stocks are on the rise as the military invests in new drone platforms and the FAA establishes rules for commercial drones,
+                                opening up the possibility of drone delivery services.
+                            </span>
+                            </div>
+                        <a href="https://cloud.iexapis.com/v1/news/article/SI3Nf5BKP9QQnIKxf0d23jrSkZkeY64pQBSWDK86HG2">
+                            <img src="https://cloud.iexapis.com/v1/news/image/w6YSgkBXcbZVBprTarCi37xgqsF2bvFazoCX83UKNpn" alt="googlnews" width="200" height="150"/>
+                        </a>
+                        </div>
+
+                        <div className="news-articles">
+                            <div>
+                            <p>"The Antitrust Case Against Facebook Draws Blood"</p>
+                            <span>ON TUESDAY, FEDERAL judge James E. Boasberg ruled that the Federal Trade Commission’s effort to break up Facebook could move forward.
+                                The case itself is far from decided. But by blessing the FTC’s theory that a monopoly can harm consumers even when its product is free,
+                                the judge has signaled that Facebook—and other tech platforms—are not invincible.</span>    
+                            </div>
+                        <a href="https://cloud.iexapis.com/v1/news/article/2p2qFZLAqjQIHQH298w0IuUpNm6gmLuNrQv8yo9Mx78z">
+                            <img src=" https://cloud.iexapis.com/v1/news/image/2p2qFZLAqjQIHQH298w0IuUpNm6gmLuNrQv8yo9Mx78z" alt="fbnews" width="200" height="150" />
+                        </a>
+                        </div>
+
+                    </div>
                 </div>
             <div className="watchlist">
                 <div className="watchlist-box">
-                    <div>Watchlist</div>
                     <div className="watchlist-stocks">
+                    <div className="watchlist-header">Watchlist</div>
                         <div>
                             <Link to={`/stock/amd`} onClick={() => this.stockFetch('AMD')} id="amd-stock-button" >{this.state.stonks[0]}</Link>
                             {/* <section><Line
@@ -232,80 +262,100 @@ class LineChart extends React.Component{
                             width={60}
                             /></section> */}
                             <div>
-                                <div className="current-stock-price" >{this.state.currentprices.AMD.chart[0].close}</div>
+                                <div className="-current-stock-price" >${this.state.currentprices.AMD.chart[0].close}</div>
                                 <div className="percentageChange1">
-                                {this.percentChange((this.state.currentprices.AMD.chart[0].open),(this.state.currentprices.AMD.chart[0].close))}%    
+                                    {this.percentChange((this.state.currentprices.AMD.chart[0].open),(this.state.currentprices.AMD.chart[0].close))}%    
                                 </div>
                             </div>
                         </div>
                         <div>
                             <Link to={`/stock/aapl`} onClick={() => this.stockFetch('AAPL')}>{this.state.stonks[1]}</Link>
                             <div>
-                                <div className="-current-stock-price" >{this.state.currentprices.AAPL.chart[0].close}</div>
-                                {this.percentChange((this.state.currentprices.AAPL.chart[0].open), (this.state.currentprices.AAPL.chart[0].close))}%
+                                <div className="-current-stock-price" >${this.state.currentprices.AAPL.chart[0].close}</div>
+                                <div className="percentageChange1">
+                                    {this.percentChange((this.state.currentprices.AAPL.chart[0].open), (this.state.currentprices.AAPL.chart[0].close))}%
+                                </div>
                             </div>
                         </div>
                         <div>
                             <Link to={`/stock/googl`} onClick={() => this.stockFetch('GOOGL')}>{this.state.stonks[2]}</Link>
                             <div>
-                            <div className="-current-stock-price" >{this.state.currentprices.GOOGL.chart[0].close}</div>
-                            {this.percentChange((this.state.currentprices.GOOGL.chart[0].open), (this.state.currentprices.GOOGL.chart[0].close))}%
+                            <div className="-current-stock-price" >${this.state.currentprices.GOOGL.chart[0].close}</div>
+                                <div className="percentageChange1">
+                                    {this.percentChange((this.state.currentprices.GOOGL.chart[0].open), (this.state.currentprices.GOOGL.chart[0].close))}%
+                                </div>
                             </div>
                         </div>
                         <div>
                             <Link to={`/stock/fb`} onClick={() => this.stockFetch('FB')}>{this.state.stonks[3]}</Link>
                             <div>
-                            <div className="-current-stock-price" >{this.state.currentprices.FB.chart[0].close}</div>
-                            {this.percentChange((this.state.currentprices.FB.chart[0].open), (this.state.currentprices.FB.chart[0].close))}%
+                            <div className="-current-stock-price" >${this.state.currentprices.FB.chart[0].close}</div>
+                                <div className="percentageChange1">
+                                    {this.percentChange((this.state.currentprices.FB.chart[0].open), (this.state.currentprices.FB.chart[0].close))}%
+                                </div>
                             </div>
                         </div>
                         <div>
                             <Link to={`/stock/nflx`} onClick={() => this.stockFetch('NFLX')}>{this.state.stonks[4]}</Link>
                             <div>
-                            <div className="-current-stock-price" >{this.state.currentprices.NFLX.chart[0].close}</div>
-                            {this.percentChange((this.state.currentprices.NFLX.chart[0].open), (this.state.currentprices.NFLX.chart[0].close))}%
+                            <div className="-current-stock-price" >${this.state.currentprices.NFLX.chart[0].close}</div>
+                            <div className="percentageChange1">
+                                {this.percentChange((this.state.currentprices.NFLX.chart[0].open), (this.state.currentprices.NFLX.chart[0].close))}%
+                            </div>
                             </div>
                         </div>
                         <div>
                             <Link to={`/stock/twtr`} onClick={() => this.stockFetch('TWTR')}>{this.state.stonks[5]}</Link>
                             <div>
-                            <div className="-current-stock-price" >{this.state.currentprices.TWTR.chart[0].close}</div>
-                            {this.percentChange((this.state.currentprices.TWTR.chart[0].open), (this.state.currentprices.TWTR.chart[0].close))}%
+                            <div className="-current-stock-price" >${this.state.currentprices.TWTR.chart[0].close}</div>
+                            <div className="percentageChange1">
+                                {this.percentChange((this.state.currentprices.TWTR.chart[0].open), (this.state.currentprices.TWTR.chart[0].close))}%
+                            </div>
                             </div>
                         </div>
                         <div>
                             <Link to={`/stock/tsla`} onClick={() => this.stockFetch('TSLA')}>{this.state.stonks[6]}</Link>
                             <div>
-                            <div className="-current-stock-price" >{this.state.currentprices.TSLA.chart[0].close}</div>
+                            <div className="-current-stock-price" >${this.state.currentprices.TSLA.chart[0].close}</div>
+                            <div className="percentageChange1">
                                 {this.percentChange((this.state.currentprices.TSLA.chart[0].open), (this.state.currentprices.TSLA.chart[0].close))}%
+                            </div>
                             </div>
                         </div>
                         <div>
                             <Link to={`/stock/msft`} onClick={() => this.stockFetch('MSFT')}>{this.state.stonks[7]}</Link>
                             <div>
-                            <div className="-current-stock-price" >{this.state.currentprices.MSFT.chart[0].close}</div>
-                            {this.percentChange((this.state.currentprices.MSFT.chart[0].open), (this.state.currentprices.MSFT.chart[0].close))}%
+                            <div className="-current-stock-price" >${this.state.currentprices.MSFT.chart[0].close}</div>
+                            <div className="percentageChange1">
+                                {this.percentChange((this.state.currentprices.MSFT.chart[0].open), (this.state.currentprices.MSFT.chart[0].close))}%
+                            </div>
                             </div>
                         </div>
                         <div>
                             <Link to={`/stock/sbux`} onClick={() => this.stockFetch('SBUX')}>{this.state.stonks[8]}</Link>
                             <div>
-                            <div className="-current-stock-price" >{this.state.currentprices.SBUX.chart[0].close}</div>
-                            {this.percentChange((this.state.currentprices.SBUX.chart[0].open), (this.state.currentprices.SBUX.chart[0].close))}%
+                            <div className="-current-stock-price" >${this.state.currentprices.SBUX.chart[0].close}</div>
+                            <div className="percentageChange1">
+                                {this.percentChange((this.state.currentprices.SBUX.chart[0].open), (this.state.currentprices.SBUX.chart[0].close))}%
+                            </div>
                             </div>
                         </div>
                         <div>
                             <Link to={`/stock/ge`} onClick={() => this.stockFetch('GE')}>{this.state.stonks[9]}</Link>
                             <div>
-                            <div className="-current-stock-price" >{this.state.currentprices.GE.chart[0].close}</div>
-                            {this.percentChange((this.state.currentprices.GE.chart[0].open), (this.state.currentprices.GE.chart[0].close))}%
+                            <div className="-current-stock-price" >${this.state.currentprices.GE.chart[0].close}</div>
+                            <div className="percentageChange1">
+                                {this.percentChange((this.state.currentprices.GE.chart[0].open), (this.state.currentprices.GE.chart[0].close))}%
+                            </div>
                             </div>
                         </div>
                         <div>
                             <Link to={`/stock/sun`} onClick={() => this.stockFetch('SUN')}>{this.state.stonks[10]}</Link>
                             <div>
-                            <div className="-current-stock-price" >{this.state.currentprices.SUN.chart[0].close}</div>
-                            {this.percentChange((this.state.currentprices.SUN.chart[0].open), (this.state.currentprices.SUN.chart[0].close))}%
+                            <div className="-current-stock-price" >${this.state.currentprices.SUN.chart[0].close}</div>
+                            <div className="percentageChange1">
+                                {this.percentChange((this.state.currentprices.SUN.chart[0].open), (this.state.currentprices.SUN.chart[0].close))}%
+                            </div>
                             </div>
                         </div>
                         <br />
