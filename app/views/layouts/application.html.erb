@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html>
   <head>
+  <meta name="image" property="og:image" content="<%= image_url('SplashScreen.png')%>">
+  <meta name="description" property="og:description" content="Robinhood Clone">
+  <meta name="author" content="Andy Yu">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300&display=swap" rel="stylesheet">
@@ -26,6 +29,9 @@
     </script>
     <script type="text/javascript">
     window.robinHatPlusLogoURL = "<%= image_url('robinhat-plus-logo.png') %>";
+    </script>
+    <script type="text/javascript">
+    window.splashscreenURL = "<%= image_url('SplashScreen.png') %>";
     </script>
     
     <%= javascript_include_tag 'application' %>

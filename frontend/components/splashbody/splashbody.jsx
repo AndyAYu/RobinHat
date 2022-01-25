@@ -5,6 +5,7 @@ class SplashBody extends React.Component {
     render() {
         return (
             <>
+            
             <div className="firstBody">
                 <div className="leftFirstBody">
                     <h1>
