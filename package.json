@@ -23,6 +23,7 @@
     "@babel/core": "^7.16.5",
     "@babel/preset-env": "^7.16.5",
     "@babel/preset-react": "^7.16.5",
+    "axios": "^0.25.0",
     "babel-loader": "^8.2.3",
     "chart.js": "^3.7.0",
     "faker": "^6.6.6",
