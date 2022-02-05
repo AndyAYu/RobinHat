@@ -84,12 +84,7 @@ class SignUpSessionForm extends React.Component {
                         make unlimited commission-free <br />
                         trades in stocks, funds, and options <br />
                         with Robinhood Financial. Other fees <br />
-                        may apply. View our 
-                        <div>
-                        <Link>
-                        fee schedule
-                        </Link>
-                        </div>
+                        may apply. View our fee schedule
                         to <br />
                         learn more.
                         </p>
@@ -103,7 +98,7 @@ class SignUpSessionForm extends React.Component {
                         SIPC. Securities in your account <br />
                         protected up to $500,000. For details, <br />
                         please see 
-                        <Link>www.sipc.org</Link>
+                        www.sipc.org
                         </p>
                         </div>
                     </section>
