@@ -216,14 +216,10 @@ class LineChart extends React.Component{
                 <div className="watchlist-box">
                     <div className="watchlist-stocks">
                     <div className="watchlist-header">Watchlist</div>
+
                         <div>
                             <Link to={`/stock/amd`} onClick={() => this.stockFetch('AMD')} id="amd-stock-button" >{this.state.stonks[0]}</Link>
-                            {/* <section><Line
-                            data={this.state.smallobj}
-                            options={options}
-                            height={30}
-                            width={60}
-                            /></section> */}
+
                             <div>
                                 <div className="-current-stock-price" >${this.state.currentprices.AMD.chart[0].close}</div>
                                 <div className="percentageChange1">
@@ -231,7 +227,10 @@ class LineChart extends React.Component{
                                 </div>
                             </div>
                         </div>
-                        <div>
+                            {this.state.stonks.map(ticker => (
+                                <div key={ticker}> {ticker} </div>
+                            ))}
+                        {/* <div>
                             <Link to={`/stock/aapl`} onClick={() => this.stockFetch('AAPL')}>{this.state.stonks[1]}</Link>
                             <div>
                                 <div className="-current-stock-price" >${this.state.currentprices.AAPL.chart[0].close}</div>
@@ -320,8 +319,7 @@ class LineChart extends React.Component{
                                 {this.percentChange((this.state.currentprices.SUN.chart[0].open), (this.state.currentprices.SUN.chart[0].close))}%
                             </div>
                             </div>
-                        </div>
-                        <br />
+                        </div> */}
                     </div>
                 </div>
             </div>
