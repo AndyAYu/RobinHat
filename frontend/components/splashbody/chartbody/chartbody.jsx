@@ -56,7 +56,7 @@ class LineChart extends React.Component{
     //handleclick-make fetch for stock and also setstate./
 
     stockFetch(stock, time="1y") {
-        debugger
+        // debugger
         fetch(`https://cloud.iexapis.com/stable/stock/${stock}/chart/${time}?token=pk_3e9931bb69894a0695a654b8e9715d4c`)
             .then(response => response.json())
             .then(data => {
@@ -92,34 +92,11 @@ class LineChart extends React.Component{
         fetch(`https://cloud.iexapis.com/v1/stock/market/batch?types=chart&symbols=${joinedStocks}&range=intraday-prices%20&token=pk_3e9931bb69894a0695a654b8e9715d4c`)
         .then(response => response.json())
         .then(data => {
-            // debugger
+            console.log(data)
             this.setState(() => ({currentprices: data}) )
-        });
-        // fetch(`https://cloud.iexapis.com/v1/stock/market/batch?types=chart&symbols=${joinedStocks}&range=1d%20&token=pk_3e9931bb69894a0695a654b8e9715d4c`)
-        // .then(response => response.json())
-        // .then(data => {
             // debugger
-        //     let obj = data;
-        //     let closeValues = stocks.map((s) => obj.s.close)
-        //     debugger
-        //     let color = (closeValues[(closeValues.length - 1)] > closeValues[0]) ? 'rgb(37, 202, 4)' : 'rgb(255, 80, 1)';
-        //     let smallobj = {
-        //         labels: closeTime,
-        //         datasets: [
-        //             {
-        //                 data: closeValues,
-
-        //                 borderColor: color,
-        //                 backgroundColor: color,
-        //                 pointRadius: .5,
-        //                 pointHoverRadius: .5,
-        //             }
-        //         ],
-        //     };
-        //     this.setState({ smallobj })
-        // });
+        });
     }
-    //open 100 close 90
     percentChange(open,close) {
         let pricediff = (close - open)
         let percentdiff = ((pricediff)/open) * 100
@@ -186,7 +163,7 @@ class LineChart extends React.Component{
             <div className="stockpageleft">
                 <div>
                     <h2>
-                        Portfolio Value
+                        {this.props.portfolioValue}
                     </h2>
                     <h2>
                     Portfolio Performance
@@ -231,23 +208,17 @@ class LineChart extends React.Component{
                                 </div>
                             </div>
                         </div>
-                            {this.state.stonks.map(ticker => (
+                            {/* {this.state.stonks.map(ticker => (
                                 <div key={ticker}> 
                                     <Link to={`/stock/${ticker}`}
                                     onClick={() => this.stockFetch(`${ticker}`)}
                                     >
                                     {ticker}
                                     </Link>
-                                    <div>
-                                        {/* <div className="-current-stock-price" >{this.state.currentprices.({ticker}).chart[0].close}</div>
-                                        <div className="percentageChange1">
-                                            {this.percentChange((this.state.currentprices.({ticker}).chart[0].open),
-                                            (this.state.currentprices.({ticker}).chart[0].close))}%    
-                                        </div> */}
-                                    </div>
+               
                                 </div>
-                            ))}
-                        {/* <div>
+                            ))} */}
+                        <div>
                             <Link to={`/stock/aapl`} onClick={() => this.stockFetch('AAPL')}>{this.state.stonks[1]}</Link>
                             <div>
                                 <div className="-current-stock-price" >${this.state.currentprices.AAPL.chart[0].close}</div>
@@ -336,7 +307,7 @@ class LineChart extends React.Component{
                                 {this.percentChange((this.state.currentprices.SUN.chart[0].open), (this.state.currentprices.SUN.chart[0].close))}%
                             </div>
                             </div>
-                        </div> */}
+                        </div>
                     </div>
                 </div>
             </div>

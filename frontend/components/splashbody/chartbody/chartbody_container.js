@@ -4,6 +4,7 @@ import LineChart from './chartbody';
 
 const mapStateToProps = state => {
     const currentUser = state.entities.users[state.session.id]
+    debugger
     return {
         portfolioValue: currentUser.portfolioValue
     }

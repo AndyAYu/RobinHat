@@ -20,3 +20,24 @@ export const logout = () => (
         url: '/api/session'
     })
 );
+
+export const fetchUserInfo = userId => (
+    $.ajax({
+        method: 'GET',
+        url: `/api/users/${userId}}`,
+    })
+)
+
+export const fetchUserStockInfo = userId => (
+    $.ajax({
+        method: 'GET',
+        url: `/api/users/${userId}/stocks`,
+        data: {
+            stock: {
+                ticker,
+                amount,
+                unit_price
+            }
+        }
+    })
+)
