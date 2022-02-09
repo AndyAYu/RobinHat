@@ -7,9 +7,9 @@ class User < ApplicationRecord
 
     attr_reader :password
 
-    #has_many :stocks,
-    #foreign_key: :user_id,
-    #class_name: "Stock"
+    has_many :stocks,
+    foreign_key: :user_id,
+    class_name: "Stock"
 
     after_initialize :ensure_session_token
 
