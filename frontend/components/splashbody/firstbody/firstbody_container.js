@@ -12,6 +12,7 @@ const mapStateToProps = state => {
         navLink: <Link to="/login">login instead</Link>,
         currentUser: state.entities.users[state.session.id]
     };
+    debugger
 };
 
 const mapDispatchToProps = dispatch => {

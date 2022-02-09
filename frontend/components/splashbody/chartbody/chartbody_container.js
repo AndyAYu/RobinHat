@@ -3,15 +3,15 @@ import { connect } from 'react-redux';
 import LineChart from './chartbody';
 
 const mapStateToProps = state => {
-    const currentUser = state.entities.users[state.session.id]
-    debugger
     return {
-        portfolioValue: currentUser.portfolioValue
+        portfolioValue: state.session.balance
     }
 }
 
 const mapDispatchToProps = dispatch => {
-    return null;
+    return {
+        getUserInfo: (user) => dispatch(fetchUserInfo(user))
+    }
 }
 
 export default connect(mapStateToProps,mapDispatchToProps)(LineChart);

@@ -56,7 +56,7 @@ class LineChart extends React.Component{
     //handleclick-make fetch for stock and also setstate./
 
     stockFetch(stock, time="1y") {
-        // debugger
+        debugger
         fetch(`https://cloud.iexapis.com/stable/stock/${stock}/chart/${time}?token=pk_3e9931bb69894a0695a654b8e9715d4c`)
             .then(response => response.json())
             .then(data => {
@@ -158,17 +158,18 @@ class LineChart extends React.Component{
                 },
             },
         };
+
     return (
         <div className="stockpage">
             <div className="stockpageleft">
-                <div>
+                {/* <div>
                     <h2>
-                        {this.props.portfolioValue}
+                        {portfolioValue}
                     </h2>
                     <h2>
                     Portfolio Performance
                 </h2>
-                </div>
+                </div> */}
                 <div className="chart-box">
                         <Line
                         data={this.state.newobj}
