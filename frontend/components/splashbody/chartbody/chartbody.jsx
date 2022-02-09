@@ -218,7 +218,11 @@ class LineChart extends React.Component{
                     <div className="watchlist-header">Watchlist</div>
 
                         <div>
-                            <Link to={`/stock/amd`} onClick={() => this.stockFetch('AMD')} id="amd-stock-button" >{this.state.stonks[0]}</Link>
+                            <Link to={`/stock/amd`} 
+                            onClick={() => this.stockFetch('AMD')} 
+                            id="amd-stock-button" >
+                            {this.state.stonks[0]}
+                            </Link>
 
                             <div>
                                 <div className="-current-stock-price" >${this.state.currentprices.AMD.chart[0].close}</div>
@@ -228,7 +232,20 @@ class LineChart extends React.Component{
                             </div>
                         </div>
                             {this.state.stonks.map(ticker => (
-                                <div key={ticker}> {ticker} </div>
+                                <div key={ticker}> 
+                                    <Link to={`/stock/${ticker}`}
+                                    onClick={() => this.stockFetch(`${ticker}`)}
+                                    >
+                                    {ticker}
+                                    </Link>
+                                    <div>
+                                        {/* <div className="-current-stock-price" >{this.state.currentprices.({ticker}).chart[0].close}</div>
+                                        <div className="percentageChange1">
+                                            {this.percentChange((this.state.currentprices.({ticker}).chart[0].open),
+                                            (this.state.currentprices.({ticker}).chart[0].close))}%    
+                                        </div> */}
+                                    </div>
+                                </div>
                             ))}
                         {/* <div>
                             <Link to={`/stock/aapl`} onClick={() => this.stockFetch('AAPL')}>{this.state.stonks[1]}</Link>
