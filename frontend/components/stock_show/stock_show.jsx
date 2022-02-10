@@ -26,6 +26,7 @@ class StockShow extends React.Component {
         super(props);
         this.state = {
             stock_quantity: 0,
+            buy_stock_quantity: 0,
             current_price: 0,
             newobj: {
                 labels: [],
@@ -33,10 +34,15 @@ class StockShow extends React.Component {
             },
         };
         this.calculator = this.calculator.bind(this);
+        this.handleChange = this.handleChange.bind(this);
     }
 
     componentDidMount(){
         this.stockFetch(this.props.ticker)
+    }
+
+    componentWillUnmount(){
+       
     }
 
     stockFetch(stock, time="1y") {
@@ -67,12 +73,22 @@ class StockShow extends React.Component {
             })
     }
 
+    handleChange(event) {
+        const amount = event.target.value
+        const current_price = this.state.current_price
+        this.calculator(current_price, amount)
+    }
     calculator(current_price, amount){
         const stock_quant = this.props.balance - (amount * current_price)
         debugger
-        this.setState({ stock_quantity: stock_quant })
+        if (this.state.stock_quantity !== 10000){
+            this.setState({ stock_quantity: stock_quant })
+        } else {
+            {this.state.stock_quantity}
+        }
     }
 
+    
     render(){
         let options =
         {
@@ -163,7 +179,7 @@ class StockShow extends React.Component {
                                 <div>Amount</div>
                                 <div>
                                     <input type="text" 
-                                    onUpdate={() => this.calculator(this.state.current_price, type)}
+                                    onChange={(e) => this.handleChange(e)}
                                     placeholder='$0.00'
                                     />
                                 </div>
