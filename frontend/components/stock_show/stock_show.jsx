@@ -25,8 +25,9 @@ class StockShow extends React.Component {
     constructor(props){
         super(props);
         this.state = {
+            cost: 0,
+            balance_remaining: this.props.balance,
             stock_quantity: 0,
-            buy_stock_quantity: 0,
             current_price: 0,
             newobj: {
                 labels: [],
@@ -34,17 +35,13 @@ class StockShow extends React.Component {
             },
         };
         this.calculator = this.calculator.bind(this);
-        this.handleChange = this.handleChange.bind(this);
+        this.handleChangeShares = this.handleChangeShares.bind(this);
     }
 
     componentDidMount(){
         this.stockFetch(this.props.ticker)
     }
-
-    componentWillUnmount(){
-       
-    }
-
+    
     stockFetch(stock, time="1y") {
         fetch(`https://cloud.iexapis.com/stable/stock/${stock}/chart/${time}?token=pk_3e9931bb69894a0695a654b8e9715d4c`)
             .then(response => response.json())
@@ -73,18 +70,21 @@ class StockShow extends React.Component {
             })
     }
 
-    handleChange(event) {
+    handleChangeShares(event) {
         const amount = event.target.value
         const current_price = this.state.current_price
         this.calculator(current_price, amount)
     }
-    calculator(current_price, amount){
-        const stock_quant = this.props.balance - (amount * current_price)
-        debugger
-        if (this.state.stock_quantity !== 10000){
-            this.setState({ stock_quantity: stock_quant })
-        } else {
-            {this.state.stock_quantity}
+    calculator(current_price, amount=null){
+        const max_quant = (this.props.balance % current_price )
+        const cost = ((current_price * amount) / 1.00)
+        const balance_result = (this.state.balance_remaining - cost)
+        if (amount >= max_quant){
+            this.setState({ cost: cost, balance_remaining: 0})            
+        }else if (amount <= 0 || amount === null){
+            this.setState({ cost: 0, balance_remaining: 10000})
+        }else{
+            this.setState({ cost:cost, balance_remaining: balance_result })
         }
     }
 
@@ -141,7 +141,7 @@ class StockShow extends React.Component {
             },
         };
         const stockName = this.props.ticker.toUpperCase()
-        const {balance} = this.props
+        const balance = this.state.balance_remaining
         return (
             <div className="stock-show">
                 <Header />
@@ -179,8 +179,8 @@ class StockShow extends React.Component {
                                 <div>Amount</div>
                                 <div>
                                     <input type="text" 
-                                    onChange={(e) => this.handleChange(e)}
-                                    placeholder='$0.00'
+                                    onChange={(e) => this.handleChangeShares(e)}
+                                    placeholder='0'
                                     />
                                 </div>
                             </div>
@@ -188,7 +188,7 @@ class StockShow extends React.Component {
                         <div className="stock-show-trade-box-middle-2"></div>
                             <div>
                                 <div>Est. Quantity</div>
-                                <div>{this.state.stock_quantity}</div>
+                                <div>Estimated Cost: {this.state.cost}</div>
                             </div>
                             <div>
                                 <button>Review Order</button>
