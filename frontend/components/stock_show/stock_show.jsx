@@ -25,11 +25,14 @@ class StockShow extends React.Component {
     constructor(props){
         super(props);
         this.state = {
+            stock_quantity: 0,
+            current_price: 0,
             newobj: {
                 labels: [],
                 datasets: [],
             },
         };
+        this.calculator = this.calculator.bind(this);
     }
 
     componentDidMount(){
@@ -41,8 +44,8 @@ class StockShow extends React.Component {
             .then(response => response.json())
             .then(data => {
                 let obj = data;
-                // debugger
                 let closeValues = obj.map((p) => p.close);
+                debugger
                 let closeDates = obj.map((d) => d.date);
                 let color = (closeValues[(closeValues.length - 1)] > closeValues[0]) ? 'rgb(37, 202, 4)' : 'rgb(255, 80, 1)';
                 let newobj = {
@@ -60,10 +63,14 @@ class StockShow extends React.Component {
                     ],
                 };
                 this.setState({ newobj })
-                this.setState(() => ({ currentstock: stock}))
-                // .then(() => console.log(newobj))
+                this.setState({ current_price: closeValues[252] })
             })
-        // })
+    }
+
+    calculator(current_price, amount){
+        const stock_quant = this.props.balance - (amount * current_price)
+        debugger
+        this.setState({ stock_quantity: stock_quant })
     }
 
     render(){
@@ -118,6 +125,7 @@ class StockShow extends React.Component {
             },
         };
         const stockName = this.props.ticker.toUpperCase()
+        const {balance} = this.props
         return (
             <div className="stock-show">
                 <Header />
@@ -141,8 +149,37 @@ class StockShow extends React.Component {
                         </div>
                     </div>
                     <div className="stock-show-trade-box">
-                        <div>Buy {stockName}</div>
-
+                        <div className="stock-show-trade-box-top">Buy {stockName}</div>
+                        <div className="stock-show-trade-box-middle-1">
+                            <div className="sstbm1-1">
+                                <div>Order Type</div>
+                                <div>Market Order</div>
+                            </div>
+                            <div className="sstbm1-2">
+                                <div>Invest In</div>
+                                <div>Dollars</div>
+                            </div>
+                            <div className="sstbm1-3">
+                                <div>Amount</div>
+                                <div>
+                                    <input type="text" 
+                                    onUpdate={() => this.calculator(this.state.current_price, type)}
+                                    placeholder='$0.00'
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                        <div className="stock-show-trade-box-middle-2"></div>
+                            <div>
+                                <div>Est. Quantity</div>
+                                <div>{this.state.stock_quantity}</div>
+                            </div>
+                            <div>
+                                <button>Review Order</button>
+                            </div>
+                        <div className="stock-show-trade-box-bottom">
+                            <div>Buying power ${balance} available</div>
+                        </div>
                     </div>
                 </div>
 

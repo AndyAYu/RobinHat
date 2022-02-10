@@ -1,3 +1,24 @@
 .stock-show-border-box {
     padding-top: 63px;
+    display: flex;
 }
+
+.stock-show-trade-box {
+    width: 250px;
+    border: thin solid black;
+}
+
+.sstbm1-1 {
+    display: flex;
+    justify-content: space-between;
+}
+.sstbm1-2 {
+    display: flex;
+    justify-content: space-between;
+}
+.sstbm1-3 {
+    display: flex;
+    justify-content: space-between;
+}
+
+
