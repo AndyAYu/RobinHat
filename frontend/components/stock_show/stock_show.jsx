@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Component} from 'react';
 import { Line } from "react-chartjs-2";
 import {
     Chart as ChartJS,
@@ -19,6 +19,7 @@ ChartJS.register(
     Tooltip,
     Legend
 );
+import Header from '../header/header_container';
 
 class StockShow extends React.Component {
     constructor(props){
@@ -77,7 +78,7 @@ class StockShow extends React.Component {
                     borderWidth: 2
                 }]
             },
-            responsive: true,
+            responsive: false,
             plugins: {
                 legend: {
                     display: true,
@@ -119,7 +120,8 @@ class StockShow extends React.Component {
 
         return (
             <div>
-                <div className="chart-box">
+                <Header />
+                <div className="stock-show-chart" width="500" height="500">
                         <Line
                         data={this.state.newobj}
                         options={options}
@@ -127,7 +129,20 @@ class StockShow extends React.Component {
                         width={800}
                         />
                 </div>
+                <div className="chart-box-buttons">
+                    <button onClick={() => this.stockFetch((this.state.currentstock), "1d")}> 1D </button>
+                    <button onClick={() => this.stockFetch((this.state.currentstock), "5d")}> 1W </button>
+                    <button onClick={() => this.stockFetch((this.state.currentstock), "1m")}> 1M </button>
+                    <button onClick={() => this.stockFetch((this.state.currentstock), "3m")}> 3M </button>
+                    <button onClick={() => this.stockFetch((this.state.currentstock), "1y")}> 1Y </button>
+                    <button onClick={() => this.stockFetch((this.state.currentstock), "5y")}> 5Y </button>
+                </div>
+                <div>
+                    trade box here
+                </div>
+
             </div>
+            
         );
     }
 
