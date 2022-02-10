@@ -197,7 +197,7 @@ class LineChart extends React.Component{
 
                         <div>
                             <Link to={`/stock/amd`} 
-                            onClick={() => this.stockFetch('AMD')} 
+                            // onClick={() => this.stockFetch('AMD')} 
                             id="amd-stock-button" >
                             {this.state.stonks[0]}
                             </Link>

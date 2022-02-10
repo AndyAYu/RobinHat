@@ -30,6 +30,41 @@ class StockShow extends React.Component {
             },
         };
     }
+
+    componentDidMount(){
+        this.stockFetch(this.props.ticker)
+    }
+
+    stockFetch(stock, time="1y") {
+        fetch(`https://cloud.iexapis.com/stable/stock/${stock}/chart/${time}?token=pk_3e9931bb69894a0695a654b8e9715d4c`)
+            .then(response => response.json())
+            .then(data => {
+                let obj = data;
+                // debugger
+                let closeValues = obj.map((p) => p.close);
+                let closeDates = obj.map((d) => d.date);
+                let color = (closeValues[(closeValues.length - 1)] > closeValues[0]) ? 'rgb(37, 202, 4)' : 'rgb(255, 80, 1)';
+                let newobj = {
+                    labels: closeDates,
+                    datasets: [
+                        {
+                            label: [],
+                            data: closeValues,
+
+                            borderColor: color,
+                            backgroundColor: color,
+                            pointRadius: 1,
+                            pointHoverRadius: 1,
+                        }
+                    ],
+                };
+                this.setState({ newobj })
+                this.setState(() => ({ currentstock: stock}))
+                // .then(() => console.log(newobj))
+            })
+        // })
+    }
+
     render(){
         let options =
         {
