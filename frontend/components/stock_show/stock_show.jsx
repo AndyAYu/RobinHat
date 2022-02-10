@@ -117,28 +117,33 @@ class StockShow extends React.Component {
                 },
             },
         };
-
+        const stockName = this.props.ticker.toUpperCase()
         return (
-            <div>
+            <div className="stock-show">
                 <Header />
-                <div className="stock-show-chart" width="500" height="500">
-                        <Line
-                        data={this.state.newobj}
-                        options={options}
-                        height={550}
-                        width={800}
-                        />
-                </div>
-                <div className="chart-box-buttons">
-                    <button onClick={() => this.stockFetch((this.state.currentstock), "1d")}> 1D </button>
-                    <button onClick={() => this.stockFetch((this.state.currentstock), "5d")}> 1W </button>
-                    <button onClick={() => this.stockFetch((this.state.currentstock), "1m")}> 1M </button>
-                    <button onClick={() => this.stockFetch((this.state.currentstock), "3m")}> 3M </button>
-                    <button onClick={() => this.stockFetch((this.state.currentstock), "1y")}> 1Y </button>
-                    <button onClick={() => this.stockFetch((this.state.currentstock), "5y")}> 5Y </button>
-                </div>
-                <div>
-                    trade box here
+                <div className="stock-show-border-box">
+                    <div>
+                        <div className="stock-show-chart" width="500" height="500">
+                                <Line
+                                data={this.state.newobj}
+                                options={options}
+                                height={550}
+                                width={800}
+                                />
+                        </div>
+                        <div className="stock-show-date-buttons">
+                            <button onClick={() => this.stockFetch((this.state.currentstock), "1d")}> 1D </button>
+                            <button onClick={() => this.stockFetch((this.state.currentstock), "5d")}> 1W </button>
+                            <button onClick={() => this.stockFetch((this.state.currentstock), "1m")}> 1M </button>
+                            <button onClick={() => this.stockFetch((this.state.currentstock), "3m")}> 3M </button>
+                            <button onClick={() => this.stockFetch((this.state.currentstock), "1y")}> 1Y </button>
+                            <button onClick={() => this.stockFetch((this.state.currentstock), "5y")}> 5Y </button>
+                        </div>
+                    </div>
+                    <div className="stock-show-trade-box">
+                        <div>Buy {stockName}</div>
+
+                    </div>
                 </div>
 
             </div>
