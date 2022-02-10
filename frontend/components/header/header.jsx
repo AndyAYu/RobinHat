@@ -36,9 +36,9 @@ const Header = ({ currentUser, logout }) => {
             </div>
             </div>
             <div className="loggedInHeaderRight">
-                <a href="https://www.google.com">LinkedIn</a>
-                <a href="https://github.com/AndyAYu">GitHub</a>
-                <a href="https://www.google.com">Other</a>
+                <a target ="_blank" href="https://www.linkedin.com/in/andy-yu-18422b230/">LinkedIn</a>
+                <a target ="_blank" href="https://github.com/AndyAYu">GitHub</a>
+                <a target ="_blank" href="https://angel.co/u/andy-yu-the-human">AngelList</a>
             <button className="header-button" onClick={logout}>Log Out</button>
             </div>
         </hgroup> 
