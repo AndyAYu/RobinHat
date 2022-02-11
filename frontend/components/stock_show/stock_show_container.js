@@ -15,7 +15,7 @@ const mSTP = ({ entities, session }, ownParams ) => {
 
 const mDTP = dispatch => {
     return{
-        updateUserStockInfo: (userId, ticker, amount, unit_price) => dispatch(updateUserStockInfo(userId, ticker, amount, unit_price))
+        updateUserStockInfo: (user) => dispatch(updateUserStockInfo(user))
     }
 };
 

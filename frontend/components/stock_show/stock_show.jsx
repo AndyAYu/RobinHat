@@ -70,8 +70,11 @@ class StockShow extends React.Component {
             })
     }
 
-    updateInfo(userId, ticker, amount, unit_price){
-        this.props.updateUserStockInfo(userId, ticker, amount, unit_price)
+    reviewOrder(amount){
+        let userId = this.props.userId
+        let {ticker} = this.props
+        let { current_price } = this.state
+        this.props.updateUserStockInfo(userId, ticker, amount, current_price)
     }
 
     handleChangeShares(event) {
