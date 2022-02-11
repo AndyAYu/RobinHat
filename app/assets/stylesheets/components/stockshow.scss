@@ -5,7 +5,7 @@
 
 .stock-show-trade-box {
     width: 250px;
-    border: thin solid black;
+    box-shadow: 0px 1px 1px #adadad;
 }
 
 .sstbm1-1 {
@@ -21,4 +21,14 @@
     justify-content: space-between;
 }
 
-
+.review-order-button {
+    border-radius: 20px;
+    text-align: center;
+    text-decoration: none;
+    margin-left: 40px;
+    background-color: #25ca04;
+    width: 181px;
+    height: 30px;
+    color: black;
+    font-weight: bold;
+}

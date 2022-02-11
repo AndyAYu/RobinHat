@@ -44,7 +44,6 @@ class LineChart extends React.Component{
             },
             stonks: ['AMD', 'AAPL', 'GOOGL', 'FB', 'NFLX', 'TWTR', 'TSLA', 'MSFT', 'SBUX', 'GE', 'SUN'],
         }
-        this.stockFetch = this.stockFetch.bind(this);
         this.currentStockPriceFetch = this.currentStockPriceFetch.bind(this);
         this.percentChange = this.percentChange.bind(this);
     };
@@ -55,37 +54,37 @@ class LineChart extends React.Component{
 
     //handleclick-make fetch for stock and also setstate./
 
-    stockFetch(stock, time="1y") {
-        debugger
-        fetch(`https://cloud.iexapis.com/stable/stock/${stock}/chart/${time}?token=pk_3e9931bb69894a0695a654b8e9715d4c`)
-            .then(response => response.json())
-            .then(data => {
-                let obj = data;
-                // debugger
-                let closeValues = obj.map((p) => p.close);
-                let closeDates = obj.map((d) => d.date);
-                let stockName = stockNames[stock];
-                let color = (closeValues[(closeValues.length - 1)] > closeValues[0]) ? 'rgb(37, 202, 4)' : 'rgb(255, 80, 1)';
-                let newobj = {
-                    labels: closeDates,
-                    datasets: [
-                        {
-                            label: stockName,
-                            data: closeValues,
+    // stockFetch(stock, time="1y") {
+    //     debugger
+        // fetch(`https://cloud.iexapis.com/stable/stock/${stock}/chart/${time}?token=pk_3e9931bb69894a0695a654b8e9715d4c`)
+        //     .then(response => response.json())
+        //     .then(data => {
+        //         let obj = data;
+        //         // debugger
+        //         let closeValues = obj.map((p) => p.close);
+        //         let closeDates = obj.map((d) => d.date);
+        //         let stockName = stockNames[stock];
+        //         let color = (closeValues[(closeValues.length - 1)] > closeValues[0]) ? 'rgb(37, 202, 4)' : 'rgb(255, 80, 1)';
+        //         let newobj = {
+        //             labels: closeDates,
+        //             datasets: [
+        //                 {
+        //                     label: stockName,
+        //                     data: closeValues,
 
-                            borderColor: color,
-                            backgroundColor: color,
-                            pointRadius: 1,
-                            pointHoverRadius: 1,
-                        }
-                    ],
-                };
-                this.setState({ newobj })
-                this.setState(() => ({ currentstock: stock}))
-                // .then(() => console.log(newobj))
-            })
+        //                     borderColor: color,
+        //                     backgroundColor: color,
+        //                     pointRadius: 1,
+        //                     pointHoverRadius: 1,
+        //                 }
+        //             ],
+        //         };
+        //         this.setState({ newobj })
+        //         this.setState(() => ({ currentstock: stock}))
+        //         // .then(() => console.log(newobj))
+        //     })
         // })
-    }
+    // }=
 
     currentStockPriceFetch(stocks) {
         let joinedStocks = stocks.join(',')
@@ -220,7 +219,7 @@ class LineChart extends React.Component{
                                 </div>
                             ))} */}
                         <div>
-                            <Link to={`/stock/aapl`} onClick={() => this.stockFetch('AAPL')}>{this.state.stonks[1]}</Link>
+                            <Link to={`/stock/aapl`}>{this.state.stonks[1]}</Link>
                             <div>
                                 <div className="-current-stock-price" >${this.state.currentprices.AAPL.chart[0].close}</div>
                                 <div className="percentageChange1">
@@ -229,7 +228,7 @@ class LineChart extends React.Component{
                             </div>
                         </div>
                         <div>
-                            <Link to={`/stock/googl`} onClick={() => this.stockFetch('GOOGL')}>{this.state.stonks[2]}</Link>
+                            <Link to={`/stock/googl`} >{this.state.stonks[2]}</Link>
                             <div>
                             <div className="-current-stock-price" >${this.state.currentprices.GOOGL.chart[0].close}</div>
                                 <div className="percentageChange1">
@@ -238,7 +237,7 @@ class LineChart extends React.Component{
                             </div>
                         </div>
                         <div>
-                            <Link to={`/stock/fb`} onClick={() => this.stockFetch('FB')}>{this.state.stonks[3]}</Link>
+                            <Link to={`/stock/fb`} >{this.state.stonks[3]}</Link>
                             <div>
                             <div className="-current-stock-price" >${this.state.currentprices.FB.chart[0].close}</div>
                                 <div className="percentageChange1">
@@ -247,7 +246,7 @@ class LineChart extends React.Component{
                             </div>
                         </div>
                         <div>
-                            <Link to={`/stock/nflx`} onClick={() => this.stockFetch('NFLX')}>{this.state.stonks[4]}</Link>
+                            <Link to={`/stock/nflx`} >{this.state.stonks[4]}</Link>
                             <div>
                             <div className="-current-stock-price" >${this.state.currentprices.NFLX.chart[0].close}</div>
                             <div className="percentageChange1">
@@ -256,7 +255,7 @@ class LineChart extends React.Component{
                             </div>
                         </div>
                         <div>
-                            <Link to={`/stock/twtr`} onClick={() => this.stockFetch('TWTR')}>{this.state.stonks[5]}</Link>
+                            <Link to={`/stock/twtr`} >{this.state.stonks[5]}</Link>
                             <div>
                             <div className="-current-stock-price" >${this.state.currentprices.TWTR.chart[0].close}</div>
                             <div className="percentageChange1">
@@ -265,7 +264,7 @@ class LineChart extends React.Component{
                             </div>
                         </div>
                         <div>
-                            <Link to={`/stock/tsla`} onClick={() => this.stockFetch('TSLA')}>{this.state.stonks[6]}</Link>
+                            <Link to={`/stock/tsla`} >{this.state.stonks[6]}</Link>
                             <div>
                             <div className="-current-stock-price" >${this.state.currentprices.TSLA.chart[0].close}</div>
                             <div className="percentageChange1">
@@ -274,7 +273,7 @@ class LineChart extends React.Component{
                             </div>
                         </div>
                         <div>
-                            <Link to={`/stock/msft`} onClick={() => this.stockFetch('MSFT')}>{this.state.stonks[7]}</Link>
+                            <Link to={`/stock/msft`} >{this.state.stonks[7]}</Link>
                             <div>
                             <div className="-current-stock-price" >${this.state.currentprices.MSFT.chart[0].close}</div>
                             <div className="percentageChange1">
@@ -283,7 +282,7 @@ class LineChart extends React.Component{
                             </div>
                         </div>
                         <div>
-                            <Link to={`/stock/sbux`} onClick={() => this.stockFetch('SBUX')}>{this.state.stonks[8]}</Link>
+                            <Link to={`/stock/sbux`} >{this.state.stonks[8]}</Link>
                             <div>
                             <div className="-current-stock-price" >${this.state.currentprices.SBUX.chart[0].close}</div>
                             <div className="percentageChange1">
@@ -292,7 +291,7 @@ class LineChart extends React.Component{
                             </div>
                         </div>
                         <div>
-                            <Link to={`/stock/ge`} onClick={() => this.stockFetch('GE')}>{this.state.stonks[9]}</Link>
+                            <Link to={`/stock/ge`} >{this.state.stonks[9]}</Link>
                             <div>
                             <div className="-current-stock-price" >${this.state.currentprices.GE.chart[0].close}</div>
                             <div className="percentageChange1">
@@ -301,7 +300,7 @@ class LineChart extends React.Component{
                             </div>
                         </div>
                         <div>
-                            <Link to={`/stock/sun`} onClick={() => this.stockFetch('SUN')}>{this.state.stonks[10]}</Link>
+                            <Link to={`/stock/sun`} >{this.state.stonks[10]}</Link>
                             <div>
                             <div className="-current-stock-price" >${this.state.currentprices.SUN.chart[0].close}</div>
                             <div className="percentageChange1">

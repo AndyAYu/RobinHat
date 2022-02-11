@@ -36,6 +36,7 @@ class StockShow extends React.Component {
         };
         this.calculator = this.calculator.bind(this);
         this.handleChangeShares = this.handleChangeShares.bind(this);
+        this.updateInfo = this.updateInfo(this);
     }
 
     componentDidMount(){
@@ -48,7 +49,6 @@ class StockShow extends React.Component {
             .then(data => {
                 let obj = data;
                 let closeValues = obj.map((p) => p.close);
-                debugger
                 let closeDates = obj.map((d) => d.date);
                 let color = (closeValues[(closeValues.length - 1)] > closeValues[0]) ? 'rgb(37, 202, 4)' : 'rgb(255, 80, 1)';
                 let newobj = {
@@ -70,6 +70,10 @@ class StockShow extends React.Component {
             })
     }
 
+    updateInfo(userId, ticker, amount, unit_price){
+        this.props.updateUserStockInfo(userId, ticker, amount, unit_price)
+    }
+
     handleChangeShares(event) {
         const amount = event.target.value
         const current_price = this.state.current_price
@@ -77,19 +81,21 @@ class StockShow extends React.Component {
     }
     calculator(current_price, amount=null){
         const max_quant = (this.props.balance % current_price )
-        const cost = ((current_price * amount) / 1.00)
-        const balance_result = (this.state.balance_remaining - cost)
+        const cost = (current_price * amount).toFixed(2)
+        const balance_result = (this.props.balance - cost).toFixed(2)
+        debugger
         if (amount >= max_quant){
-            this.setState({ cost: cost, balance_remaining: 0})            
+            this.setState({ stock_quantity: amount, cost: cost, balance_remaining: 0})            
         }else if (amount <= 0 || amount === null){
-            this.setState({ cost: 0, balance_remaining: 10000})
+            this.setState({ stock_quantity: amount, cost: 0, balance_remaining: 10000})
         }else{
-            this.setState({ cost:cost, balance_remaining: balance_result })
+            this.setState({ stock_quantity: amount, cost:cost, balance_remaining: balance_result })
         }
     }
-
+    
     
     render(){
+        console.log(this.state)
         let options =
         {
             annotations: {
@@ -191,7 +197,7 @@ class StockShow extends React.Component {
                                 <div>Estimated Cost: {this.state.cost}</div>
                             </div>
                             <div>
-                                <button>Review Order</button>
+                                <button className="review-order-button" onClick={() => {this.state.updateInfo()}}>Review Order</button>
                             </div>
                         <div className="stock-show-trade-box-bottom">
                             <div>Buying power ${balance} available</div>
