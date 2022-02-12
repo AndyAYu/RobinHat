@@ -33,6 +33,7 @@ class LineChart extends React.Component{
     constructor(props){
         super(props);
         this.state = {
+            // active: false,
             currentstock: '',
             currentprices: '',
             newobj: {
@@ -46,12 +47,22 @@ class LineChart extends React.Component{
         }
         this.currentStockPriceFetch = this.currentStockPriceFetch.bind(this);
         this.percentChange = this.percentChange.bind(this);
+        this.toggleActive = this.toggleActive.bind(this);
     };
 
     componentDidMount(){
         this.currentStockPriceFetch(this.state.stonks)
     }
 
+    toggleActive() {
+        const targetElement = document.getElementsByClassName("watchlist-stock")
+        debugger
+        if (targetElement[0].style.display === "none") {
+            targetElement[0].style.display = "block";
+        } else {
+        targetElement[0].style.display = "none";
+        }
+    }
     //handleclick-make fetch for stock and also setstate./
 
     // stockFetch(stock, time="1y") {
@@ -192,12 +203,10 @@ class LineChart extends React.Component{
             <div className="watchlist">
                 <div className="watchlist-box">
                     <div className="watchlist-stocks">
-                    <div className="watchlist-header">Watchlist</div>
+                    <button className="watchlist-header" onClick={this.toggleActive} >Watchlist</button>
 
-                        <div>
-                            <Link to={`/stock/amd`} 
-                            // onClick={() => this.stockFetch('AMD')} 
-                            id="amd-stock-button" >
+                        <div className="watchlist-stock">
+                            <Link to={`/stock/amd`}>
                             {this.state.stonks[0]}
                             </Link>
 
@@ -218,7 +227,7 @@ class LineChart extends React.Component{
                
                                 </div>
                             ))} */}
-                        <div>
+                        {/* <div>
                             <Link to={`/stock/aapl`}>{this.state.stonks[1]}</Link>
                             <div>
                                 <div className="-current-stock-price" >${this.state.currentprices.AAPL.chart[0].close}</div>
@@ -226,8 +235,8 @@ class LineChart extends React.Component{
                                     {this.percentChange((this.state.currentprices.AAPL.chart[0].open), (this.state.currentprices.AAPL.chart[0].close))}%
                                 </div>
                             </div>
-                        </div>
-                        <div>
+                        </div> */}
+                        {/* <div>
                             <Link to={`/stock/googl`} >{this.state.stonks[2]}</Link>
                             <div>
                             <div className="-current-stock-price" >${this.state.currentprices.GOOGL.chart[0].close}</div>
@@ -307,7 +316,7 @@ class LineChart extends React.Component{
                                 {this.percentChange((this.state.currentprices.SUN.chart[0].open), (this.state.currentprices.SUN.chart[0].close))}%
                             </div>
                             </div>
-                        </div>
+                        </div> */}
                     </div>
                 </div>
             </div>

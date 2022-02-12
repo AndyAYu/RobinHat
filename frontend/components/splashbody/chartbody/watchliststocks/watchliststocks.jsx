@@ -5,8 +5,6 @@ class Watchliststocks extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-            percentagechange: '',
-            fixedchange: '',
         }
     }
 
@@ -15,7 +13,7 @@ class Watchliststocks extends React.Component {
     }
 
     render(){
-        return null;
+        
     }
 } 
 
