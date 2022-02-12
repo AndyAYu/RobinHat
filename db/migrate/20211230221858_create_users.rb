@@ -7,9 +7,10 @@ class CreateUsers < ActiveRecord::Migration[6.1]
       t.string :session_token, null: false
       t.string :password_digest, null: false
       t.float :balance, null: false
-      
+
       t.timestamps
     end
+    add_reference :stocks, :users, index:true, foreign_key: true
     add_index :users, :email, unique: true
     add_index :users, :session_token, unique: true
   end

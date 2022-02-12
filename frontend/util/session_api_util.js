@@ -28,6 +28,13 @@ export const fetchUserInfo = userId => (
     })
 )
 
+export const fetchUserStockInfo = (userId) => (
+  $.ajax({
+    method: 'GET',
+    url: `/api/users/${userId}/stocks/`,
+  })
+)
+
 export const updateUserStockInfo = (userId, ticker, amount, unit_price) => (
   $.ajax({
     method: 'POST',

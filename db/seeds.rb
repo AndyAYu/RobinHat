@@ -14,4 +14,14 @@ demo = User.create!(
     last_name: 'yu',
     password: 'password',
     balance: 10000,
+    stocks: [],
+)
+
+Stock.delete_all
+
+amd = Stock.create!(
+    user_id: "1",
+    ticker: "AMD",
+    amount: 100,
+    unit_price: 120
 )
