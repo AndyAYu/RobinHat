@@ -43,8 +43,8 @@ class LineChart extends React.Component{
             smallobj: {
                 datasets:[]
             },
-            // stonks: this.props.stocks,
-            stonks: ["AMD"],
+            stonks: this.props.stocks,
+            // stonks: ["AMD"],
         }
         this.currentStockPriceFetch = this.currentStockPriceFetch.bind(this);
         this.percentChange = this.percentChange.bind(this);
@@ -98,7 +98,7 @@ class LineChart extends React.Component{
     // }=
 
     currentStockPriceFetch(stocks) {
-        // debugger
+        debugger
         let joinedStocks = null || stocks.join(',')
         fetch(`https://cloud.iexapis.com/v1/stock/market/batch?types=chart&symbols=${joinedStocks}&range=intraday-prices%20&token=pk_3e9931bb69894a0695a654b8e9715d4c`)
         .then(response => response.json())
@@ -206,7 +206,7 @@ class LineChart extends React.Component{
                     <div className="watchlist-stocks">
                     <button className="watchlist-header" onClick={this.toggleActive} >Watchlist</button>
 
-                        <div className="watchlist-stock">
+                        {/* <div className="watchlist-stock">
                             <Link to={`/stock/amd`}>
                                 {this.state.stonks[0]}
                             </Link>
@@ -219,17 +219,28 @@ class LineChart extends React.Component{
                                     (this.state.currentprices.AMD.chart[0].close))}%    
                                 </div>
                             </div>
-                        </div>
-                        {/* {this.state.stonks.map(ticker => (
-                            <div key={ticker}> 
-                                <Link to={`/stock/${ticker}`}
-                                onClick={() => this.stockFetch(`${ticker}`)}
-                                >
+                        </div> */}
+
+                        <div className="watchlist-stock">
+                        {this.state.stonks.map(ticker => (
+                            <div className="wls-stocks"key={ticker} > 
+                                <Link to={`/stock/${ticker}`}>
                                 {ticker}
                                 </Link>
+                                <div >
+                                    <div className="-current-stock-price" >
+                                        ${this.state.currentprices.AMD.chart[0].close}
+                                    </div>
+                                    <div className="percentageChange1">
+                                        {this.percentChange((this.state.currentprices.AMD.chart[0].open),
+                                        (this.state.currentprices.AMD.chart[0].close))}%    
+                                    </div>
+                                </div>
             
                             </div>
-                        ))} */}
+                        ))}
+                        </div>
+
                         {/* <div>
                             <Link to={`/stock/aapl`}>{this.state.stonks[1]}</Link>
                             <div>
