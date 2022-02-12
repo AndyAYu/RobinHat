@@ -84,6 +84,7 @@ class StockShow extends React.Component {
         const current_price = this.state.current_price
         this.calculator(current_price, amount)
     }
+    
     calculator(current_price, amount=null){
         const max_quant = (this.props.balance % current_price )
         const cost = (current_price * amount).toFixed(2)
@@ -167,12 +168,12 @@ class StockShow extends React.Component {
                                 />
                         </div>
                         <div className="stock-show-date-buttons">
-                            <button onClick={() => this.stockFetch((this.state.currentstock), "1d")}> 1D </button>
-                            <button onClick={() => this.stockFetch((this.state.currentstock), "5d")}> 1W </button>
-                            <button onClick={() => this.stockFetch((this.state.currentstock), "1m")}> 1M </button>
-                            <button onClick={() => this.stockFetch((this.state.currentstock), "3m")}> 3M </button>
-                            <button onClick={() => this.stockFetch((this.state.currentstock), "1y")}> 1Y </button>
-                            <button onClick={() => this.stockFetch((this.state.currentstock), "5y")}> 5Y </button>
+                            <button onClick={() => this.stockFetch((this.props.ticker), "1d")}> 1D </button>
+                            <button onClick={() => this.stockFetch((this.props.ticker), "5d")}> 1W </button>
+                            <button onClick={() => this.stockFetch((this.props.ticker), "1m")}> 1M </button>
+                            <button onClick={() => this.stockFetch((this.props.ticker), "3m")}> 3M </button>
+                            <button onClick={() => this.stockFetch((this.props.ticker), "1y")}> 1Y </button>
+                            <button onClick={() => this.stockFetch((this.props.ticker), "5y")}> 5Y </button>
                         </div>
                     </div>
                     <div className="stock-show-trade-box">
