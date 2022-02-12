@@ -36,7 +36,8 @@ class StockShow extends React.Component {
         };
         this.calculator = this.calculator.bind(this);
         this.handleChangeShares = this.handleChangeShares.bind(this);
-        this.updateInfo = this.updateInfo(this);
+        this.reviewOrder = this.reviewOrder.bind(this);
+        debugger
     }
 
     componentDidMount(){
@@ -49,6 +50,7 @@ class StockShow extends React.Component {
             .then(data => {
                 let obj = data;
                 let closeValues = obj.map((p) => p.close);
+                debugger
                 let closeDates = obj.map((d) => d.date);
                 let color = (closeValues[(closeValues.length - 1)] > closeValues[0]) ? 'rgb(37, 202, 4)' : 'rgb(255, 80, 1)';
                 let newobj = {
@@ -66,7 +68,7 @@ class StockShow extends React.Component {
                     ],
                 };
                 this.setState({ newobj })
-                this.setState({ current_price: closeValues[252] })
+                this.setState({ current_price: closeValues[closeValues.length-1] })
             })
     }
 
@@ -200,7 +202,7 @@ class StockShow extends React.Component {
                                 <div>Estimated Cost: {this.state.cost}</div>
                             </div>
                             <div>
-                                <button className="review-order-button" onClick={() => {this.state.updateInfo()}}>Review Order</button>
+                                <button className="review-order-button" onClick={() => {this.reviewOrder()}}>Review Order</button>
                             </div>
                         <div className="stock-show-trade-box-bottom">
                             <div>Buying power ${balance} available</div>
