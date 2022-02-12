@@ -221,7 +221,9 @@ class LineChart extends React.Component{
                                 </div>
                             </div>
                         </div> */}
-
+                        {/*
+                        USE INDEXES OR NOT?! 
+                        */}
                         <div className="watchlist-stock">
                         {this.state.stonks.map(ticker => (
                             <div className="wls-stocks"key={ticker} > 
