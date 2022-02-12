@@ -118,6 +118,7 @@ class LineChart extends React.Component{
     }
     
     render(){
+        debugger
         if (Object.values(this.state.currentprices).length < 1) {return null}
         let options =
         {
@@ -222,7 +223,7 @@ class LineChart extends React.Component{
                         </div> */}
 
                         <div className="watchlist-stock">
-                        {this.state.stonks.map(ticker,i => (
+                        {this.state.stonks.map(ticker => (
                             <div className="wls-stocks"key={ticker} > 
                                 <Link to={`/stock/${ticker}`}>
                                 {ticker}
