@@ -20,7 +20,7 @@ demo = User.create!(
 Stock.delete_all
 
 amd = Stock.create!(
-    user_id: "1",
+    user_id: demo.id,
     ticker: "AMD",
     amount: 100,
     unit_price: 120
