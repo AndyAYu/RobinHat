@@ -43,7 +43,8 @@ class LineChart extends React.Component{
             smallobj: {
                 datasets:[]
             },
-            stonks: ['AMD', 'AAPL', 'GOOGL', 'FB', 'NFLX', 'TWTR', 'TSLA', 'MSFT', 'SBUX', 'GE', 'SUN'],
+            // stonks: this.props.stocks,
+            stonks: ["AMD"],
         }
         this.currentStockPriceFetch = this.currentStockPriceFetch.bind(this);
         this.percentChange = this.percentChange.bind(this);
@@ -56,11 +57,10 @@ class LineChart extends React.Component{
 
     toggleActive() {
         const targetElement = document.getElementsByClassName("watchlist-stock")
-        debugger
         if (targetElement[0].style.display === "none") {
-            targetElement[0].style.display = "block";
+            targetElement[0].style.display = "flex";
         } else {
-        targetElement[0].style.display = "none";
+            targetElement[0].style.display = "none";
         }
     }
     //handleclick-make fetch for stock and also setstate./
@@ -98,7 +98,8 @@ class LineChart extends React.Component{
     // }=
 
     currentStockPriceFetch(stocks) {
-        let joinedStocks = stocks.join(',')
+        // debugger
+        let joinedStocks = null || stocks.join(',')
         fetch(`https://cloud.iexapis.com/v1/stock/market/batch?types=chart&symbols=${joinedStocks}&range=intraday-prices%20&token=pk_3e9931bb69894a0695a654b8e9715d4c`)
         .then(response => response.json())
         .then(data => {
@@ -207,26 +208,28 @@ class LineChart extends React.Component{
 
                         <div className="watchlist-stock">
                             <Link to={`/stock/amd`}>
-                            {this.state.stonks[0]}
+                                {this.state.stonks[0]}
                             </Link>
-
                             <div>
-                                <div className="-current-stock-price" >${this.state.currentprices.AMD.chart[0].close}</div>
+                                <div className="-current-stock-price" >
+                                    ${this.state.currentprices.AMD.chart[0].close}
+                                </div>
                                 <div className="percentageChange1">
-                                    {this.percentChange((this.state.currentprices.AMD.chart[0].open),(this.state.currentprices.AMD.chart[0].close))}%    
+                                    {this.percentChange((this.state.currentprices.AMD.chart[0].open),
+                                    (this.state.currentprices.AMD.chart[0].close))}%    
                                 </div>
                             </div>
                         </div>
-                            {/* {this.state.stonks.map(ticker => (
-                                <div key={ticker}> 
-                                    <Link to={`/stock/${ticker}`}
-                                    onClick={() => this.stockFetch(`${ticker}`)}
-                                    >
-                                    {ticker}
-                                    </Link>
-               
-                                </div>
-                            ))} */}
+                        {/* {this.state.stonks.map(ticker => (
+                            <div key={ticker}> 
+                                <Link to={`/stock/${ticker}`}
+                                onClick={() => this.stockFetch(`${ticker}`)}
+                                >
+                                {ticker}
+                                </Link>
+            
+                            </div>
+                        ))} */}
                         {/* <div>
                             <Link to={`/stock/aapl`}>{this.state.stonks[1]}</Link>
                             <div>
