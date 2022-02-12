@@ -222,7 +222,7 @@ class LineChart extends React.Component{
                         </div> */}
 
                         <div className="watchlist-stock">
-                        {this.state.stonks.map(ticker => (
+                        {this.state.stonks.map(ticker,i => (
                             <div className="wls-stocks"key={ticker} > 
                                 <Link to={`/stock/${ticker}`}>
                                 {ticker}
