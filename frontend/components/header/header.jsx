@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import SearchBar from '../search_bar/search_bar';
 
 const Header = ({ currentUser, logout }) => {
     const sessionLinks = () => (
@@ -32,7 +33,7 @@ const Header = ({ currentUser, logout }) => {
                 <img className="robinHatLogo" src={window.logoURL} />
             </Link>
             <div>
-                <input type="text" id="header-search" placeholder="Search"/>
+                <SearchBar />
             </div>
             </div>
             <div className="loggedInHeaderRight">
