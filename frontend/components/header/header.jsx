@@ -1,6 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useState } from 'react';
+import { BrowserRouter as Router } from 'react-router-dom';
 import SearchBar from './search_bar/search_bar';
+
+const posts = [
+    { id: '1', name: 'This first post is about React' },
+    { id: '2', name: 'This next post is about Preact' },
+    { id: '3', name: 'We have yet another React post!' },
+    { id: '4', name: 'This is the fourth and final post' },
+];
 
 const Header = ({ currentUser, logout }) => {
     const sessionLinks = () => (
@@ -26,6 +35,7 @@ const Header = ({ currentUser, logout }) => {
             </div>
         </nav>
     );
+
     const loggedInHeader = () => (
         <hgroup className="logged-header">
             <div className="loggedInHeaderLeft">
@@ -33,7 +43,7 @@ const Header = ({ currentUser, logout }) => {
                 <img className="robinHatLogo" src={window.logoURL} />
             </Link>
             <div>
-                <SearchBar />
+                <SearchBar/>
             </div>
             </div>
             <div className="loggedInHeaderRight">

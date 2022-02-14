@@ -1,17 +1,14 @@
 import React from "react";
+import AllStocks from '../search_bar/all_stock_ticker_and_name.json';
 
-const SearchBar = () => (
-    <form action="/" method="get">
-        <label htmlFor="header-search">
-            <span className="visually-hidden">Search stocks</span>
-        </label>
-        <input
-            type="text"
-            id="header-search"
-            placeholder="Stock name or ticker"
-        />
-        <button type="submit">Search</button>
-    </form>
-);
+function SearchBar() {
+    debugger
+    return (
+        <div className="App">
+            <input type="text" placeholder="Search..."
+            />
+        </div>
+    );
+}
 
 export default SearchBar;

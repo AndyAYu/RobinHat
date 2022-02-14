@@ -1,4 +1,4 @@
-const dataMass = {
+{
     "A": "Agilent Technologies Inc.",
     "AA": "Alcoa Corporation",
     "AAA": "AAF First Priority CLO Bond ETF",
@@ -37318,5 +37318,3 @@ const dataMass = {
     "ZZZ": "Sleep Country Canada Holdings Inc",
     "ZZZOF": "Zinc One Resources, Inc. Common Shares"
 }
-
-export default dataMass;
