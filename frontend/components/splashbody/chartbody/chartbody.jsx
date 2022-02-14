@@ -98,7 +98,7 @@ class LineChart extends React.Component{
     // }=
 
     currentStockPriceFetch(stocks) {
-        debugger
+        // debugger
         let joinedStocks = null || stocks.join(',')
         fetch(`https://cloud.iexapis.com/v1/stock/market/batch?types=chart&symbols=${joinedStocks}&range=intraday-prices%20&token=pk_3e9931bb69894a0695a654b8e9715d4c`)
         .then(response => response.json())
@@ -118,7 +118,7 @@ class LineChart extends React.Component{
     }
     
     render(){
-        debugger
+        // debugger
         if (Object.values(this.state.currentprices).length < 1) {return null}
         let options =
         {

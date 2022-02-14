@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import SearchBar from '../search_bar/search_bar';
+import SearchBar from './search_bar/search_bar';
 
 const Header = ({ currentUser, logout }) => {
     const sessionLinks = () => (

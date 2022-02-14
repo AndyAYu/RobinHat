@@ -37,7 +37,6 @@ class StockShow extends React.Component {
         this.calculator = this.calculator.bind(this);
         this.handleChangeShares = this.handleChangeShares.bind(this);
         this.reviewOrder = this.reviewOrder.bind(this);
-        debugger
     }
 
     componentDidMount(){
@@ -50,7 +49,6 @@ class StockShow extends React.Component {
             .then(data => {
                 let obj = data;
                 let closeValues = obj.map((p) => p.close);
-                debugger
                 let closeDates = obj.map((d) => d.date);
                 let color = (closeValues[(closeValues.length - 1)] > closeValues[0]) ? 'rgb(37, 202, 4)' : 'rgb(255, 80, 1)';
                 let newobj = {
@@ -89,7 +87,6 @@ class StockShow extends React.Component {
         const max_quant = (this.props.balance % current_price )
         const cost = (current_price * amount).toFixed(2)
         const balance_result = (this.props.balance - cost).toFixed(2)
-        debugger
         if (amount >= max_quant){
             this.setState({ stock_quantity: amount, cost: cost, balance_remaining: 0})            
         }else if (amount <= 0 || amount === null){

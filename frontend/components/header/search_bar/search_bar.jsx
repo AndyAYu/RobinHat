@@ -9,7 +9,6 @@ const SearchBar = () => (
             type="text"
             id="header-search"
             placeholder="Stock name or ticker"
-            name="s" 
         />
         <button type="submit">Search</button>
     </form>
