@@ -25,7 +25,7 @@ const SearchBar = ({ searchQuery, setSearchQuery }) => {
                 onInput={(e) => setSearchQuery(e.target.value)}
                 type="text"
                 id="header-search"
-                placeholder="Search stocks"
+                placeholder="Search stocks by ticker"
                 name="s"
             />
             <button type="submit">Search</button>

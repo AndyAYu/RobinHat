@@ -74,7 +74,7 @@ const Header = ({ currentUser, logout }) => {
                         />
                         <ul className="stockResults">
                             {filteredStocks.map((tickerName) => (
-                                <li className="tickerName" key={tickerName.id}>{tickerName}</li>
+                                <button className="tickerName" key={tickerName.id}>{tickerName}</button>
                             ))}
                         </ul>
                     </div>
