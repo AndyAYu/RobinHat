@@ -3,15 +3,37 @@ import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import SearchBar from './search_bar/search_bar';
+import Allstocks from './search_bar/all_stock_ticker_and_name.json'
 
-const posts = [
-    { id: '1', name: 'This first post is about React' },
-    { id: '2', name: 'This next post is about Preact' },
-    { id: '3', name: 'We have yet another React post!' },
-    { id: '4', name: 'This is the fourth and final post' },
-];
+const stockNames = Allstocks
+
+const objectMap = (obj) => {
+    let newObjectMap = []
+  Object.fromEntries(
+    Object.entries(obj).map(([k, v]) => newObjectMap.push(k,v)
+    )
+  )
+  console.log(objectMap(stockNames))
+}
+
+const filterPosts = (posts, query) => {
+    debugger
+    if (!query) {
+        return posts;
+    }
+
+    return posts.filter((post) => {
+        const postName = post.name.toLowerCase();
+        return postName.includes(query);
+    });
+};
 
 const Header = ({ currentUser, logout }) => {
+    const { search } = window.location;
+    const query = new URLSearchParams(search).get('s');
+    const [searchQuery, setSearchQuery] = useState(query || '');
+    const filteredPosts = filterPosts(posts, searchQuery);
+
     const sessionLinks = () => (
         <nav className="navHeader">
             <div>
@@ -39,12 +61,22 @@ const Header = ({ currentUser, logout }) => {
     const loggedInHeader = () => (
         <hgroup className="logged-header">
             <div className="loggedInHeaderLeft">
-            <Link className="logged-in-robinhat-logo"to="/">
-                <img className="robinHatLogo" src={window.logoURL} />
-            </Link>
-            <div>
-                <SearchBar/>
-            </div>
+                <Link className="logged-in-robinhat-logo"to="/">
+                    <img className="robinHatLogo" src={window.logoURL} />
+                </Link>
+                <Router>
+                    <div className="App">
+                        <SearchBar
+                            searchQuery={searchQuery}
+                            setSearchQuery={setSearchQuery}
+                        />
+                        <ul>
+                            {filteredPosts.map((post) => (
+                                <li key={post.id}>{post.name}</li>
+                            ))}
+                        </ul>
+                    </div>
+                </Router>
             </div>
             <div className="loggedInHeaderRight">
                 <a target ="_blank" href="https://www.linkedin.com/in/andy-yu-18422b230/">LinkedIn</a>

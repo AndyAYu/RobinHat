@@ -1,14 +1,36 @@
-import React from "react";
-import AllStocks from '../search_bar/all_stock_ticker_and_name.json';
+import React from 'react';
+import { useHistory } from 'react-router-dom';
 
-function SearchBar() {
-    debugger
+const SearchBar = ({ searchQuery, setSearchQuery }) => {
+    const history = useHistory();
+    const onSubmit = (e) => {
+        history.push(`?s=${searchQuery}`);
+        e.preventDefault();
+    };
+
     return (
-        <div className="App">
-            <input type="text" placeholder="Search..."
+        <form
+            action="/"
+            method="get"
+            autoComplete="off"
+            onSubmit={onSubmit}
+        >
+            <label htmlFor="header-search">
+                <span className="visually-hidden">
+                    Search stocks
+                </span>
+            </label>
+            <input
+                value={searchQuery}
+                onInput={(e) => setSearchQuery(e.target.value)}
+                type="text"
+                id="header-search"
+                placeholder="Search stocks"
+                name="s"
             />
-        </div>
+            <button type="submit">Search</button>
+        </form>
     );
-}
+};
 
 export default SearchBar;
