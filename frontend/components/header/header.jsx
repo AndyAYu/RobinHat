@@ -15,7 +15,7 @@ const filterStocks = (stockNames, query) => {
         return [];
     }
 
-    const filteredTickers = tickers.filter(e => e.includes(query)) //"A", "AA"
+    const filteredTickers = tickers.filter(e => e.startsWith((query.toUpperCase()))) //"A", "AA"
     const filteredTickersIndex = filteredTickers.map(e => (tickers.indexOf(e))); // 0, 1
     const filteredCompanyNames = filteredTickersIndex.map(e => companyNames[e]) // AYO, AAYO
     debugger
@@ -73,8 +73,8 @@ const Header = ({ currentUser, logout }) => {
                             setSearchQuery={setSearchQuery}
                         />
                         <ul className="stockResults">
-                            {filteredStocks.map((post) => (
-                                <li key={post.id}>{post}</li>
+                            {filteredStocks.map((tickerName) => (
+                                <li className="tickerName" key={tickerName.id}>{tickerName}</li>
                             ))}
                         </ul>
                     </div>

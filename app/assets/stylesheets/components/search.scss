@@ -9,5 +9,14 @@
 }
 
 .stockResults {
-    overflow-y: 50px;
+    width: 75%;
+    overflow-x: auto;
+    height: 250px;
 }
+
+.searchForm {
+    display: flex;
+    padding-top: 5px;
+    padding-left: 100px;
+}
+

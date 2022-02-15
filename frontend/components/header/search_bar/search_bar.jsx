@@ -9,7 +9,7 @@ const SearchBar = ({ searchQuery, setSearchQuery }) => {
     };
 
     return (
-        <form
+        <form className="searchForm"
             action="/"
             method="get"
             autoComplete="off"
