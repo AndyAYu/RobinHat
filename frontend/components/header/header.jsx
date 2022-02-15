@@ -7,25 +7,34 @@ import Allstocks from './search_bar/all_stock_ticker_and_name.json'
 
 const stockNames = Allstocks
 
-const filterPosts = (stockNames, query) => {
+const filterStocks = (stockNames, query) => {
     const tickers = Object.keys(stockNames)
     const companyNames = Object.values(stockNames)
-
+    
     if (!query) {
-        return stockNames;
+        return [];
     }
 
-    return tickers.filter((ticker,i) => {
-        const stocktName = stock.name.toLowerCase();
-        return stockName.includes(query);
-    });
+    const filteredTickers = tickers.filter(e => e.includes(query)) //"A", "AA"
+    const filteredTickersIndex = filteredTickers.map(e => (tickers.indexOf(e))); // 0, 1
+    const filteredCompanyNames = filteredTickersIndex.map(e => companyNames[e]) // AYO, AAYO
+    debugger
+    let finalResults = [];
+    for (const element of filteredTickers){
+        debugger
+        const shiftedCompanyName = filteredCompanyNames.shift()
+        finalResults.push(`${element}: ${shiftedCompanyName}`)
+        console.log(finalResults)
+    }
+    return finalResults
+    ;
 };
 
 const Header = ({ currentUser, logout }) => {
     const { search } = window.location;
     const query = new URLSearchParams(search).get('s');
     const [searchQuery, setSearchQuery] = useState(query || '');
-    const filteredPosts = filterPosts(stockNames, searchQuery);
+    const filteredStocks = filterStocks(stockNames, searchQuery);
 
     const sessionLinks = () => (
         <nav className="navHeader">
@@ -63,9 +72,9 @@ const Header = ({ currentUser, logout }) => {
                             searchQuery={searchQuery}
                             setSearchQuery={setSearchQuery}
                         />
-                        <ul>
-                            {filteredPosts.map((post) => (
-                                <li key={post.id}>{post.name}</li>
+                        <ul className="stockResults">
+                            {filteredStocks.map((post) => (
+                                <li key={post.id}>{post}</li>
                             ))}
                         </ul>
                     </div>
