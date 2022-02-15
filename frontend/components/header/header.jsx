@@ -7,24 +7,17 @@ import Allstocks from './search_bar/all_stock_ticker_and_name.json'
 
 const stockNames = Allstocks
 
-const objectMap = (obj) => {
-    let newObjectMap = []
-  Object.fromEntries(
-    Object.entries(obj).map(([k, v]) => newObjectMap.push(k,v)
-    )
-  )
-  console.log(objectMap(stockNames))
-}
+const filterPosts = (stockNames, query) => {
+    const tickers = Object.keys(stockNames)
+    const companyNames = Object.values(stockNames)
 
-const filterPosts = (posts, query) => {
-    debugger
     if (!query) {
-        return posts;
+        return stockNames;
     }
 
-    return posts.filter((post) => {
-        const postName = post.name.toLowerCase();
-        return postName.includes(query);
+    return tickers.filter((ticker,i) => {
+        const stocktName = stock.name.toLowerCase();
+        return stockName.includes(query);
     });
 };
 
@@ -32,7 +25,7 @@ const Header = ({ currentUser, logout }) => {
     const { search } = window.location;
     const query = new URLSearchParams(search).get('s');
     const [searchQuery, setSearchQuery] = useState(query || '');
-    const filteredPosts = filterPosts(posts, searchQuery);
+    const filteredPosts = filterPosts(stockNames, searchQuery);
 
     const sessionLinks = () => (
         <nav className="navHeader">
