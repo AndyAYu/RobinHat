@@ -12,6 +12,8 @@
     width: 75%;
     overflow-x: auto;
     height: 250px;
+    display: flex;
+    flex-direction: column;
 }
 
 .searchForm {

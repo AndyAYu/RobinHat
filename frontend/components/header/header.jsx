@@ -26,6 +26,7 @@ const filterStocks = (stockNames, query) => {
         if (finalResults.length < 10) {
             finalResults.push(`${element}: ${shiftedCompanyName}`)
             console.log(finalResults.length)
+            console.log(finalResults)
         }
     }
     // is there more optimized code? Please come back occassionally. Takes up too much space.
