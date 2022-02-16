@@ -8,7 +8,7 @@ class Api::StocksController < ApplicationController
         @user = User.find_by(id: params[:user_id])
         @stock = Stock.new(stock_params)
         @stock.user_id = @user.id
-
+        
         total_price = @stock.amount * @stock.unit_price
 
         if (total_price > @user.balance)

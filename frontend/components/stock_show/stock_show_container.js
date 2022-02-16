@@ -5,7 +5,6 @@ import { updateUserStockInfo } from '../../actions/stock_actions';
 
 const mSTP = ({ entities, session }, ownParams ) => {
     const id = session.id
-    // debugger
     return {
         userId: id,
         ticker: ownParams.location.pathname.split("/")[2],
