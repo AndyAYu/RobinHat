@@ -29,7 +29,7 @@ const filterStocks = (stockNames, query) => {
             console.log(finalResults)
         }
     }
-    // is there more optimized code? Please come back occassionally. Takes up too much space.
+    // is there more optimized code? Come back occassionally. Takes up too much space.
     return finalResults
     ;
 };
