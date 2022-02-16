@@ -28,7 +28,6 @@ const SearchBar = ({ searchQuery, setSearchQuery }) => {
                 placeholder="Search stocks by ticker"
                 name="s"
             />
-            <button type="submit">Search</button>
         </form>
     );
 };
