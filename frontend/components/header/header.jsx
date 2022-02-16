@@ -21,11 +21,14 @@ const filterStocks = (stockNames, query) => {
     debugger
     let finalResults = [];
     for (const element of filteredTickers){
-        debugger
         const shiftedCompanyName = filteredCompanyNames.shift()
-        finalResults.push(`${element}: ${shiftedCompanyName}`)
-        console.log(finalResults)
+
+        if (finalResults.length < 10) {
+            finalResults.push(`${element}: ${shiftedCompanyName}`)
+            console.log(finalResults.length)
+        }
     }
+    // is there more optimized code? Please come back occassionally. Takes up too much space.
     return finalResults
     ;
 };
