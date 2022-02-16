@@ -18,11 +18,10 @@ const filterStocks = (stockNames, query) => {
     const filteredTickers = tickers.filter(e => e.startsWith((query.toUpperCase()))) //"A", "AA"
     const filteredTickersIndex = filteredTickers.map(e => (tickers.indexOf(e))); // 0, 1
     const filteredCompanyNames = filteredTickersIndex.map(e => companyNames[e]) // AYO, AAYO
-    debugger
     let finalResults = [];
     for (const element of filteredTickers){
         const shiftedCompanyName = filteredCompanyNames.shift()
-
+        
         if (finalResults.length < 10) {
             finalResults.push(`${element}: ${shiftedCompanyName}`)
             console.log(finalResults.length)
@@ -63,6 +62,8 @@ const Header = ({ currentUser, logout }) => {
             </div>
         </nav>
     );
+    
+    
 
     const loggedInHeader = () => (
         <hgroup className="logged-header">
@@ -78,7 +79,12 @@ const Header = ({ currentUser, logout }) => {
                         />
                         <ul className="stockResults">
                             {filteredStocks.map((tickerName) => (
-                                <button className="tickerName" key={tickerName.id}>{tickerName}</button>
+                                <a className="tickerName"
+                                 key={tickerName.id}
+                                 href={`/#/stock/${tickerName.split(":")[0]}`}
+                                 >
+                                {tickerName}
+                                </a>
                             ))}
                         </ul>
                     </div>

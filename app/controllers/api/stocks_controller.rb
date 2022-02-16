@@ -10,12 +10,12 @@ class Api::StocksController < ApplicationController
         @stock.user_id = @user.id
         
         total_price = @stock.amount * @stock.unit_price
-
+        
         if (total_price > @user.balance)
             render json: 'Balanace insufficient, please provide additional funds'
             return
         end
-
+        
         if !@stock.save
             render json: @stock.errors.full_messages, status: 401
         else
