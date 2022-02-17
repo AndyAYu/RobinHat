@@ -25,8 +25,8 @@ class LoginSessionForm extends React.Component {
     handleDemoLogin(event) {
         event.preventDefault();
         const demoUser = {
-            firstname:'demo',
-            lastname: 'yu',
+            first_name: 'demo',
+            last_name: 'user',
             email: "demo@gmail.com",
             password: "password"
         };

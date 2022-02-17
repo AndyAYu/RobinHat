@@ -1,7 +1,7 @@
 class Api::UsersController < ApplicationController
   def create
     @user = User.new(user_params)
-
+    @user.balance = 10000
     if @user.save
       login(@user)
       render "api/users/show"
@@ -21,7 +21,7 @@ class Api::UsersController < ApplicationController
       render json: 'Not enough to take out from'
     else
       @user.update(balance:  amount + @user.balance)
-      render json: {id: @user.id, username: @user.username, firstname: @user.first_name, lastname: @user.last_name, balance: @user.balance, owned_stocks: @user.owned_stocks}
+      render json: {id: @user.id, username: @user.username, balance: @user.balance, owned_stocks: @user.owned_stocks}
     end
   end
 
@@ -29,7 +29,7 @@ class Api::UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:firstname, :lastname, :email, :password)
+    params.require(:user).permit(:first_name, :last_name, :email, :password)
   end
 
   def user_deposit_params
