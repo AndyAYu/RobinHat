@@ -39,15 +39,19 @@ class LoginSessionForm extends React.Component {
     };
 
     renderErrors() {
-        console.log(this.props.errors)
+        const errors = this.props.errors
+        let array_errors = [];
+        for (const error in errors) {
+            array_errors.push(errors[error])
+        }
         return(
             <ul>
-            {this.props.errors.map((error, i) => (
-                <li key={i}>
-                    {error}
+            {array_errors.map((e,i) => {
+                <li key={i} >
+                    {e}
                 </li>
-            ))}
-        </ul>
+                })}
+            </ul>
     )
     };
 
