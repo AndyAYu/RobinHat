@@ -43,7 +43,7 @@ class LineChart extends React.Component{
             smallobj: {
                 datasets:[]
             },
-            stonks: this.props.stocks,
+            stonks: [],
             // stonks: ["AMD"],
         }
         this.currentStockPriceFetch = this.currentStockPriceFetch.bind(this);
@@ -52,7 +52,7 @@ class LineChart extends React.Component{
     };
 
     componentDidMount(){
-        this.currentStockPriceFetch(this.state.stonks)
+        this.currentStockPriceFetch(this.props.stocks)
     }
 
     toggleActive() {
@@ -198,9 +198,8 @@ class LineChart extends React.Component{
                     <button onClick={() => this.stockFetch((this.state.currentstock), "1y")}> 1Y </button>
                     <button onClick={() => this.stockFetch((this.state.currentstock), "5y")}> 5Y </button>
                 </div>
-                <div>
-                    <NewsArticle />
-                </div>
+                <div className="chartBody-BuyPower">Buying Power {this.props.balance}</div>
+                <div><NewsArticle /></div>
             </div>
             <div className="watchlist">
                 <div className="watchlist-box">
@@ -225,7 +224,7 @@ class LineChart extends React.Component{
                         USE INDEXES OR NOT?! 
                         */}
                         <div className="watchlist-stock">
-                        {this.state.stonks.map(ticker => (
+                        {this.props.stocks.map(ticker => (
                             <div className="wls-stocks"key={ticker} > 
                                 <Link to={`/stock/${ticker}`}>
                                 {ticker}
@@ -243,97 +242,6 @@ class LineChart extends React.Component{
                             </div>
                         ))}
                         </div>
-
-                        {/* <div>
-                            <Link to={`/stock/aapl`}>{this.state.stonks[1]}</Link>
-                            <div>
-                                <div className="-current-stock-price" >${this.state.currentprices.AAPL.chart[0].close}</div>
-                                <div className="percentageChange1">
-                                    {this.percentChange((this.state.currentprices.AAPL.chart[0].open), (this.state.currentprices.AAPL.chart[0].close))}%
-                                </div>
-                            </div>
-                        </div> */}
-                        {/* <div>
-                            <Link to={`/stock/googl`} >{this.state.stonks[2]}</Link>
-                            <div>
-                            <div className="-current-stock-price" >${this.state.currentprices.GOOGL.chart[0].close}</div>
-                                <div className="percentageChange1">
-                                    {this.percentChange((this.state.currentprices.GOOGL.chart[0].open), (this.state.currentprices.GOOGL.chart[0].close))}%
-                                </div>
-                            </div>
-                        </div>
-                        <div>
-                            <Link to={`/stock/fb`} >{this.state.stonks[3]}</Link>
-                            <div>
-                            <div className="-current-stock-price" >${this.state.currentprices.FB.chart[0].close}</div>
-                                <div className="percentageChange1">
-                                    {this.percentChange((this.state.currentprices.FB.chart[0].open), (this.state.currentprices.FB.chart[0].close))}%
-                                </div>
-                            </div>
-                        </div>
-                        <div>
-                            <Link to={`/stock/nflx`} >{this.state.stonks[4]}</Link>
-                            <div>
-                            <div className="-current-stock-price" >${this.state.currentprices.NFLX.chart[0].close}</div>
-                            <div className="percentageChange1">
-                                {this.percentChange((this.state.currentprices.NFLX.chart[0].open), (this.state.currentprices.NFLX.chart[0].close))}%
-                            </div>
-                            </div>
-                        </div>
-                        <div>
-                            <Link to={`/stock/twtr`} >{this.state.stonks[5]}</Link>
-                            <div>
-                            <div className="-current-stock-price" >${this.state.currentprices.TWTR.chart[0].close}</div>
-                            <div className="percentageChange1">
-                                {this.percentChange((this.state.currentprices.TWTR.chart[0].open), (this.state.currentprices.TWTR.chart[0].close))}%
-                            </div>
-                            </div>
-                        </div>
-                        <div>
-                            <Link to={`/stock/tsla`} >{this.state.stonks[6]}</Link>
-                            <div>
-                            <div className="-current-stock-price" >${this.state.currentprices.TSLA.chart[0].close}</div>
-                            <div className="percentageChange1">
-                                {this.percentChange((this.state.currentprices.TSLA.chart[0].open), (this.state.currentprices.TSLA.chart[0].close))}%
-                            </div>
-                            </div>
-                        </div>
-                        <div>
-                            <Link to={`/stock/msft`} >{this.state.stonks[7]}</Link>
-                            <div>
-                            <div className="-current-stock-price" >${this.state.currentprices.MSFT.chart[0].close}</div>
-                            <div className="percentageChange1">
-                                {this.percentChange((this.state.currentprices.MSFT.chart[0].open), (this.state.currentprices.MSFT.chart[0].close))}%
-                            </div>
-                            </div>
-                        </div>
-                        <div>
-                            <Link to={`/stock/sbux`} >{this.state.stonks[8]}</Link>
-                            <div>
-                            <div className="-current-stock-price" >${this.state.currentprices.SBUX.chart[0].close}</div>
-                            <div className="percentageChange1">
-                                {this.percentChange((this.state.currentprices.SBUX.chart[0].open), (this.state.currentprices.SBUX.chart[0].close))}%
-                            </div>
-                            </div>
-                        </div>
-                        <div>
-                            <Link to={`/stock/ge`} >{this.state.stonks[9]}</Link>
-                            <div>
-                            <div className="-current-stock-price" >${this.state.currentprices.GE.chart[0].close}</div>
-                            <div className="percentageChange1">
-                                {this.percentChange((this.state.currentprices.GE.chart[0].open), (this.state.currentprices.GE.chart[0].close))}%
-                            </div>
-                            </div>
-                        </div>
-                        <div>
-                            <Link to={`/stock/sun`} >{this.state.stonks[10]}</Link>
-                            <div>
-                            <div className="-current-stock-price" >${this.state.currentprices.SUN.chart[0].close}</div>
-                            <div className="percentageChange1">
-                                {this.percentChange((this.state.currentprices.SUN.chart[0].open), (this.state.currentprices.SUN.chart[0].close))}%
-                            </div>
-                            </div>
-                        </div> */}
                     </div>
                 </div>
             </div>
