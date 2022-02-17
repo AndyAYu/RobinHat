@@ -21,7 +21,7 @@ class Api::UsersController < ApplicationController
       render json: 'Not enough to take out from'
     else
       @user.update(balance:  amount + @user.balance)
-      render json: {id: @user.id, username: @user.username, first_name: @user.first_name, last_name: @user.last_name, balance: @user.balance, owned_stocks: @user.owned_stocks}
+      render json: {id: @user.id, username: @user.username, firstname: @user.first_name, lastname: @user.last_name, balance: @user.balance, owned_stocks: @user.owned_stocks}
     end
   end
 
@@ -29,7 +29,7 @@ class Api::UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:email, :password)
+    params.require(:user).permit(:firstname, :lastname, :email, :password)
   end
 
   def user_deposit_params
