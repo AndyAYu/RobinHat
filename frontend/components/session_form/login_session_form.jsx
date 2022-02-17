@@ -37,18 +37,6 @@ class LoginSessionForm extends React.Component {
         return e => this.setState({[field]: e.currentTarget.value})
     };
 
-    renderErrors() {
-        return(
-            <ul>
-            {this.props.errors.map((error, i) => (
-                <li key={i}>
-                    {error}
-                </li>
-            ))}
-        </ul>
-    )
-    };
-
 render() {
     return (
             <div className="login-form-container">
