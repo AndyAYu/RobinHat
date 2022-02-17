@@ -72,13 +72,9 @@ class StockShow extends React.Component {
 
     reviewOrder(){
         let amount = this.state.stock_quantity
-        debugger
         let userId = this.props.userId
-        debugger
         let {ticker} = this.props
-        debugger
         let { current_price } = this.state
-        debugger
         this.props.updateUserStockInfo(userId, ticker, amount, current_price)
     }
 
