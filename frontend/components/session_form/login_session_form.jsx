@@ -10,6 +10,7 @@ class LoginSessionForm extends React.Component {
         };
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleDemoLogin = this.handleDemoLogin.bind(this);
+        this.renderErrors = this.renderErrors.bind(this);
     };
     
     componentWillUnmount() {
@@ -35,6 +36,18 @@ class LoginSessionForm extends React.Component {
 
     update(field){
         return e => this.setState({[field]: e.currentTarget.value})
+    };
+
+    renderErrors() {
+        return(
+            <ul>
+            {this.props.errors.map((error, i) => (
+                <li key={i}>
+                    {error}
+                </li>
+            ))}
+        </ul>
+    )
     };
 
 render() {
