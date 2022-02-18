@@ -132,9 +132,13 @@
     display: flex;
     justify-content: space-between;
     width: 100%;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 .chartBody-BuyPower {
     padding-bottom: 20px;
     font-family: 'Roboto', sans-serif;
+    display: flex;
+    justify-content: space-between;
 }

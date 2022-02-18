@@ -198,7 +198,10 @@ class LineChart extends React.Component{
                     <button onClick={() => this.stockFetch((this.state.currentstock), "1y")}> 1Y </button>
                     <button onClick={() => this.stockFetch((this.state.currentstock), "5y")}> 5Y </button>
                 </div>
-                <div className="chartBody-BuyPower">Buying Power {this.props.balance}</div>
+                <div className="chartBody-BuyPower">
+                    <div>Buying Power</div>
+                    <div>${this.props.balance}</div>
+                </div>
                 <div><NewsArticle /></div>
             </div>
             <div className="watchlist">
