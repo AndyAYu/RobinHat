@@ -7,7 +7,7 @@ const mapStateToProps = ({entities,session},ownParams) => {
     debugger
     return {
         balance: entities.users[(session.id)].balance,
-        stocks: entities.users[(session.id)].stocks.map(e => e.ticker)
+        stocks: entities.users[(session.id)].stocks.map(e => e.ticker),
     }
 }
 

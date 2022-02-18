@@ -49,6 +49,7 @@ class LineChart extends React.Component{
         this.currentStockPriceFetch = this.currentStockPriceFetch.bind(this);
         this.percentChange = this.percentChange.bind(this);
         this.toggleActive = this.toggleActive.bind(this);
+        this.portfolioValue = this.portfolioValue.bind(this);
     };
 
     componentDidMount(){
@@ -96,6 +97,15 @@ class LineChart extends React.Component{
         //     })
         // })
     // }=
+
+    portfolioValue(){
+        let count = 0
+        debugger
+        let stockTotal = this.props.stocks.map(e => {
+            debugger;
+            e});
+        return this.props.balance
+    }
 
     currentStockPriceFetch(stocks) {
         // debugger
@@ -174,14 +184,14 @@ class LineChart extends React.Component{
     return (
         <div className="stockpage">
             <div className="stockpageleft">
-                {/* <div>
+                <div>
                     <h2>
-                        {portfolioValue}
+                        {this.portfolioValue()}
                     </h2>
                     <h2>
                     Portfolio Performance
                 </h2>
-                </div> */}
+                </div>
                 <div className="chart-box">
                         <Line
                         data={this.state.newobj}
