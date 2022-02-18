@@ -87,11 +87,11 @@ class StockShow extends React.Component {
     calculator(current_price, amount=null){
         const max_quant = (this.props.balance % current_price )
         const cost = (current_price * amount).toFixed(2)
-        const balance_result = (this.props.balance - cost).toFixed(2)
+        const balance_result = (this.state.balance_remaining - cost).toFixed(2)
         if (amount >= max_quant){
             this.setState({ stock_quantity: amount, cost: cost, balance_remaining: 0})            
         }else if (amount <= 0 || amount === null){
-            this.setState({ stock_quantity: amount, cost: 0, balance_remaining: 10000})
+            this.setState({ stock_quantity: amount, cost: 0, balance_remaining: this.props.balance})
         }else{
             this.setState({ stock_quantity: amount, cost:cost, balance_remaining: balance_result })
         }

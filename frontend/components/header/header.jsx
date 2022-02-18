@@ -76,9 +76,9 @@ const Header = ({ currentUser, logout }) => {
                             setSearchQuery={setSearchQuery}
                         />
                         <ul className="stockResults">
-                            {filteredStocks.map((tickerName) => (
+                            {filteredStocks.map((tickerName,index) => (
                                 <a className="tickerName"
-                                 key={tickerName.id}
+                                 key={index}
                                  href={`/#/stock/${tickerName.split(":")[0]}`}
                                  >
                                 {tickerName}
