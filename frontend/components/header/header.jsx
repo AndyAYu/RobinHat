@@ -22,7 +22,7 @@ const filterStocks = (stockNames, query) => {
     for (const element of filteredTickers){
         const shiftedCompanyName = filteredCompanyNames.shift()
         
-        if (finalResults.length < 10) {
+        if (finalResults.length < 5) {
             finalResults.push(`${element}: ${shiftedCompanyName}`)
         }
     }

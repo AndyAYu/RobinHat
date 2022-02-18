@@ -66,7 +66,7 @@ class LineChart extends React.Component{
     }
     //handleclick-make fetch for stock and also setstate./
 
-    // stockFetch(stock, time="1y") {
+    // portfolioFetch(stock, time="1y") {
     //     debugger
         // fetch(`https://cloud.iexapis.com/stable/stock/${stock}/chart/${time}?token=pk_3e9931bb69894a0695a654b8e9715d4c`)
         //     .then(response => response.json())
@@ -108,14 +108,12 @@ class LineChart extends React.Component{
     }
 
     currentStockPriceFetch(stocks) {
-        // debugger
         let joinedStocks = null || stocks.join(',')
         fetch(`https://cloud.iexapis.com/v1/stock/market/batch?types=chart&symbols=${joinedStocks}&range=intraday-prices%20&token=pk_3e9931bb69894a0695a654b8e9715d4c`)
         .then(response => response.json())
         .then(data => {
             console.log(data)
             this.setState(() => ({currentprices: data}) )
-            // debugger
         });
     }
     percentChange(open,close) {
@@ -184,14 +182,14 @@ class LineChart extends React.Component{
     return (
         <div className="stockpage">
             <div className="stockpageleft">
-                <div>
+                {/* <div>
                     <h2>
                         {this.portfolioValue()}
                     </h2>
                     <h2>
                     Portfolio Performance
-                </h2>
-                </div>
+                    </h2>
+                </div> */}
                 <div className="chart-box">
                         <Line
                         data={this.state.newobj}

@@ -9,9 +9,10 @@
 }
 
 .stockResults {
-    width: 75%;
+    width: 150%;
+    background-color: white;
     overflow-x: auto;
-    height: 250px;
+    height: 150px;
     display: flex;
     flex-direction: column;
 }
