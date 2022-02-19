@@ -54,6 +54,7 @@ class LineChart extends React.Component{
 
     componentDidMount(){
         this.currentStockPriceFetch(this.props.stocks)
+        this.portfolioFetch(this.props.stocks)
     }
 
     toggleActive() {
@@ -66,37 +67,39 @@ class LineChart extends React.Component{
     }
     //handleclick-make fetch for stock and also setstate./
 
-    // portfolioFetch(stock, time="1y") {
-    //     debugger
+    portfolioFetch(stocks) {
+        debugger
+        const joinedStocks = stocks.join(',')
         // fetch(`https://cloud.iexapis.com/stable/stock/${stock}/chart/${time}?token=pk_3e9931bb69894a0695a654b8e9715d4c`)
-        //     .then(response => response.json())
-        //     .then(data => {
-        //         let obj = data;
-        //         // debugger
-        //         let closeValues = obj.map((p) => p.close);
-        //         let closeDates = obj.map((d) => d.date);
-        //         let stockName = stockNames[stock];
-        //         let color = (closeValues[(closeValues.length - 1)] > closeValues[0]) ? 'rgb(37, 202, 4)' : 'rgb(255, 80, 1)';
-        //         let newobj = {
-        //             labels: closeDates,
-        //             datasets: [
-        //                 {
-        //                     label: stockName,
-        //                     data: closeValues,
+        // fetch(`https://cloud.iexapis.com/stable/stock/market/batch?symbols=${joinedStocks}&types=quote,news,chart&range=1m&last=5?token=pk_3e9931bb69894a0695a654b8e9715d4c`)
+        fetch(`https://cloud.iexapis.com/v1/stock/market/batch?types=chart&symbols=${joinedStocks}&range=1d&last=100&token=pk_3e9931bb69894a0695a654b8e9715d4c`)
+            .then(response => response.json())
+            .then(data => {
+                let obj = data;
+                debugger
+                let closeValues = obj.map((p) => p.close);
+                let closeDates = obj.map((d) => d.date);
+                let stockName = stockNames[stock];
+                let color = (closeValues[(closeValues.length - 1)] > closeValues[0]) ? 'rgb(37, 202, 4)' : 'rgb(255, 80, 1)';
+                let newobj = {
+                    labels: closeDates,
+                    datasets: [
+                        {
+                            label: stockName,
+                            data: closeValues,
 
-        //                     borderColor: color,
-        //                     backgroundColor: color,
-        //                     pointRadius: 1,
-        //                     pointHoverRadius: 1,
-        //                 }
-        //             ],
-        //         };
-        //         this.setState({ newobj })
-        //         this.setState(() => ({ currentstock: stock}))
-        //         // .then(() => console.log(newobj))
-        //     })
-        // })
-    // }=
+                            borderColor: color,
+                            backgroundColor: color,
+                            pointRadius: 1,
+                            pointHoverRadius: 1,
+                        }
+                    ],
+                };
+                this.setState({ newobj })
+                this.setState(() => ({ currentstock: stock}))
+                // .then(() => console.log(newobj))
+            })
+    }
 
     portfolioValue(){
         let count = 0
@@ -231,9 +234,6 @@ class LineChart extends React.Component{
                                 </div>
                             </div>
                         </div> */}
-                        {/*
-                        USE INDEXES OR NOT?! 
-                        */}
                         <div className="watchlist-stock">
                         {this.props.stocks.map(ticker => (
                             <div className="wls-stocks"key={ticker} > 
