@@ -57,6 +57,10 @@ class LineChart extends React.Component{
         this.portfolioFetch(this.props.stocks)
     }
 
+    componentWillUnmount(){
+        this.portfolioFetch(this.props.stocks)
+    }
+
     toggleActive() {
         const targetElement = document.getElementsByClassName("watchlist-stock")
         if (targetElement[0].style.display === "none") {
@@ -83,13 +87,11 @@ class LineChart extends React.Component{
                     value.chart.forEach((e,index) => { //every values has one chart and hundreds of e 
                         if ((e.average !== null || e.marketAverage !== null) && dataAvgValues[index] == null ) {
                             debugger
-                            dataAvgValues.push(e.average||e.marketAverage)
-                        } else if (dataAvgValues[index]) {
+                            dataAvgValues.push(e.average||e.marketAverage||value.chart[(index-1)].average||value.chart[(index-1)].marketAverage)
+                        } else if (dataAvgValues[index] !== null) {
                             debugger
-                            dataAvgValues[index] += (e.average||e.marketAverage)
+                            dataAvgValues[index] += (e.average||e.marketAverage||value.chart[(index-1)].average||value.chart[(index-1)].marketAverage)
                         }
-                        console.log(dataAvgValues)
-                        console.log(e.label)
                         return dataAvgValues
                     })
                 });
