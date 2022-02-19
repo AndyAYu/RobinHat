@@ -67,7 +67,9 @@ class LineChart extends React.Component{
     }
     //handleclick-make fetch for stock and also setstate./
 
-    portfolioFetch(stocks) {
+    portfolioFetch(stocks=null) {
+        if (stocks == null) {return null};
+        const stocklength = stocks.length
         debugger
         const joinedStocks = stocks.join(',')
         // fetch(`https://cloud.iexapis.com/stable/stock/${stock}/chart/${time}?token=pk_3e9931bb69894a0695a654b8e9715d4c`)
@@ -77,6 +79,12 @@ class LineChart extends React.Component{
             .then(data => {
                 let obj = data;
                 debugger
+                let chartValues = []
+                Object.values(obj).forEach(value => {
+                    value.chart.forEach(e => {if(chartValues.empty) {chartValues.push(e.average)}
+                    })
+                });
+
                 let closeValues = obj.map((p) => p.close);
                 let closeDates = obj.map((d) => d.date);
                 let stockName = stockNames[stock];
