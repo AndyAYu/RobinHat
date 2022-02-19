@@ -69,8 +69,6 @@ class LineChart extends React.Component{
 
     portfolioFetch(stocks=null) {
         if (stocks == null) {return null};
-        const stocklength = stocks.length
-        debugger
         const joinedStocks = stocks.join(',')
         // fetch(`https://cloud.iexapis.com/stable/stock/${stock}/chart/${time}?token=pk_3e9931bb69894a0695a654b8e9715d4c`)
         // fetch(`https://cloud.iexapis.com/stable/stock/market/batch?symbols=${joinedStocks}&types=quote,news,chart&range=1m&last=5?token=pk_3e9931bb69894a0695a654b8e9715d4c`)
@@ -79,26 +77,31 @@ class LineChart extends React.Component{
             .then(data => {
                 let obj = data;
                 debugger
-                let chartAvgValues = []
+                let dataAvgValues = []
                 Object.values(obj).forEach((value) => { //values reflects # of stocks 
+                    debugger
                     value.chart.forEach((e,index) => { //every values has one chart and hundreds of e 
-                        if (chartAvgValues[index]==null) {
-                            chartAvgValues.push(e.average||e.marketAverage)
-                        } else {
-                            chartAvgValues[index] += (e.average||e.marketAverage)
+                        if ((e.average !== null || e.marketAverage !== null) && dataAvgValues[index] == null ) {
+                            debugger
+                            dataAvgValues.push(e.average||e.marketAverage)
+                        } else if (dataAvgValues[index]) {
+                            debugger
+                            dataAvgValues[index] += (e.average||e.marketAverage)
                         }
-                        return chartAvgValues
+                        console.log(dataAvgValues)
+                        console.log(e.label)
+                        return dataAvgValues
                     })
                 });
-                let closeDates = obj.map((d) => d.date);
-                let stockName = stockNames[stock];
-                let color = (closeValues[(closeValues.length - 1)] > closeValues[0]) ? 'rgb(37, 202, 4)' : 'rgb(255, 80, 1)';
+                const finalChartValues = dataAvgValues.map(e => e+=this.props.balance);
+                let chartDate = Object.values(obj)[0].chart.map(e => e.label);
+                let color = (finalChartValues[(finalChartValues.length - 1)] > finalChartValues[0]) ? 'rgb(37, 202, 4)' : 'rgb(255, 80, 1)';
                 let newobj = {
-                    labels: closeDates,
+                    labels: chartDate,
                     datasets: [
                         {
-                            label: stockName,
-                            data: closeValues,
+                            label: [],
+                            data: finalChartValues,
 
                             borderColor: color,
                             backgroundColor: color,
@@ -108,8 +111,6 @@ class LineChart extends React.Component{
                     ],
                 };
                 this.setState({ newobj })
-                this.setState(() => ({ currentstock: stock}))
-                // .then(() => console.log(newobj))
             })
     }
 
@@ -127,7 +128,6 @@ class LineChart extends React.Component{
         fetch(`https://cloud.iexapis.com/v1/stock/market/batch?types=chart&symbols=${joinedStocks}&range=intraday-prices%20&token=pk_3e9931bb69894a0695a654b8e9715d4c`)
         .then(response => response.json())
         .then(data => {
-            console.log(data)
             this.setState(() => ({currentprices: data}) )
         });
     }
@@ -154,10 +154,10 @@ class LineChart extends React.Component{
                     borderWidth: 2
                 }]
             },
-            responsive: true,
+            responsive: false,
             plugins: {
                 legend: {
-                    display: true,
+                    display: false,
                     position: 'top',
                     align: 'start',
                     labels: {
