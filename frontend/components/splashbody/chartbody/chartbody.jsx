@@ -76,7 +76,7 @@ class LineChart extends React.Component{
         const joinedStocks = stocks.join(',')
         // fetch(`https://cloud.iexapis.com/stable/stock/${stock}/chart/${time}?token=pk_3e9931bb69894a0695a654b8e9715d4c`)
         // fetch(`https://cloud.iexapis.com/stable/stock/market/batch?symbols=${joinedStocks}&types=quote,news,chart&range=1m&last=5?token=pk_3e9931bb69894a0695a654b8e9715d4c`)
-        fetch(`https://cloud.iexapis.com/v1/stock/market/batch?types=chart&symbols=${joinedStocks}&range=1d&last=100&token=pk_3e9931bb69894a0695a654b8e9715d4c`)
+        fetch(`https://cloud.iexapis.com/v1/stock/market/batch?types=chart&symbols=${joinedStocks}&range=1d&token=pk_3e9931bb69894a0695a654b8e9715d4c`)
             .then(response => response.json())
             .then(data => {
                 let obj = data;
@@ -85,7 +85,7 @@ class LineChart extends React.Component{
                 Object.values(obj).forEach((value) => { //values reflects # of stocks 
                     debugger
                     value.chart.forEach((e,index) => { //every values has one chart and hundreds of e 
-                        if ((e.average !== null || e.marketAverage !== null) && dataAvgValues[index] == null ) {
+                        if ((e.average !== null && e.marketAverage == null || e.average == null && e.marketAverage !== null) && dataAvgValues[index] == null ) {
                             debugger
                             dataAvgValues.push(e.average||e.marketAverage||value.chart[(index-1)].average||value.chart[(index-1)].marketAverage)
                         } else if (dataAvgValues[index] !== null) {
@@ -145,8 +145,7 @@ class LineChart extends React.Component{
     render(){
         // debugger
         if (Object.values(this.state.currentprices).length < 1) {return null}
-        let options =
-        {
+        let options = {   
             annotations: {
                 annotations: [{
                     type: 'line',
@@ -185,7 +184,7 @@ class LineChart extends React.Component{
                     display: false,
                     grid: {
                         display: false
-                    }
+                    },
                 },
                 x: {
                     display:false,
