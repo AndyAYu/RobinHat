@@ -93,7 +93,6 @@ class LineChart extends React.Component{
                             dataAvgValues[index] += e.average||e.marketAverage
                         }
                         debugger
-                        console.log(dataAvgValues)
                         return dataAvgValues
                     })
                 });
@@ -257,11 +256,11 @@ class LineChart extends React.Component{
                                 </Link>
                                 <div >
                                     <div className="-current-stock-price" >
-                                        ${this.state.currentprices.AMD.chart[0].close}
+                                        ${this.state.currentprices[ticker].chart[0].close}
                                     </div>
                                     <div className="percentageChange1">
-                                        {this.percentChange((this.state.currentprices.AMD.chart[0].open),
-                                        (this.state.currentprices.AMD.chart[0].close))}%    
+                                        {this.percentChange((this.state.currentprices[ticker].chart[0].open),
+                                        (this.state.currentprices[ticker].chart[0].close))}%    
                                     </div>
                                 </div>
             
