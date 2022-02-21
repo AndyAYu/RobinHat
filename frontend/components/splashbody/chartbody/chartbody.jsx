@@ -81,17 +81,11 @@ class LineChart extends React.Component{
             .then(data => {
                 let obj = data;
                 debugger
-                let dataAvgValues = []
+                let dataAvgValues = new Array()
                 Object.values(obj).forEach((value) => { //values reflects # of stocks 
                     debugger
                     value.chart.forEach((e,index) => { //every values has one chart and hundreds of e 
-                        if ((e.average !== null && e.marketAverage == null || e.average == null && e.marketAverage !== null) && dataAvgValues[index] == null ) {
-                            debugger
-                            dataAvgValues.push(e.average||e.marketAverage||value.chart[(index-1)].average||value.chart[(index-1)].marketAverage)
-                        } else if (dataAvgValues[index] !== null) {
-                            debugger
-                            dataAvgValues[index] += (e.average||e.marketAverage||value.chart[(index-1)].average||value.chart[(index-1)].marketAverage)
-                        }
+                        
                         return dataAvgValues
                     })
                 });
