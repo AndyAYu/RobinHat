@@ -235,21 +235,6 @@ class LineChart extends React.Component{
                 <div className="watchlist-box">
                     <div className="watchlist-stocks">
                     <button className="watchlist-header" onClick={this.toggleActive} >Watchlist</button>
-
-                        {/* <div className="watchlist-stock">
-                            <Link to={`/stock/amd`}>
-                                {this.state.stonks[0]}
-                            </Link>
-                            <div>
-                                <div className="-current-stock-price" >
-                                    ${this.state.currentprices.AMD.chart[0].close}
-                                </div>
-                                <div className="percentageChange1">
-                                    {this.percentChange((this.state.currentprices.AMD.chart[0].open),
-                                    (this.state.currentprices.AMD.chart[0].close))}%    
-                                </div>
-                            </div>
-                        </div> */}
                         <div className="watchlist-stock">
                         {this.props.stocks.map(ticker => (
                             <div className="wls-stocks"key={ticker} > 
