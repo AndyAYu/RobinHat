@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import LineChart from './chartbody';
 
 const mapStateToProps = ({entities,session},ownParams) => {
-    console.log(entities)
     return {
         balance: entities.users[(session.id)].balance,
         stocks: entities.users[(session.id)].stocks.map(e => e.ticker),
