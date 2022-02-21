@@ -76,7 +76,7 @@ class LineChart extends React.Component{
         const joinedStocks = stocks.join(',')
         // fetch(`https://cloud.iexapis.com/stable/stock/${stock}/chart/${time}?token=pk_3e9931bb69894a0695a654b8e9715d4c`)
         // fetch(`https://cloud.iexapis.com/stable/stock/market/batch?symbols=${joinedStocks}&types=quote,news,chart&range=1m&last=5?token=pk_3e9931bb69894a0695a654b8e9715d4c`)
-        fetch(`https://cloud.iexapis.com/v1/stock/market/batch?types=chart&symbols=${joinedStocks}&range=1d&token=pk_3e9931bb69894a0695a654b8e9715d4c`)
+        fetch(`https://cloud.iexapis.com/v1/stock/market/batch?types=chart&symbols=${joinedStocks}&range=3d&token=pk_3e9931bb69894a0695a654b8e9715d4c`)
             .then(response => response.json())
             .then(data => {
                 let obj = data;
@@ -90,7 +90,7 @@ class LineChart extends React.Component{
                             dataAvgValues[index] = dataAvgValues[(index-1)];
                         } else {
                             debugger
-                            dataAvgValues[index] += e.average||e.marketAverage
+                            dataAvgValues[index] += e.average||e.marketAverage||e.close
                         }
                         debugger
                         return dataAvgValues
