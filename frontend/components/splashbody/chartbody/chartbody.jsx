@@ -36,7 +36,7 @@ class LineChart extends React.Component{
             // active: false,
             currentstock: '',
             currentprices: '',
-            news: '',
+            combinedNews: {news:{}},
             newobj: {
                 labels: [],
                 datasets: []
@@ -83,12 +83,14 @@ class LineChart extends React.Component{
             .then(data => {
                 let obj = data;
                 // debugger
-                let newsArray = {};
+                let newsObj = {};
                 let dataAvgValues = new Array(391).fill(0)
                 Object.values(obj).forEach((value) => { //values reflects # of stocks 
                     dataAvgValues = dataAvgValues.slice(0,(value.chart.length))
-                    newsArray = value.news
+                    newsObj = value.news
+                    console.log(newsObj)
                     debugger
+                    this.setState({news: Object.assign(this.state.combinedNews.news,newsObj)})
                     value.chart.forEach((e,index) => { //every values has one chart and hundreds of e 
                         // debugger
                         dataAvgValues[index] += e.average||e.marketAverage||e.close
@@ -96,10 +98,8 @@ class LineChart extends React.Component{
                         return dataAvgValues
                     })
                 });
+                
                 debugger
-                this.setState({ 
-                    news: this.state.news.concat([newsArray])
-                })
                 const finalChartValues = dataAvgValues.map(e => e+=this.props.balance);
                 let chartDate = Object.values(obj)[0].chart.map(e => e.label);
                 let color = (finalChartValues[(finalChartValues.length - 1)] > finalChartValues[0]) ? 'rgb(37, 202, 4)' : 'rgb(255, 80, 1)';
@@ -148,6 +148,7 @@ class LineChart extends React.Component{
     }
     
     render(){
+        console.log(this.state.combinedNews)
         debugger
         if (Object.values(this.state.currentprices).length < 1) {return null}
         let options = {   
