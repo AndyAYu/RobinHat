@@ -60,6 +60,7 @@ class LineChart extends React.Component{
 
     componentWillUnmount(){
         this.portfolioFetch(this.props.stocks)
+        this.currentStockPriceFetch(this.props.stocks)
     }
 
     toggleActive() {
@@ -95,8 +96,9 @@ class LineChart extends React.Component{
                         return dataAvgValues
                     })
                 });
+                debugger
                 this.setState({ 
-                    arrayvar: this.state.arrayvar.concat([newelement])
+                    news: this.state.news.concat([newsArray])
                 })
                 const finalChartValues = dataAvgValues.map(e => e+=this.props.balance);
                 let chartDate = Object.values(obj)[0].chart.map(e => e.label);
@@ -146,6 +148,7 @@ class LineChart extends React.Component{
     }
     
     render(){
+        debugger
         if (Object.values(this.state.currentprices).length < 1) {return null}
         let options = {   
             annotations: {
