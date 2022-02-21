@@ -36,6 +36,7 @@ class LineChart extends React.Component{
             // active: false,
             currentstock: '',
             currentprices: '',
+            news: '',
             newobj: {
                 labels: [],
                 datasets: []
@@ -76,26 +77,27 @@ class LineChart extends React.Component{
         const joinedStocks = stocks.join(',')
         // fetch(`https://cloud.iexapis.com/stable/stock/${stock}/chart/${time}?token=pk_3e9931bb69894a0695a654b8e9715d4c`)
         // fetch(`https://cloud.iexapis.com/stable/stock/market/batch?symbols=${joinedStocks}&types=quote,news,chart&range=1m&last=5?token=pk_3e9931bb69894a0695a654b8e9715d4c`)
-        fetch(`https://cloud.iexapis.com/v1/stock/market/batch?types=chart&symbols=${joinedStocks}&range=3d&token=pk_3e9931bb69894a0695a654b8e9715d4c`)
+        fetch(`https://cloud.iexapis.com/v1/stock/market/batch?symbols=${joinedStocks}&types=news,chart&range=1m&token=pk_3e9931bb69894a0695a654b8e9715d4c`)
             .then(response => response.json())
             .then(data => {
                 let obj = data;
-                debugger
+                // debugger
+                let newsArray = {};
                 let dataAvgValues = new Array(391).fill(0)
                 Object.values(obj).forEach((value) => { //values reflects # of stocks 
+                    dataAvgValues = dataAvgValues.slice(0,(value.chart.length))
+                    newsArray = value.news
                     debugger
                     value.chart.forEach((e,index) => { //every values has one chart and hundreds of e 
-                        if ((e.average == null || e.average == 0) && (e.marketAverage == null || e.marketAverage == 0)) {
-                            debugger
-                            dataAvgValues[index] = dataAvgValues[(index-1)];
-                        } else {
-                            debugger
-                            dataAvgValues[index] += e.average||e.marketAverage||e.close
-                        }
-                        debugger
+                        // debugger
+                        dataAvgValues[index] += e.average||e.marketAverage||e.close
+                        // debugger
                         return dataAvgValues
                     })
                 });
+                this.setState({ 
+                    arrayvar: this.state.arrayvar.concat([newelement])
+                })
                 const finalChartValues = dataAvgValues.map(e => e+=this.props.balance);
                 let chartDate = Object.values(obj)[0].chart.map(e => e.label);
                 let color = (finalChartValues[(finalChartValues.length - 1)] > finalChartValues[0]) ? 'rgb(37, 202, 4)' : 'rgb(255, 80, 1)';
@@ -144,7 +146,6 @@ class LineChart extends React.Component{
     }
     
     render(){
-        // debugger
         if (Object.values(this.state.currentprices).length < 1) {return null}
         let options = {   
             annotations: {
