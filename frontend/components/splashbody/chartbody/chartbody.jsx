@@ -218,13 +218,13 @@ class LineChart extends React.Component{
                     <div>Buying Power</div>
                     <div>${this.props.balance}</div>
                 </div>
-                <div>
+                <div className="newsArticleRow">
                     <div>{this.state.combinedNews.map((e,index) =>(
-                        <div className="newsArticleRow" key={index}>
-                            <div>{e.headline}</div>
+                        <div key={index}>
+                            <div className="newsHeadLines">{e.headline}</div>
                             <div>
-                                <div><img src={e.image} width="400" height="400"/></div>
-                                <div><p>{e.summary}</p></div>
+                                <div className="newsImages"><img src={e.image} /></div>
+                                <div className="newsSummaries"><p>{e.summary}</p></div>
                             </div>  
                         </div>
                         ))}

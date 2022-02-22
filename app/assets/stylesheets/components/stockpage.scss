@@ -2,7 +2,6 @@
 .stockpage {
     padding-top: 10%;
     display: flex;
-    justify-content: center;
 }
 
 .stockpage > div {
@@ -12,6 +11,7 @@
 .stockpageleft {
     display: flex;
     flex-direction: column;
+    width: 70%
 } 
 
 .stockpageleft > .chart-box {
