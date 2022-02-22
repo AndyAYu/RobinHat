@@ -103,6 +103,7 @@ class LineChart extends React.Component{
                 });
                 // debugger
                 this.randomRelevantNewsArticles(this.state.combinedNews)
+                debugger
                 const finalChartValues = dataAvgValues.map(e => e+=this.props.balance);
                 let chartDate = Object.values(obj)[0].chart.map(e => e.label);
                 let color = (finalChartValues[(finalChartValues.length - 1)] > finalChartValues[0]) ? 'rgb(37, 202, 4)' : 'rgb(255, 80, 1)';
@@ -216,6 +217,18 @@ class LineChart extends React.Component{
                 <div className="chartBody-BuyPower">
                     <div>Buying Power</div>
                     <div>${this.props.balance}</div>
+                </div>
+                <div>
+                    <div>{this.state.combinedNews.map((e,index) =>(
+                        <div className="newsArticleRow" key={index}>
+                            <div>{e.headline}</div>
+                            <div>
+                                <div><img src={e.image} width="400" height="400"/></div>
+                                <div><p>{e.summary}</p></div>
+                            </div>  
+                        </div>
+                        ))}
+                    </div>
                 </div>
             </div>
             <div className="watchlist">
