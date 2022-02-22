@@ -21,12 +21,6 @@ ChartJS.register(
 );
 import { Link } from 'react-router-dom';
 
-
-// in LineChart-want to make path endpoint and Link.name more dynamic.
-// ${data.dataset.label} < wrong reference???
-
-// for stocks on the right side >> button onclick invoke defined function??
-
 class LineChart extends React.Component{
     constructor(props){
         super(props);
@@ -51,7 +45,7 @@ class LineChart extends React.Component{
 
     componentDidMount(){
         this.currentStockPriceFetch(this.props.stocks)
-        this.portfolioFetch(this.props.stocks,time)
+        this.portfolioFetch(this.props.stocks)
     }
 
     componentWillUnmount(){
@@ -86,7 +80,7 @@ class LineChart extends React.Component{
                 let obj = data;
                 // debugger
                 let newsObj = [];
-                let dataAvgValues = new Array(391).fill(0)
+                let dataAvgValues = new Array(1955).fill(0)
                 Object.values(obj).forEach((value) => { //values reflects # of stocks 
                     dataAvgValues = dataAvgValues.slice(0,(value.chart.length))
                     newsObj.push(value.news)
