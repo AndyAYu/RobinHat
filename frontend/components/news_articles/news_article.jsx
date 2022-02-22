@@ -13,11 +13,9 @@ class NewsArticle extends React.Component {
     }
 
     componentDidMount() {
-        this.organizeNews()
     }
 
     async organizeNews(){
-        debugger
         const headlines = this.props.combinedNews.map(e => e[0].headline)
         const summarys = this.props.combinedNews.map(e => e[0].summary)
         const images = this.props.combinedNews.map(e => e[0].image)
@@ -26,11 +24,7 @@ class NewsArticle extends React.Component {
     }
 
     render() {
-        console.log(this.state)
-        console.log(this.props)
-        debugger
         return(
-            this.state.headlines.map(e => e)
             // <div className="stock-page-news">
             //     <div className="news" >NEWS
             //     </div>

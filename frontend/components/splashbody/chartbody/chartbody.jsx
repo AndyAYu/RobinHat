@@ -21,7 +21,6 @@ ChartJS.register(
 );
 import { Link } from 'react-router-dom';
 import stockNames from '../../../util/all_stock_ticker_and_name';
-import NewsArticle from '../../news_articles/news_article';
 
 
 // in LineChart-want to make path endpoint and Link.name more dynamic.
@@ -229,7 +228,6 @@ class LineChart extends React.Component{
                     <div>Buying Power</div>
                     <div>${this.props.balance}</div>
                 </div>
-                <div><NewsArticle combinedNews={this.state.combinedNews}/></div>
             </div>
             <div className="watchlist">
                 <div className="watchlist-box">
