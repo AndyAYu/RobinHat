@@ -20,7 +20,6 @@ ChartJS.register(
     Legend
 );
 import { Link } from 'react-router-dom';
-import stockNames from '../../../util/all_stock_ticker_and_name';
 
 
 // in LineChart-want to make path endpoint and Link.name more dynamic.
@@ -44,11 +43,11 @@ class LineChart extends React.Component{
                 datasets:[]
             },
             stonks: [],
-            // stonks: ["AMD"],
         }
         this.currentStockPriceFetch = this.currentStockPriceFetch.bind(this);
         this.percentChange = this.percentChange.bind(this);
         this.toggleActive = this.toggleActive.bind(this);
+        this.randomRelevantNewsArticles = this.randomRelevantNewsArticles.bind(this);
     };
 
     componentDidMount(){
@@ -68,7 +67,14 @@ class LineChart extends React.Component{
             targetElement[0].style.display = "none";
         }
     }
-    //handleclick-make fetch for stock and also setstate./
+
+    randomRelevantNewsArticles(combinedNews) {
+        let newsArray = [];
+        combinedNews.forEach(e => {
+            if (e.length!==0){newsArray.push(e[0],e[1])}
+        })
+        this.setState({combinedNews:newsArray})
+    }
 
     portfolioFetch(stocks=null) {
         if (stocks == null) {return null};
@@ -95,6 +101,8 @@ class LineChart extends React.Component{
                         return dataAvgValues
                     })
                 });
+                // debugger
+                this.randomRelevantNewsArticles(this.state.combinedNews)
                 const finalChartValues = dataAvgValues.map(e => e+=this.props.balance);
                 let chartDate = Object.values(obj)[0].chart.map(e => e.label);
                 let color = (finalChartValues[(finalChartValues.length - 1)] > finalChartValues[0]) ? 'rgb(37, 202, 4)' : 'rgb(255, 80, 1)';
@@ -134,8 +142,7 @@ class LineChart extends React.Component{
     }
     
     render(){
-        // console.log(this.state.combinedNews)
-        // debugger
+        console.log(this.state.combinedNews)
         if (Object.values(this.state.currentprices).length < 1) {return null}
         let options = {   
             annotations: {
