@@ -1,16 +1,17 @@
-.newsArticleRow {
-    width: 100%;
-}
-
-.newsHeadLines {
-
+.newsIndividualRow {
+    display: flex;
+    padding-top: 30px;
 }
 
 .newsImages {
-    height: 250px;
+    padding-left: 30px;
     width: 250px;
+    height: 200px;
 }
 
-.newsSummaries {
-
+.newsTextArea {
+    width: 40%;
+    font-size: smaller;
+    font-weight: lighter;
+    padding-left: 50px;
 }

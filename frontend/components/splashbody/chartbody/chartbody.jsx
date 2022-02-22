@@ -207,7 +207,7 @@ class LineChart extends React.Component{
                         />
                 </div>
                 <div className="chart-box-buttons">
-                    <button onClick={() => this.stockFetch((this.state.currentstock), "1d")}> 1D </button>
+                    {/* <button onClick={() => this.stockFetch((this.state.currentstock), "1d")}> 1D </button> */}
                     <button onClick={() => this.stockFetch((this.state.currentstock), "5d")}> 1W </button>
                     <button onClick={() => this.stockFetch((this.state.currentstock), "1m")}> 1M </button>
                     <button onClick={() => this.stockFetch((this.state.currentstock), "3m")}> 3M </button>
@@ -218,12 +218,12 @@ class LineChart extends React.Component{
                     <div>Buying Power</div>
                     <div>${this.props.balance}</div>
                 </div>
-                <div className="newsArticleRow">
+                <div className="newsArticleRows">
                     <div>{this.state.combinedNews.map((e,index) =>(
-                        <div key={index}>
-                            <div className="newsHeadLines">{e.headline}</div>
-                            <div>
-                                <div className="newsImages"><img src={e.image} /></div>
+                        <div className="newsIndividualRow"key={index}>
+                            <img className="newsImages" src={e.image} />            
+                            <div className="newsTextArea">
+                                <div className="newsHeadLines">{e.headline}</div>
                                 <div className="newsSummaries"><p>{e.summary}</p></div>
                             </div>  
                         </div>

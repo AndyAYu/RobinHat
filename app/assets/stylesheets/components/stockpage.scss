@@ -68,6 +68,7 @@
 }
 
 .watchlist {
+    margin-top: -100px;
     width: 40%;
     display: flex;
     justify-content: center;
@@ -92,6 +93,7 @@
 .watchlist-stocks {
     display: flex;
     flex-direction: column;
+    background-color: white;
     height: 80%;
     width:300px;
     position: fixed;
