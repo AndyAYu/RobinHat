@@ -42,7 +42,6 @@ class LineChart extends React.Component{
             smallobj: {
                 datasets:[]
             },
-            stonks: [],
         }
         this.currentStockPriceFetch = this.currentStockPriceFetch.bind(this);
         this.percentChange = this.percentChange.bind(this);
@@ -52,7 +51,7 @@ class LineChart extends React.Component{
 
     componentDidMount(){
         this.currentStockPriceFetch(this.props.stocks)
-        this.portfolioFetch(this.props.stocks)
+        this.portfolioFetch(this.props.stocks,time)
     }
 
     componentWillUnmount(){
@@ -76,12 +75,12 @@ class LineChart extends React.Component{
         this.setState({combinedNews:newsArray})
     }
 
-    portfolioFetch(stocks=null) {
+    portfolioFetch(stocks=null, time="1m") {
         if (stocks == null) {return null};
         const joinedStocks = stocks.join(',')
         // fetch(`https://cloud.iexapis.com/stable/stock/${stock}/chart/${time}?token=pk_3e9931bb69894a0695a654b8e9715d4c`)
         // fetch(`https://cloud.iexapis.com/stable/stock/market/batch?symbols=${joinedStocks}&types=quote,news,chart&range=1m&last=5?token=pk_3e9931bb69894a0695a654b8e9715d4c`)
-        fetch(`https://cloud.iexapis.com/v1/stock/market/batch?symbols=${joinedStocks}&types=news,chart&range=1m&token=pk_3e9931bb69894a0695a654b8e9715d4c`)
+        fetch(`https://cloud.iexapis.com/v1/stock/market/batch?symbols=${joinedStocks}&types=news,chart&range=${time}&token=pk_3e9931bb69894a0695a654b8e9715d4c`)
             .then(response => response.json())
             .then(data => {
                 let obj = data;
@@ -208,11 +207,11 @@ class LineChart extends React.Component{
                 </div>
                 <div className="chart-box-buttons">
                     {/* <button onClick={() => this.stockFetch((this.state.currentstock), "1d")}> 1D </button> */}
-                    <button onClick={() => this.stockFetch((this.state.currentstock), "5d")}> 1W </button>
-                    <button onClick={() => this.stockFetch((this.state.currentstock), "1m")}> 1M </button>
-                    <button onClick={() => this.stockFetch((this.state.currentstock), "3m")}> 3M </button>
-                    <button onClick={() => this.stockFetch((this.state.currentstock), "1y")}> 1Y </button>
-                    <button onClick={() => this.stockFetch((this.state.currentstock), "5y")}> 5Y </button>
+                    <button onClick={() => this.portfolioFetch((this.props.stocks), "5d")}> 1W </button>
+                    <button onClick={() => this.portfolioFetch((this.props.stocks), "1m")}> 1M </button>
+                    <button onClick={() => this.portfolioFetch((this.props.stocks), "3m")}> 3M </button>
+                    <button onClick={() => this.portfolioFetch((this.props.stocks), "1y")}> 1Y </button>
+                    <button onClick={() => this.portfolioFetch((this.props.stocks), "5y")}> 5Y </button>
                 </div>
                 <div className="chartBody-BuyPower">
                     <div>Buying Power</div>
