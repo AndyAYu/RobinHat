@@ -69,7 +69,7 @@ const Header = ({ currentUser, logout }) => {
                 <Link className="logged-in-robinhat-logo"to="/">
                     <img className="robinHatLogo" src={window.logoURL} />
                 </Link>
-                <Router>
+                <Router path="/" component={}>
                     <div className="App">
                         <SearchBar
                             searchQuery={searchQuery}
@@ -77,12 +77,12 @@ const Header = ({ currentUser, logout }) => {
                         />
                         <ul className="stockResults">
                             {filteredStocks.map((tickerName,index) => (
-                                <Link className="tickerName"
-                                key={index}
-                                to={`/#/stock/${tickerName.split(":")[0]}`}
+                                <a className="tickerName"
+                                 key={index}
+                                 href={`/#/stock/${tickerName.split(":")[0]}`}
                                 >
                                 {tickerName}
-                                </Link>
+                                </a>
                             ))}
                         </ul>
                     </div>

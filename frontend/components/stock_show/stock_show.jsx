@@ -45,8 +45,6 @@ class StockShow extends React.Component {
         this.stockFetch(this.props.ticker)
     }
     
-    shouldComponentUpdate
-    
     stockFetch(stock, time="1y") {
         fetch(`https://cloud.iexapis.com/stable/stock/${stock}/chart/${time}?token=pk_3e9931bb69894a0695a654b8e9715d4c`)
             .then(response => response.json())

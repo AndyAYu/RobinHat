@@ -4,13 +4,14 @@ import { useHistory } from 'react-router-dom';
 const SearchBar = ({ searchQuery, setSearchQuery }) => {
     const history = useHistory();
     const onSubmit = (e) => {
-        history.push(`?s=${searchQuery}`);
+        debugger
+        history.push(`/#/stock/${searchQuery}`);
         e.preventDefault();
     };
 
     return (
         <form className="searchForm"
-            action="/"
+            action="/stock"
             method="get"
             autoComplete="off"
             onSubmit={onSubmit}
