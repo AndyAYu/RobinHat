@@ -78,23 +78,17 @@ class LineChart extends React.Component{
             .then(response => response.json())
             .then(data => {
                 let obj = data;
-                // debugger
                 let newsObj = [];
                 let dataAvgValues = new Array(1955).fill(0)
                 Object.values(obj).forEach((value) => { //values reflects # of stocks 
                     dataAvgValues = dataAvgValues.slice(0,(value.chart.length))
                     newsObj.push(value.news)
-                    // console.log(newsObj)
-                    // debugger
                     this.setState({combinedNews:newsObj})
                     value.chart.forEach((e,index) => { //every values has one chart and hundreds of e 
-                        // debugger
                         dataAvgValues[index] += e.average||e.marketAverage||e.close
-                        // debugger
                         return dataAvgValues
                     })
                 });
-                // debugger
                 this.randomRelevantNewsArticles(this.state.combinedNews)
                 const finalChartValues = dataAvgValues.map(e => e+=this.props.balance);
                 let chartDate = Object.values(obj)[0].chart.map(e => e.label);
