@@ -93,9 +93,12 @@ render() {
                     />
                 </label>
                 <br />
+                <div className="loginBlackButton">
                     <input className="login-session-submit" type="submit" value={this.props.formType}/>
                     <br />
-                    {this.props.prefix} {this.props.navLink}
+                    
+                </div>
+                <div>{this.props.prefix} {this.props.navLink}</div>
                 </form>
                 </div>
             </div>

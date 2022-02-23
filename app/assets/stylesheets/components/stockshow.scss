@@ -1,23 +1,23 @@
 .stock-show-border-box {
     padding-top: 63px;
     display: flex;
+    justify-content: space-evenly;
 }
 
 .stock-show-trade-box {
     width: 250px;
     box-shadow: 0px 1px 1px #adadad;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    font-weight: lighter;
+    font-size: smaller;
 }
 
-.sstbm1-1 {
+.sstbm1-1,.sstbm1-2,.sstbm1-3 {
     display: flex;
-    justify-content: space-between;
-}
-.sstbm1-2 {
-    display: flex;
-    justify-content: space-between;
-}
-.sstbm1-3 {
-    display: flex;
+    padding-top: 10px;
+    padding-bottom: 10px;
     justify-content: space-between;
 }
 
@@ -31,4 +31,23 @@
     height: 30px;
     color: black;
     font-weight: bold;
+}
+
+.stock-show-trade-box-bottom {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.sstmb2-estq, .sstbm2-estc{
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.stock-show-date-buttons {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.stockInputAmount:focus{
+    background-color: rgb(234, 239, 241);
 }

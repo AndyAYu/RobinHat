@@ -99,7 +99,6 @@ class StockShow extends React.Component {
     
     
     render(){
-        console.log(this.state)
         let options =
         {
             annotations: {
@@ -178,17 +177,19 @@ class StockShow extends React.Component {
                         <div className="stock-show-trade-box-top">Buy {stockName}</div>
                         <div className="stock-show-trade-box-middle-1">
                             <div className="sstbm1-1">
-                                <div>Order Type</div>
-                                <div>Market Order</div>
+                                <div><p>Order Type</p></div>
+                                <div><p>Market Order</p></div>
                             </div>
                             <div className="sstbm1-2">
-                                <div>Invest In</div>
-                                <div>Dollars</div>
+                                <div><p>Invest In</p></div>
+                                <div><p>Dollars</p></div>
                             </div>
                             <div className="sstbm1-3">
                                 <div>Amount</div>
                                 <div>
-                                    <input type="text" 
+                                    <input 
+                                    className="stockInputAmount"
+                                    type="text" 
                                     onChange={(e) => this.handleChangeShares(e)}
                                     placeholder='0'
                                     />
@@ -197,8 +198,8 @@ class StockShow extends React.Component {
                         </div>
                         <div className="stock-show-trade-box-middle-2"></div>
                             <div>
-                                <div>Est. Quantity</div>
-                                <div>Estimated Cost: {this.state.cost}</div>
+                                <div className="sstbm2-estq">Est. Quantity</div>
+                                <div className="sstbm2-estc">Estimated Cost: {this.state.cost}</div>
                             </div>
                             <div>
                                 <button className="review-order-button" onClick={() => {this.reviewOrder()}}>Review Order</button>

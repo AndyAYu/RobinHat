@@ -124,7 +124,6 @@ class LineChart extends React.Component{
     }
     
     render(){
-        console.log(this.state.combinedNews)
         if (Object.values(this.state.currentprices).length < 1) {return null}
         let options = {   
             annotations: {
