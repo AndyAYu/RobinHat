@@ -1,17 +1,26 @@
 .newsIndividualRow {
     display: flex;
+    justify-content: space-around;
     padding-top: 30px;
+    border-bottom: 1px solid lightgray;
+    padding-bottom: 25px;
+}
+
+.newsIndividualRow:hover{
+    background-color: rgb(234, 239, 241);
 }
 
 .newsImages {
-    padding-left: 30px;
-    width: 250px;
-    height: 200px;
+    width: 200px;
+    height: 150px;
+    border-radius: 10%;
 }
 
 .newsTextArea {
     width: 40%;
     font-size: smaller;
     font-weight: lighter;
-    padding-left: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
 }

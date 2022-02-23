@@ -9,12 +9,12 @@
 }
 
 .stockResults {
-    width: 150%;
-    background-color: white;
+    padding-left: 95px;
     overflow-x: auto;
     height: 150px;
     display: flex;
     flex-direction: column;
+    width: fit-content;
 }
 
 .searchForm {
@@ -23,3 +23,6 @@
     padding-left: 100px;
 }
 
+.tickerName:hover{
+    background-color: rgb(234, 239, 241);
+}

@@ -11,7 +11,8 @@
 .stockpageleft {
     display: flex;
     flex-direction: column;
-    width: 70%
+    width: 70%;
+    margin-left: 100px;
 } 
 
 .stockpageleft > .chart-box {
@@ -105,8 +106,6 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding-left: 20px;
-    padding-right: 20px;
     padding-top: 10px;
     padding-bottom: 20px;
     font-family: 'Roboto', sans-serif;
@@ -128,14 +127,16 @@
 }
 
 .wls-stocks:hover {
-    background-color: rgb(233, 236, 236);
+    background-color: rgb(234, 239, 241);
 }
 .wls-stocks {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     width: 100%;
     margin-top: 10px;
     margin-bottom: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
 }
 
 .chartBody-BuyPower {
@@ -143,4 +144,6 @@
     font-family: 'Roboto', sans-serif;
     display: flex;
     justify-content: space-between;
+    border-bottom: 1px solid lightgray;
+    border-top: 1px solid lightgray;
 }

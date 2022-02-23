@@ -96,7 +96,6 @@ class LineChart extends React.Component{
                 });
                 // debugger
                 this.randomRelevantNewsArticles(this.state.combinedNews)
-                debugger
                 const finalChartValues = dataAvgValues.map(e => e+=this.props.balance);
                 let chartDate = Object.values(obj)[0].chart.map(e => e.label);
                 let color = (finalChartValues[(finalChartValues.length - 1)] > finalChartValues[0]) ? 'rgb(37, 202, 4)' : 'rgb(255, 80, 1)';
@@ -129,7 +128,6 @@ class LineChart extends React.Component{
     percentChange(open,close) {
         let pricediff = (close - open)
         let percentdiff = ((pricediff)/open) * 100
-        // debugger
         if (pricediff < 0) 
         {return `${percentdiff}`.slice(0,4)}
         else {return `+${percentdiff}`.slice(0,4)};
@@ -196,7 +194,7 @@ class LineChart extends React.Component{
                         data={this.state.newobj}
                         options={options}
                         height={550}
-                        width={800}
+                        width={1000}
                         />
                 </div>
                 <div className="chart-box-buttons">
@@ -213,13 +211,14 @@ class LineChart extends React.Component{
                 </div>
                 <div className="newsArticleRows">
                     <div>{this.state.combinedNews.map((e,index) =>(
-                        <div className="newsIndividualRow"key={index}>
-                            <img className="newsImages" src={e.image} />            
+                        <a href={e.url}className="newsIndividualRow"key={index}>
                             <div className="newsTextArea">
-                                <div className="newsHeadLines">{e.headline}</div>
+                                <div className="newsHeadLines">"{e.headline}"</div>
                                 <div className="newsSummaries"><p>{e.summary}</p></div>
-                            </div>  
-                        </div>
+                                <div><p>{e.source}</p></div>
+                            </div>
+                            <img className="newsImages" src={e.image} />  
+                        </a>
                         ))}
                     </div>
                 </div>
@@ -227,14 +226,12 @@ class LineChart extends React.Component{
             <div className="watchlist">
                 <div className="watchlist-box">
                     <div className="watchlist-stocks">
-                    <button className="watchlist-header" onClick={this.toggleActive} >Watchlist</button>
+                    <button className="watchlist-header" onClick={this.toggleActive} >Stocklist</button>
                         <div className="watchlist-stock">
                         {this.props.stocks.map(ticker => (
-                            <div className="wls-stocks"key={ticker} > 
-                                <Link to={`/stock/${ticker}`}>
-                                {ticker}
-                                </Link>
-                                <div >
+                            <Link className="wls-stocks" to={`/stock/${ticker}`} key={ticker} >
+                                <div>{ticker}</div>
+                                <div>
                                     <div className="-current-stock-price" >
                                         ${this.state.currentprices[ticker].chart[0].close}
                                     </div>
@@ -243,8 +240,7 @@ class LineChart extends React.Component{
                                         (this.state.currentprices[ticker].chart[0].close))}%    
                                     </div>
                                 </div>
-            
-                            </div>
+                            </Link>
                         ))}
                         </div>
                     </div>
