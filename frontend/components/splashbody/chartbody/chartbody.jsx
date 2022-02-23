@@ -199,7 +199,7 @@ class LineChart extends React.Component{
                 </div>
                 <div className="chart-box-buttons">
                     {/* <button onClick={() => this.stockFetch((this.state.currentstock), "1d")}> 1D </button> */}
-                    <button onClick={() => this.portfolioFetch((this.props.stocks), "5d")}> 1W </button>
+                    <button onClick={() => this.portfolioFetch((this.props.stocks), "1w")}> 1W </button>
                     <button onClick={() => this.portfolioFetch((this.props.stocks), "1m")}> 1M </button>
                     <button onClick={() => this.portfolioFetch((this.props.stocks), "3m")}> 3M </button>
                     <button onClick={() => this.portfolioFetch((this.props.stocks), "1y")}> 1Y </button>
