@@ -39,10 +39,15 @@ class StockShow extends React.Component {
         this.reviewOrder = this.reviewOrder.bind(this);
     }
 
-    componentDidMount(){
+    componentDidMount() {
         this.stockFetch(this.props.ticker)
     }
-    
+
+    componentDidUpdate() {
+
+    }
+
+
     stockFetch(stock, time="1y") {
         fetch(`https://cloud.iexapis.com/stable/stock/${stock}/chart/${time}?token=pk_3e9931bb69894a0695a654b8e9715d4c`)
             .then(response => response.json())
@@ -160,8 +165,8 @@ class StockShow extends React.Component {
                                 <Line
                                 data={this.state.newobj}
                                 options={options}
-                                height={550}
-                                width={800}
+                                height={450}
+                                width={700}
                                 />
                         </div>
                         <div className="stock-show-date-buttons">

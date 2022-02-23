@@ -48,6 +48,11 @@ class LineChart extends React.Component{
         this.portfolioFetch(this.props.stocks)
     }
 
+    // componentWillUnmount(){
+    //     this.currentStockPriceFetch(this.props.stocks)
+    //     this.portfolioFetch(this.props.stocks)
+    // }
+
     toggleActive() {
         const targetElement = document.getElementsByClassName("watchlist-stock")
         if (targetElement[0].style.display === "none") {

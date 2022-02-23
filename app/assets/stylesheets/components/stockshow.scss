@@ -1,7 +1,11 @@
 .stock-show-border-box {
-    padding-top: 63px;
+    padding-top: 10%;
     display: flex;
     justify-content: space-evenly;
+}
+
+.stock-show-trade-box-top {
+    font-weight: bold;
 }
 
 .stock-show-trade-box {
