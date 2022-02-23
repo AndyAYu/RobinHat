@@ -77,12 +77,12 @@ const Header = ({ currentUser, logout }) => {
                         />
                         <ul className="stockResults">
                             {filteredStocks.map((tickerName,index) => (
-                                <a className="tickerName"
-                                 key={index}
-                                 href={`/#/stock/${tickerName.split(":")[0]}`}
-                                 >
+                                <Link className="tickerName"
+                                key={index}
+                                to={`/#/stock/${tickerName.split(":")[0]}`}
+                                >
                                 {tickerName}
-                                </a>
+                                </Link>
                             ))}
                         </ul>
                     </div>

@@ -26,6 +26,7 @@ class StockShow extends React.Component {
         super(props);
         this.state = {
             cost: 0,
+            ticker: this.props.ticker,
             balance_remaining: this.props.balance,
             stock_quantity: 0,
             current_price: 0,
@@ -37,17 +38,15 @@ class StockShow extends React.Component {
         this.calculator = this.calculator.bind(this);
         this.handleChangeShares = this.handleChangeShares.bind(this);
         this.reviewOrder = this.reviewOrder.bind(this);
+        this.stockFetch = this.stockFetch.bind(this);
     }
 
     componentDidMount() {
         this.stockFetch(this.props.ticker)
     }
-
-    componentDidUpdate() {
-
-    }
-
-
+    
+    shouldComponentUpdate
+    
     stockFetch(stock, time="1y") {
         fetch(`https://cloud.iexapis.com/stable/stock/${stock}/chart/${time}?token=pk_3e9931bb69894a0695a654b8e9715d4c`)
             .then(response => response.json())
@@ -101,7 +100,6 @@ class StockShow extends React.Component {
             this.setState({ stock_quantity: amount, cost:cost, balance_remaining: balance_result })
         }
     }
-    
     
     render(){
         let options =
