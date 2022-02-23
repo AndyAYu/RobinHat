@@ -8,7 +8,6 @@ class CreateStocks < ActiveRecord::Migration[6.1]
       
       t.timestamps
     end
-
     add_reference :users, :stocks, index:true, foreign_key: true
     add_index :stocks, :user_id
     add_index :stocks, :ticker
