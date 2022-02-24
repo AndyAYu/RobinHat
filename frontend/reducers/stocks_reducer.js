@@ -14,6 +14,7 @@ const stocksReducer = (state=_nullSession, action) => {
 
   switch (action.type) {
     case RECEIVE_USER_STOCKS:
+      debugger
       return action.stockInfo
     default:
       return state

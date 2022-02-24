@@ -12,8 +12,8 @@ const receiveUserStocks = (stockInfo) => ({
 
 export const fetchUserStockInfo = (userId) => dispatch => (
     SessionApiUtil.fetchUserStockInfo(userId)
-    .then(stockInfo => {
-        dispatch(receiveUserStocks(stockInfo))
+    .then(() => {
+        dispatch(receiveUserStocks(userId))
     })
 )
 
