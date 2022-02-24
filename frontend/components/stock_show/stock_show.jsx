@@ -20,6 +20,7 @@ ChartJS.register(
     Legend
 );
 import Header from '../header/header_container';
+import { useHistory } from "react-router-dom";
 
 class StockShow extends React.Component {
     constructor(props){
