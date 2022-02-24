@@ -69,7 +69,7 @@ const Header = ({ currentUser, logout }) => {
                 <Link className="logged-in-robinhat-logo"to="/">
                     <img className="robinHatLogo" src={window.logoURL} />
                 </Link>
-                <Router path="/" component={}>
+                <Router >
                     <div className="App">
                         <SearchBar
                             searchQuery={searchQuery}
