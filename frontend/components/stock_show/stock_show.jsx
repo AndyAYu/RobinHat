@@ -148,7 +148,7 @@ class StockShow extends React.Component {
                     grid: {
                         display: false
                     }
-                },
+                }
             },
         };
         const stockName = this.props.ticker.toUpperCase()
