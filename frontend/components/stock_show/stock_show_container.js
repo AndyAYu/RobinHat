@@ -4,7 +4,6 @@ import StockShow from './stock_show';
 import { updateUserStockInfo } from '../../actions/stock_actions';
 
 const mSTP = ({ entities, session }, ownParams ) => {
-    debugger
     const id = session.id
     return {
         userId: id,

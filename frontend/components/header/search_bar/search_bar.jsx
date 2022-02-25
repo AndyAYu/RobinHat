@@ -4,7 +4,6 @@ import { useHistory } from 'react-router-dom';
 const SearchBar = ({ searchQuery, setSearchQuery }) => {
     const history = useHistory();
     const onSubmit = (e) => {
-        debugger
         history.push(`/#/stock/${searchQuery}`);
         e.preventDefault();
     };
