@@ -67,7 +67,28 @@
    display: inline-block;
 }
 
+.signup-session-submit:hover {
+    background-color: rgb(1, 146, 6);
+}
+
 .robinHatPlusLogo{
     width: 140px;
     height: 50px;
+}
+
+.signup-errors {
+    color: red;
+    padding: 10px;
+    font-size: small;
+}
+
+.signup-already {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-right: 15px;
+}
+
+.signup-navlink {
+    font-size: smaller;
+    font-weight: bolder;
 }

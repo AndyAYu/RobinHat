@@ -33,8 +33,10 @@ class SignUpSessionForm extends React.Component {
         return (
             <ul>
                 {this.props.errors.map((error, i) => (
-                    <li key={i}>
-                        {error}
+                    <li 
+                    className="signup-errors"
+                    key={i}>
+                    {error}
                     </li>
                 ))}
             </ul>
@@ -45,7 +47,10 @@ class SignUpSessionForm extends React.Component {
         return (
             <div className="signup-form-container">
                 <form onSubmit={this.handleSubmit} className="signup-form-box">
-                    <img className="robinHatPlusLogo" src={window.robinHatPlusLogoURL}/>
+                    <div>
+                        Robinhat
+                        <img className="robinHatLogo" src={window.logoURL}/> 
+                    </div>
                     <br />
                     <div>
                         <h2>Make Your Money Move</h2>
@@ -90,7 +95,11 @@ class SignUpSessionForm extends React.Component {
                         </label>
                         <br />
                         <input className="signup-session-submit" type="submit" value={this.props.formType} />
-                                {this.props.prefix} {this.props.navLink}
+                        <div > 
+                            <div className="signup-already">{this.props.prefix}</div>
+                            <div className="signup-navlink">{this.props.navLink}</div>
+                        </div>
+                        
                     </div>
                 </form>
                 <div className="signup-form-right">
