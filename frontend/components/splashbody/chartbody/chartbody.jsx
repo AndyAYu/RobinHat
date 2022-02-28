@@ -174,7 +174,10 @@ class LineChart extends React.Component{
                 },
             },
         };
-
+        const {balance} = this.props
+        console.log({balance})
+        const roundedBalance = Math.round((balance + Number.EPSILON) * 100) / 100;
+        console.log(roundedBalance);
     return (
         <div className="stockpage">
             <div className="stockpageleft">
@@ -196,7 +199,7 @@ class LineChart extends React.Component{
                 </div>
                 <div className="chartBody-BuyPower">
                     <div>Buying Power</div>
-                    <div>${this.props.balance}</div>
+                    <div>${roundedBalance}</div>
                 </div>
                 <div className="newsArticleRows">
                     <div>{this.state.combinedNews.map((e,index) =>(
