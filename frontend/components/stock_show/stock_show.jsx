@@ -45,6 +45,11 @@ class StockShow extends React.Component {
     componentDidMount() {
         this.stockFetch(this.props.ticker)
     }
+
+    componentDidUpdate(prevProps) {
+        if (prevProps.location.pathname !== this.props.location.pathname) { window.location.reload();
+    }
+    }
     
     stockFetch(stock, time="1y") {
         fetch(`https://cloud.iexapis.com/stable/stock/${stock}/chart/${time}?token=pk_3e9931bb69894a0695a654b8e9715d4c`)
@@ -99,6 +104,11 @@ class StockShow extends React.Component {
             this.setState({ stock_quantity: amount, cost:cost, balance_remaining: balance_result })
         }
     }
+    
+    // handleSearch(str) {
+    //     debugger
+    //     this.setState({ ticker: str})
+    // }
     
     render(){
         let options =

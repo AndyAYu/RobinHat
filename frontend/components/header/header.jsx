@@ -1,7 +1,7 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import { useState } from 'react';
-import { BrowserRouter as Router } from 'react-router-dom';
+// import { BrowserRouter as Router } from 'react-router-dom';
 import SearchBar from './search_bar/search_bar';
 import Allstocks from './search_bar/all_stock_ticker_and_name.json'
 
@@ -31,7 +31,7 @@ const filterStocks = (stockNames, query) => {
     ;
 };
 
-const Header = ({ currentUser, logout }) => {
+const Header = ({ history, currentUser, logout }) => {
     const { search } = window.location;
     const query = new URLSearchParams(search).get('s');
     const [searchQuery, setSearchQuery] = useState(query || '');
@@ -63,13 +63,12 @@ const Header = ({ currentUser, logout }) => {
     
     
 
-    const loggedInHeader = () => (
-        <hgroup className="logged-header">
+    const loggedInHeader = () => {
+        return (<hgroup className="logged-header">
             <div className="loggedInHeaderLeft">
                 <Link className="logged-in-robinhat-logo"to="/">
                     <img className="robinHatLogo" src={window.logoURL} />
                 </Link>
-                <Router >
                     <div className="App">
                         <SearchBar
                             searchQuery={searchQuery}
@@ -78,15 +77,21 @@ const Header = ({ currentUser, logout }) => {
                         <ul className="stockResults">
                             {filteredStocks.map((tickerName,index) => (
                                 <a className="tickerName"
-                                 key={index}
-                                 href={`/#/stock/${tickerName.split(":")[0]}`}
+                                key={index}
+                                href={`/#/stock/${tickerName.split(":")[0]}`}
+                                onClick={()=> {
+                                //     console.log(tickerName)
+                                    // handleSearch(`${tickerName.split(":")[0]}`)
+                                    // history.push(`stock/${tickerName.split(":")[0]}`)
+                                    
+                                // }
+                                }}
                                 >
                                 {tickerName}
                                 </a>
                             ))}
                         </ul>
                     </div>
-                </Router>
             </div>
             <div className="loggedInHeaderRight">
                 <a target ="_blank" href="https://www.linkedin.com/in/andy-yu-18422b230/">LinkedIn</a>
@@ -96,8 +101,8 @@ const Header = ({ currentUser, logout }) => {
             </div>
         </hgroup> 
 
-        
-    );
+        )
+    };
 
     return currentUser ? loggedInHeader() : sessionLinks()
 };
