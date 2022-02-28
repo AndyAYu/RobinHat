@@ -80,11 +80,6 @@ const Header = ({ history, currentUser, logout }) => {
                                 key={index}
                                 href={`/#/stock/${tickerName.split(":")[0]}`}
                                 onClick={()=> {
-                                //     console.log(tickerName)
-                                    // handleSearch(`${tickerName.split(":")[0]}`)
-                                    // history.push(`stock/${tickerName.split(":")[0]}`)
-                                    
-                                // }
                                 }}
                                 >
                                 {tickerName}

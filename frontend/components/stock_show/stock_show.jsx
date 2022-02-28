@@ -105,11 +105,6 @@ class StockShow extends React.Component {
         }
     }
     
-    // handleSearch(str) {
-    //     debugger
-    //     this.setState({ ticker: str})
-    // }
-    
     render(){
         let options =
         {
