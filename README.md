@@ -5,6 +5,11 @@
 
 ## Table of Contents
 ---
+- [Description](#desc)
+- [Technologies](#tech)
+- [Core Features](#core)
+
+<div id='desc'></div>
 
 ## Description
 ---
@@ -27,8 +32,9 @@ It promises a simple and efficient trading experience to it's users allowing sea
   - jBuilder
   - Webpack
 
+<div id='core'></div>
 
-# Core Features
+## Core Features
 
 ---
 
