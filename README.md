@@ -14,6 +14,8 @@
 ## Description
 ---
 
+<img src="./app/assets/images/HomepageSS.png" width="750" height="400" />
+
 Robinhat is a clone of Robinhoot, a stock/cryptocurrency trading platform that gained popularity with commission-free trading.
 It promises a simple and efficient trading experience to it's users allowing searching, buying and selling.
 
@@ -33,23 +35,25 @@ It promises a simple and efficient trading experience to it's users allowing sea
 
 ## Core Features
 
-<img src="./app/assets/images/HomepageSS.png" width="850" height="600" />
-
-
-## Searchbar
+### Portfolio HomePage
 ---
-The searchbar feature uses lifecycle methods and selector functions for users
+The Portfolio HomePage feature consist of data visualization of users' portfolio performance 
+and current price of users' stocks.
+<img src="./app/assets/images/Portfolio_Chart.png" width="750" height="400" />
+
+### Trade Window
+---
+The Trade Window feature uses CRUD function to add stocks to user portfolio
+<img src="./app/assets/images/trade-window.png" width="750" height="400" />
+
+### Search Bar
+---
+The Search Bar feature uses lifecycle methods and selector functions for users
 to search stocks by ticker symbol or company name.
+<img src="./app/assets/images/search_bar_gif.gif" width="750" height="400" />
 
-
-1.Signup/Login
-2.Live Charts for Stocks/can filter by range
-3.See News, specific to stocks that are saved
-4.Search for stocks
-
-## Hosting
+### News Articles
 ---
-
-1.Heroku 
-
-  - Heroku is a platform as a service that enables developers to build, run, and operate applications entirely in the cloud.
+The News Article feature dynamically fetches news articles relevant to the stocks 
+in the window.
+<img src="./app/assets/images/news_articles.png" width="750" height="400" />
