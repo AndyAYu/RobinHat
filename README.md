@@ -17,9 +17,6 @@
 Robinhat is a clone of Robinhoot, a stock/cryptocurrency trading platform that gained popularity with commission-free trading.
 It promises a simple and efficient trading experience to it's users allowing searching, buying and selling.
 
-
-<img src="./app/assets/images/RobinHat.gif" width="1000" height="800" />
-
 ## Technologies 
 ---
 
@@ -36,7 +33,14 @@ It promises a simple and efficient trading experience to it's users allowing sea
 
 ## Core Features
 
+<img src="./app/assets/images/HomepageSS.png" width="850" height="600" />
+
+
+## Searchbar
 ---
+The searchbar feature uses lifecycle methods and selector functions for users
+to search stocks by ticker symbol or company name.
+
 
 1.Signup/Login
 2.Live Charts for Stocks/can filter by range
