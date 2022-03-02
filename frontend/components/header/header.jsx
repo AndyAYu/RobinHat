@@ -15,9 +15,9 @@ const filterStocks = (stockNames, query) => {
         return [];
     }
 
-    const filteredTickers = tickers.filter(e => e.startsWith((query.toUpperCase()))) //"A", "AA"
-    const filteredTickersIndex = filteredTickers.map(e => (tickers.indexOf(e))); // 0, 1
-    const filteredCompanyNames = filteredTickersIndex.map(e => companyNames[e]) // AYO, AAYO
+    const filteredTickers = tickers.filter(e => e.startsWith((query.toUpperCase())))
+    const filteredTickersIndex = filteredTickers.map(e => (tickers.indexOf(e)));
+    const filteredCompanyNames = filteredTickersIndex.map(e => companyNames[e])
     let finalResults = [];
     for (const element of filteredTickers){
         const shiftedCompanyName = filteredCompanyNames.shift()
@@ -26,7 +26,6 @@ const filterStocks = (stockNames, query) => {
             finalResults.push(`${element}: ${shiftedCompanyName}`)
         }
     }
-    // is there more optimized code? Come back occassionally. Takes up too much space.
     return finalResults
     ;
 };
