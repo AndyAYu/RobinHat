@@ -125,7 +125,7 @@ class LineChart extends React.Component{
     
     render(){
         if (Object.values(this.state.currentprices).length < 1) {return null}
-        debugger
+        let port_val = this.props.balance.toFixed(2)
         let options = {   
             annotations: {
                 annotations: [{
@@ -157,7 +157,8 @@ class LineChart extends React.Component{
                     font: {
                         size: 30
                     },
-                    text: 'Portfolio Value'
+                    text: `${port_val}`
+                    // Portfolio Value 
                 },
                 tooltip: {
                     mode: 'index',
