@@ -125,6 +125,7 @@ class LineChart extends React.Component{
     
     render(){
         if (Object.values(this.state.currentprices).length < 1) {return null}
+        debugger
         let options = {   
             annotations: {
                 annotations: [{
@@ -151,7 +152,12 @@ class LineChart extends React.Component{
                     }
                 },
                 title: {
-                    display: false,
+                    display: true,
+                    align: 'start',
+                    font: {
+                        size: 30
+                    },
+                    text: 'Portfolio Value'
                 },
                 tooltip: {
                     mode: 'index',
