@@ -14,10 +14,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "webpack": "webpack --watch --mode=production",
-    "postinstall": "webpack",
-    "start": "webpack",
-    "build": "react-scripts build",
-    "eject": "react-scripts eject"
+    "postinstall": "webpack"
   },
   "keywords": [],
   "author": "",
