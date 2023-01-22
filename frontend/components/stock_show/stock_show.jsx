@@ -20,7 +20,7 @@ ChartJS.register(
     Legend
 );
 import Header from '../header/header_container';
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 class StockShow extends React.Component {
     constructor(props){
@@ -40,6 +40,7 @@ class StockShow extends React.Component {
         this.handleChangeShares = this.handleChangeShares.bind(this);
         this.reviewOrder = this.reviewOrder.bind(this);
         this.stockFetch = this.stockFetch.bind(this);
+        this.routeChange = this.routeChange(this);
     }
 
     componentDidMount() {
@@ -158,6 +159,10 @@ class StockShow extends React.Component {
         };
         const stockName = this.props.ticker.toUpperCase()
         const balance = this.state.balance_remaining
+        routeChange(){ 
+            let path = `newPath`; 
+            navigate(path);
+        }
         return (
             <div className="stock-show">
                 <Header />
@@ -209,7 +214,7 @@ class StockShow extends React.Component {
                                 <div className="sstbm2-estc">Estimated Cost: {this.state.cost}</div>
                             </div>
                             <div>
-                                <button className="review-order-button" onClick={() => {this.reviewOrder()}}>Review Order</button>
+                                <button className="review-order-button" onClick={() => `${this.reviewOrder()}`;`${this.routeChange()}`}>Review Order</button>
                             </div>
                         <div className="stock-show-trade-box-bottom">
                             <div>Buying power ${balance} available</div>
