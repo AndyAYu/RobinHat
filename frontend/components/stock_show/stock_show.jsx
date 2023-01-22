@@ -159,10 +159,10 @@ class StockShow extends React.Component {
         };
         const stockName = this.props.ticker.toUpperCase()
         const balance = this.state.balance_remaining
-        routeChange(){ 
-            let path = `newPath`; 
-            navigate(path);
-        }
+        // routeChange(){ 
+        //     let path = `newPath`; 
+        //     navigate(path);
+        // }
         return (
             <div className="stock-show">
                 <Header />
