@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_12_173342) do
+ActiveRecord::Schema.define(version: 2023_02_14_230916) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,7 +19,6 @@ ActiveRecord::Schema.define(version: 2022_02_12_173342) do
     t.integer "user_id", null: false
     t.string "ticker", null: false
     t.float "amount", null: false
-    t.float "unit_price", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["ticker"], name: "index_stocks_on_ticker"
@@ -41,4 +40,5 @@ ActiveRecord::Schema.define(version: 2022_02_12_173342) do
     t.index ["stocks_id"], name: "index_users_on_stocks_id"
   end
 
+  add_foreign_key "users", "stocks", column: "stocks_id"
 end

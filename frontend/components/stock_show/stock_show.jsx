@@ -40,7 +40,6 @@ class StockShow extends React.Component {
         this.handleChangeShares = this.handleChangeShares.bind(this);
         this.reviewOrder = this.reviewOrder.bind(this);
         this.stockFetch = this.stockFetch.bind(this);
-        this.routeChange = this.routeChange(this);
     }
 
     componentDidMount() {
@@ -85,6 +84,10 @@ class StockShow extends React.Component {
         let {ticker} = this.props
         let { current_price } = this.state
         this.props.updateUserStockInfo(userId, ticker, amount, current_price)
+        debugger
+        window.location.replace('http://localhost:3000/#/')
+        // window.location.replace('http://robinhat-1.herokuapp.com/#/')
+        
     }
 
     handleChangeShares(event) {
@@ -159,10 +162,7 @@ class StockShow extends React.Component {
         };
         const stockName = this.props.ticker.toUpperCase()
         const balance = this.state.balance_remaining
-        // routeChange(){ 
-        //     let path = `newPath`; 
-        //     navigate(path);
-        // }
+        
         return (
             <div className="stock-show">
                 <Header />
@@ -214,7 +214,7 @@ class StockShow extends React.Component {
                                 <div className="sstbm2-estc">Estimated Cost: {this.state.cost}</div>
                             </div>
                             <div>
-                                <button className="review-order-button" onClick={() => `${this.reviewOrder()}`;`${this.routeChange()}`}>Review Order</button>
+                                <button className="review-order-button" onClick={() => `${this.reviewOrder()}`}>Review Order</button>
                             </div>
                         <div className="stock-show-trade-box-bottom">
                             <div>Buying power ${balance} available</div>
@@ -223,10 +223,8 @@ class StockShow extends React.Component {
                 </div>
 
             </div>
-            
         );
     }
-
 }
 
 export default StockShow;
