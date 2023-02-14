@@ -125,7 +125,6 @@ class LineChart extends React.Component{
     
     render(){
         if (Object.values(this.state.currentprices).length < 1) {return null}
-        debugger
         let options = {   
             annotations: {
                 annotations: [{
@@ -182,6 +181,7 @@ class LineChart extends React.Component{
         };
         const {balance} = this.props
         const roundedBalance = Math.round((balance + Number.EPSILON) * 100) / 100;
+    
     return (
         <div className="stockpage">
             <div className="stockpageleft">
@@ -227,6 +227,7 @@ class LineChart extends React.Component{
                         {this.props.stocks.map(ticker => (
                             <Link className="wls-stocks" to={`/stock/${ticker}`} key={ticker} >
                                 <div>{ticker}</div>
+                                    <div>{this.props.amount}</div>
                                 <div>
                                     <div className="-current-stock-price" >
                                         ${this.state.currentprices[ticker].chart[0].close}
