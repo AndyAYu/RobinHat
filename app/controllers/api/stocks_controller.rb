@@ -14,7 +14,7 @@ class Api::StocksController < ApplicationController
         if (total_price > @user.balance)
             render json: 'Balanace insufficient, please provide additional funds'
             return
-        end
+        end 
         
         if !@stock.save
             render json: @stock.errors.full_messages, status: 401

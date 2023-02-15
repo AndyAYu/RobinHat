@@ -23,5 +23,5 @@ amd = Stock.create!(
     user_id: demo.id,
     ticker: "AMD",
     amount: 5,
-    # unit_price: 120
+    unit_price: 0,
 )

@@ -45,8 +45,8 @@ class LineChart extends React.Component{
     };
 
     componentDidMount(){
-        this.currentStockPriceFetch(this.props.stocks);
-        this.portfolioFetch(this.props.stocks);
+        this.currentStockPriceFetch(Object.keys(this.props.stocks));
+        this.portfolioFetch(Object.keys(this.props.stocks));
     }
 
     toggleActive() {
@@ -61,12 +61,9 @@ class LineChart extends React.Component{
     portfolioValue() {
         const balance = this.props.balance;
         const stocks = this.props.stocks;
-        const amount = this.props.amount;
         let stockTotalAmount = 0;
-        if (stocks.length == amount.length){
-            for (let i = 0; i < stocks.length; i++) {
-                stockTotalAmount += (this.state.currentprices[`${stocks[i]}`].chart[0].close) * amount[i]
-            }
+        for (let i = 0; i < stocks.length; i++) {
+            stockTotalAmount += (this.state.currentprices[`${stocks[i]}`].chart[0].close) * stocks.i.values
         }
         stockTotalAmount += balance
         this.state.portVal = stockTotalAmount
@@ -83,7 +80,7 @@ class LineChart extends React.Component{
 
     portfolioFetch(stocks=null, time="1m") {
         if (stocks == null) {return null};
-        const joinedStocks = stocks.join(',')
+        const joinedStocks = Object.keys(stocks)
         // fetch(`https://cloud.iexapis.com/stable/stock/${stock}/chart/${time}?token=pk_3e9931bb69894a0695a654b8e9715d4c`)
         // fetch(`https://cloud.iexapis.com/stable/stock/market/batch?symbols=${joinedStocks}&types=quote,news,chart&range=1m&last=5?token=pk_3e9931bb69894a0695a654b8e9715d4c`)
         fetch(`https://cloud.iexapis.com/v1/stock/market/batch?symbols=${joinedStocks}&types=news,chart&range=${time}&token=pk_3e9931bb69894a0695a654b8e9715d4c`)
@@ -124,7 +121,8 @@ class LineChart extends React.Component{
     }
 
     currentStockPriceFetch(stocks) {
-        let joinedStocks = null || stocks.join(',')
+        let joinedStocks = null || Object.keys(this.props.stocks)
+        debugger
         fetch(`https://cloud.iexapis.com/v1/stock/market/batch?types=chart&symbols=${joinedStocks}&range=intraday-prices%20&token=pk_3e9931bb69894a0695a654b8e9715d4c`)
         .then(response => response.json())
         .then(data => {
@@ -201,7 +199,7 @@ class LineChart extends React.Component{
     return (
         <div className="stockpage">
             <div className="stockpageleft">
-                <div className="port-val">{this.state.portVal}</div>
+                <div className="port-val"> Portfolio Value : {this.state.portVal}</div>
                 <div className="chart-box">
                         <Line
                         data={this.state.newobj}
@@ -212,11 +210,11 @@ class LineChart extends React.Component{
                 </div>
                 <div className="chart-box-buttons">
                     {/* <button onClick={() => this.stockFetch((this.state.currentstock), "1d")}> 1D </button> */}
-                    <button onClick={() => this.portfolioFetch((this.props.stocks), "1w")}> 1W </button>
-                    <button onClick={() => this.portfolioFetch((this.props.stocks), "1m")}> 1M </button>
-                    <button onClick={() => this.portfolioFetch((this.props.stocks), "3m")}> 3M </button>
-                    <button onClick={() => this.portfolioFetch((this.props.stocks), "1y")}> 1Y </button>
-                    <button onClick={() => this.portfolioFetch((this.props.stocks), "5y")}> 5Y </button>
+                    <button onClick={() => this.portfolioFetch(Object.keys(this.props.stocks), "1w")}> 1W </button>
+                    <button onClick={() => this.portfolioFetch(Object.keys(this.props.stocks), "1m")}> 1M </button>
+                    <button onClick={() => this.portfolioFetch(Object.keys(this.props.stocks), "3m")}> 3M </button>
+                    <button onClick={() => this.portfolioFetch(Object.keys(this.props.stocks), "1y")}> 1Y </button>
+                    <button onClick={() => this.portfolioFetch(Object.keys(this.props.stocks), "5y")}> 5Y </button>
                 </div>
                 <div className="chartBody-BuyPower">
                     <div>Buying Power</div>
@@ -241,21 +239,21 @@ class LineChart extends React.Component{
                     <div className="watchlist-stocks">
                     <button className="watchlist-header" onClick={this.toggleActive} >Stocklist</button>
                         <div className="watchlist-stock">
-                        {this.props.stocks.map(ticker => (
-                            <Link className="wls-stocks" to={`/stock/${ticker}`} key={ticker} >
-                                <div>{ticker}</div>
-                                    <div>{this.props.amount}</div>
+                        {Object.keys(this.props.stocks).map(function(key, value) {
+                            <Link className="wls-stocks" to={`/stock/${key}`} key={key} >
+                                <div>{key}</div>
+                                    <div>{value}</div>
                                 <div>
                                     <div className="-current-stock-price" >
-                                        ${this.state.currentprices[ticker].chart[0].close}
+                                        ${this.state.currentprices[key].chart[0].close}
                                     </div>
                                     <div className="percentageChange1">
-                                        {this.percentChange((this.state.currentprices[ticker].chart[0].open),
-                                        (this.state.currentprices[ticker].chart[0].close))}%    
+                                        {this.percentChange((this.state.currentprices[key].chart[0].open),
+                                        (this.state.currentprices[key].chart[0].close))}%    
                                     </div>
                                 </div>
                             </Link>
-                        ))}
+                        })}
                         </div>
                     </div>
                 </div>
