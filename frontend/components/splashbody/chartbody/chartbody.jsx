@@ -25,7 +25,7 @@ class LineChart extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-            // active: false,
+            portVal: 0,
             currentstock: '',
             currentprices: '',
             combinedNews: [],
@@ -41,11 +41,12 @@ class LineChart extends React.Component{
         this.percentChange = this.percentChange.bind(this);
         this.toggleActive = this.toggleActive.bind(this);
         this.randomRelevantNewsArticles = this.randomRelevantNewsArticles.bind(this);
+        this.portfolioValue = this.portfolioValue.bind(this);
     };
 
     componentDidMount(){
-        this.currentStockPriceFetch(this.props.stocks)
-        this.portfolioFetch(this.props.stocks)
+        this.currentStockPriceFetch(this.props.stocks);
+        this.portfolioFetch(this.props.stocks);
     }
 
     toggleActive() {
@@ -55,6 +56,21 @@ class LineChart extends React.Component{
         } else {
             targetElement[0].style.display = "none";
         }
+    }
+
+    portfolioValue() {
+        const balance = this.props.balance;
+        const stocks = this.props.stocks;
+        const amount = this.props.amount;
+        let stockTotalAmount = 0;
+        if (stocks.length == amount.length){
+            for (let i = 0; i < stocks.length; i++) {
+                stockTotalAmount += (this.state.currentprices[`${stocks[i]}`].chart[0].close) * amount[i]
+            }
+        }
+        stockTotalAmount += balance
+        this.state.portVal = stockTotalAmount
+        console.log(this.state.portVal)
     }
 
     randomRelevantNewsArticles(combinedNews) {
@@ -156,7 +172,7 @@ class LineChart extends React.Component{
                     font: {
                         size: 30
                     },
-                    text: 'Portfolio Value'
+                    text: ''
                 },
                 tooltip: {
                     mode: 'index',
@@ -181,10 +197,11 @@ class LineChart extends React.Component{
         };
         const {balance} = this.props
         const roundedBalance = Math.round((balance + Number.EPSILON) * 100) / 100;
-    
+        this.portfolioValue();
     return (
         <div className="stockpage">
             <div className="stockpageleft">
+                <div className="port-val">{this.state.portVal}</div>
                 <div className="chart-box">
                         <Line
                         data={this.state.newobj}
