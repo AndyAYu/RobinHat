@@ -6,7 +6,6 @@ const mapStateToProps = ({entities,session},ownParams) => {
     let dict = new Object();
     entities.users[(session.id)].stocks.map(e => 
         dict[e.ticker] = e.amount)
-        debugger
     return {
         balance: entities.users[(session.id)].balance,
         stocks: dict,

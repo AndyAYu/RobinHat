@@ -195,11 +195,10 @@ class LineChart extends React.Component{
         const {balance} = this.props
         const roundedBalance = Math.round((balance + Number.EPSILON) * 100) / 100;
         this.portfolioValue();
-        debugger
     return (
         <div className="stockpage">
             <div className="stockpageleft">
-                <div className="port-val"> Portfolio Value : {this.state.portVal}</div>
+            <div className="port-val"> Portfolio Value : {this.state.portVal}</div>
                 <div className="chart-box">
                         <Line
                         data={this.state.newobj}
@@ -239,9 +238,6 @@ class LineChart extends React.Component{
                     <div className="watchlist-stocks">
                     <button className="watchlist-header" onClick={this.toggleActive} >Stocklist</button>
                     <div className="watchlist-heading">
-                        <h4>Symbol</h4>
-                        <h4>Amount</h4>
-                        <h4>Current Price</h4>
                     </div>
                         <div className="watchlist-stock">
                         {Object.entries(this.props.stocks).map(key => (
