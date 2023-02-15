@@ -45,7 +45,7 @@ class LineChart extends React.Component{
     };
 
     componentDidMount(){
-        this.currentStockPriceFetch(Object.keys(this.props.stocks));
+        this.currentStockPriceFetch();
         this.portfolioFetch(Object.keys(this.props.stocks));
     }
 
@@ -80,7 +80,7 @@ class LineChart extends React.Component{
 
     portfolioFetch(stocks=null, time="1m") {
         if (stocks == null) {return null};
-        const joinedStocks = Object.keys(stocks)
+        const joinedStocks = Object.keys(this.props.stocks)
         // fetch(`https://cloud.iexapis.com/stable/stock/${stock}/chart/${time}?token=pk_3e9931bb69894a0695a654b8e9715d4c`)
         // fetch(`https://cloud.iexapis.com/stable/stock/market/batch?symbols=${joinedStocks}&types=quote,news,chart&range=1m&last=5?token=pk_3e9931bb69894a0695a654b8e9715d4c`)
         fetch(`https://cloud.iexapis.com/v1/stock/market/batch?symbols=${joinedStocks}&types=news,chart&range=${time}&token=pk_3e9931bb69894a0695a654b8e9715d4c`)
@@ -120,9 +120,8 @@ class LineChart extends React.Component{
             })
     }
 
-    currentStockPriceFetch(stocks) {
+    currentStockPriceFetch() {
         let joinedStocks = null || Object.keys(this.props.stocks)
-        debugger
         fetch(`https://cloud.iexapis.com/v1/stock/market/batch?types=chart&symbols=${joinedStocks}&range=intraday-prices%20&token=pk_3e9931bb69894a0695a654b8e9715d4c`)
         .then(response => response.json())
         .then(data => {
@@ -196,6 +195,7 @@ class LineChart extends React.Component{
         const {balance} = this.props
         const roundedBalance = Math.round((balance + Number.EPSILON) * 100) / 100;
         this.portfolioValue();
+        debugger
     return (
         <div className="stockpage">
             <div className="stockpageleft">
@@ -238,10 +238,16 @@ class LineChart extends React.Component{
                 <div className="watchlist-box">
                     <div className="watchlist-stocks">
                     <button className="watchlist-header" onClick={this.toggleActive} >Stocklist</button>
+                    <div className="watchlist-heading">
+                        <h4>Symbol</h4>
+                        <h4>Amount</h4>
+                        <h4>Current Price</h4>
+                    </div>
                         <div className="watchlist-stock">
-                        {Object.entries(this.props.stocks).map((key) => {
-                            <Link className="wls-stocks" to={`/stock/${key[0]}`} key={key[0]} >
-                                <div>{key[0]}</div>
+                        {Object.entries(this.props.stocks).map(key => (
+                            <Link className="wls-stocks" to={`/stock/${key[0]}`}  >
+                                    <div>{key[0]}</div>
+
                                     <div>{key[1]}</div>
                                 <div>
                                     <div className="-current-stock-price" >
@@ -253,7 +259,7 @@ class LineChart extends React.Component{
                                     </div>
                                 </div>
                             </Link>
-                        })}
+                        ))}
                         </div>
                     </div>
                 </div>
