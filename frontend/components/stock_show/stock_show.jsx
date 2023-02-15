@@ -84,8 +84,8 @@ class StockShow extends React.Component {
         let {ticker} = this.props
         let { current_price } = this.state
         this.props.updateUserStockInfo(userId, ticker, amount, current_price)
-        window.location.replace('http://localhost:3000/#/')
-        // window.location.replace('http://robinhat-1.herokuapp.com/#/')
+        // window.location.replace('http://localhost:3000/#/')
+        window.location.replace('http://robinhat-1.herokuapp.com/#/')
         
     }
 
