@@ -239,17 +239,17 @@ class LineChart extends React.Component{
                     <div className="watchlist-stocks">
                     <button className="watchlist-header" onClick={this.toggleActive} >Stocklist</button>
                         <div className="watchlist-stock">
-                        {Object.keys(this.props.stocks).map(function(key, value) {
-                            <Link className="wls-stocks" to={`/stock/${key}`} key={key} >
-                                <div>{key}</div>
-                                    <div>{value}</div>
+                        {Object.entries(this.props.stocks).map((key) => {
+                            <Link className="wls-stocks" to={`/stock/${key[0]}`} key={key[0]} >
+                                <div>{key[0]}</div>
+                                    <div>{key[1]}</div>
                                 <div>
                                     <div className="-current-stock-price" >
-                                        ${this.state.currentprices[key].chart[0].close}
+                                        ${this.state.currentprices[key[0]].chart[0].close}
                                     </div>
                                     <div className="percentageChange1">
-                                        {this.percentChange((this.state.currentprices[key].chart[0].open),
-                                        (this.state.currentprices[key].chart[0].close))}%    
+                                        {this.percentChange((this.state.currentprices[key[0]].chart[0].open),
+                                        (this.state.currentprices[key[0]].chart[0].close))}%    
                                     </div>
                                 </div>
                             </Link>
