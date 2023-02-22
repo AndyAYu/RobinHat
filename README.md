@@ -1,6 +1,6 @@
 # Robinhat
 
-[Live Link](robinhat-1.herokuapp.com/#/)
+[Live Link](https://robinhat-1.herokuapp.com/#/)
 ---
 
 ## Table of Contents
